@@ -1,0 +1,760 @@
+---------------------------------------------------------------
+[ 2018-02-24T21:11:42+08:00 ] 127.0.0.1 GET /admin/order/addorder.html
+[ info ] www.bangbangyz.com/admin/order/addorder.html [运行时间：0.584358s][吞吐率：1.71req/s] [内存消耗：789.73kb] [文件加载：77]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.040398s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'addorder',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.bangbangyz.com/admin/order/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; refersh_time=0; thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.023963s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../data/lang/zh-cn/admin_menu.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\AdminLangBehavior @admin_init [ RunTime:0.029200s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\OrderController->addOrder[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\OrderController.php ]
+[ info ] [ VIEW ] themes/admin_simpleboot3/admin\order\addorder.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.016148s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.016253s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000700s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.016817s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000890s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000790s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:11:43+08:00 ] 127.0.0.1 GET /user/Ueditor/upload?action=config&&noCache=1519477903453
+[ info ] www.bangbangyz.com/user/Ueditor/upload?action=config&&noCache=1519477903453 [运行时间：0.430467s][吞吐率：2.32req/s] [内存消耗：621.25kb] [文件加载：63]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.036189s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'Ueditor',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+  'action' => 'config',
+  'noCache' => '1519477903453',
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.028893s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\UeditorController->upload[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\user\controller\UeditorController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001079s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.023387s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000603s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'upload_setting' LIMIT 1 [ RunTime:0.001071s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:13:14+08:00 ] 127.0.0.1 GET /admin/order/addorder.html
+[ info ] www.bangbangyz.com/admin/order/addorder.html [运行时间：0.442701s][吞吐率：2.26req/s] [内存消耗：788.67kb] [文件加载：77]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025975s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'addorder',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.bangbangyz.com/admin/order/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; refersh_time=0; thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.022804s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../data/lang/zh-cn/admin_menu.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\AdminLangBehavior @admin_init [ RunTime:0.030302s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\OrderController->addOrder[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\OrderController.php ]
+[ info ] [ VIEW ] themes/admin_simpleboot3/admin\order\addorder.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001105s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.019476s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000631s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.016406s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000810s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000772s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:13:15+08:00 ] 127.0.0.1 GET /user/Ueditor/upload?action=config&&noCache=1519477995042
+[ info ] www.bangbangyz.com/user/Ueditor/upload?action=config&&noCache=1519477995042 [运行时间：0.299819s][吞吐率：3.34req/s] [内存消耗：621.25kb] [文件加载：63]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.041507s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'Ueditor',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+  'action' => 'config',
+  'noCache' => '1519477995042',
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.038226s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\UeditorController->upload[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\user\controller\UeditorController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000762s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.018890s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000591s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'upload_setting' LIMIT 1 [ RunTime:0.000712s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:13:16+08:00 ] 127.0.0.1 GET /user/Asset/webuploader?&multi=1&filetype=image&app=admin
+[ info ] www.bangbangyz.com/user/Asset/webuploader?&multi=1&filetype=image&app=admin [运行时间：0.516702s][吞吐率：1.94req/s] [内存消耗：806.54kb] [文件加载：74]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.036654s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'Asset',
+    2 => 'webuploader',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+  'multi' => '1',
+  'filetype' => 'image',
+  'app' => 'admin',
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.027255s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\AssetController->webuploader[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\user\controller\AssetController.php ]
+[ info ] [ VIEW ] themes/admin_simpleboot3/user\\webuploader.html [ array (
+  0 => 'filetype',
+  1 => 'extensions',
+  2 => 'upload_max_filesize',
+  3 => 'upload_max_filesize_mb',
+  4 => 'max_files',
+  5 => 'chunk_size',
+  6 => 'multi',
+  7 => 'app',
+  8 => 'tab',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000698s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.019353s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000577s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'upload_setting' LIMIT 1 [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000603s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'storage' LIMIT 1 [ RunTime:0.000659s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:14:08+08:00 ] 127.0.0.1 POST /admin/order/addpost.html
+[ info ] www.bangbangyz.com/admin/order/addpost.html [运行时间：0.327561s][吞吐率：3.05req/s] [内存消耗：673.42kb] [文件加载：69]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.026190s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'addpost',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'content-length' => '562',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.bangbangyz.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; refersh_time=0; thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+  'post' => 
+  array (
+    'orderName' => '王淳熙',
+    'userTel' => '15826962999',
+    'userAddress' => '湖北黄石',
+    'orderTotal' => '5000',
+    'orderCycle' => '90',
+    1 => '1000',
+    2 => '2000',
+    3 => '3000',
+    'more' => 
+    array (
+      'thumbnail' => '',
+    ),
+    'published_time' => '2018-02-24 21:13:14',
+    'post_status' => '1',
+    'orderContent' => '&lt;p&gt;是的撒多&lt;/p&gt;',
+  ),
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.023381s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../data/lang/zh-cn/admin_menu.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\AdminLangBehavior @admin_init [ RunTime:0.036735s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\OrderController->addPost[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\OrderController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000782s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.017614s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000657s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.017562s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000824s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:14:13+08:00 ] 127.0.0.1 GET /admin/order/addorder.html
+[ info ] www.bangbangyz.com/admin/order/addorder.html [运行时间：0.490148s][吞吐率：2.04req/s] [内存消耗：788.74kb] [文件加载：77]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025895s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'addorder',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; refersh_time=0; thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.022645s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../data/lang/zh-cn/admin_menu.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\AdminLangBehavior @admin_init [ RunTime:0.034882s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\OrderController->addOrder[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\OrderController.php ]
+[ info ] [ VIEW ] themes/admin_simpleboot3/admin\order\addorder.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000989s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.022332s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.001578s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.020117s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000686s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:14:14+08:00 ] 127.0.0.1 GET /user/Ueditor/upload?action=config&&noCache=1519478053523
+[ info ] www.bangbangyz.com/user/Ueditor/upload?action=config&&noCache=1519478053523 [运行时间：0.515007s][吞吐率：1.94req/s] [内存消耗：621.25kb] [文件加载：63]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.065104s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'Ueditor',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+  'action' => 'config',
+  'noCache' => '1519478053523',
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.038763s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\UeditorController->upload[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\user\controller\UeditorController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001027s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.105219s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.001285s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'upload_setting' LIMIT 1 [ RunTime:0.002486s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:14:58+08:00 ] 127.0.0.1 POST /admin/order/addpost.html
+[ info ] www.bangbangyz.com/admin/order/addpost.html [运行时间：0.307354s][吞吐率：3.25req/s] [内存消耗：673.42kb] [文件加载：69]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025911s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'addpost',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'content-length' => '563',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.bangbangyz.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; refersh_time=0; thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+  'post' => 
+  array (
+    'orderName' => '奥术大师',
+    'userTel' => '18129911829',
+    'userAddress' => '奥术大师',
+    'orderTotal' => '20000',
+    'orderCycle' => '90',
+    1 => '1000',
+    2 => '1000',
+    3 => '1000',
+    'more' => 
+    array (
+      'thumbnail' => '',
+    ),
+    'published_time' => '2018-02-24 21:14:13',
+    'post_status' => '1',
+    'orderContent' => '&lt;p&gt;阿萨德&lt;/p&gt;',
+  ),
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.021941s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../data/lang/zh-cn/admin_menu.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\AdminLangBehavior @admin_init [ RunTime:0.034199s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\OrderController->addPost[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\OrderController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001026s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.022087s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000908s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.017869s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000939s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:16:19+08:00 ] 127.0.0.1 GET /admin/order/addorder.html
+[ info ] www.bangbangyz.com/admin/order/addorder.html [运行时间：0.461701s][吞吐率：2.17req/s] [内存消耗：788.74kb] [文件加载：77]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.026762s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'addorder',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; refersh_time=0; thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.021370s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../data/lang/zh-cn/admin_menu.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\AdminLangBehavior @admin_init [ RunTime:0.030189s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\OrderController->addOrder[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\OrderController.php ]
+[ info ] [ VIEW ] themes/admin_simpleboot3/admin\order\addorder.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001053s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.016800s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000824s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.016904s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000834s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000772s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:16:20+08:00 ] 127.0.0.1 GET /user/Ueditor/upload?action=config&&noCache=1519478180499
+[ info ] www.bangbangyz.com/user/Ueditor/upload?action=config&&noCache=1519478180499 [运行时间：0.430738s][吞吐率：2.32req/s] [内存消耗：621.25kb] [文件加载：63]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.040822s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'Ueditor',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+  'action' => 'config',
+  'noCache' => '1519478180499',
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.036947s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\UeditorController->upload[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\user\controller\UeditorController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000779s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.025180s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.001533s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'upload_setting' LIMIT 1 [ RunTime:0.000726s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:16:54+08:00 ] 127.0.0.1 GET /admin/order/addorder.html
+[ info ] www.bangbangyz.com/admin/order/addorder.html [运行时间：0.486223s][吞吐率：2.06req/s] [内存消耗：788.74kb] [文件加载：77]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.026299s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'addorder',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; refersh_time=0; thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.022631s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../data/lang/zh-cn/admin_menu.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\AdminLangBehavior @admin_init [ RunTime:0.028916s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\OrderController->addOrder[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\OrderController.php ]
+[ info ] [ VIEW ] themes/admin_simpleboot3/admin\order\addorder.html [ array (
+  0 => 'admin',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001053s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.053077s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000601s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.016128s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000795s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000790s ]
+---------------------------------------------------------------
+[ 2018-02-24T21:16:55+08:00 ] 127.0.0.1 GET /user/Ueditor/upload?action=config&&noCache=1519478214975
+[ info ] www.bangbangyz.com/user/Ueditor/upload?action=config&&noCache=1519478214975 [运行时间：0.386800s][吞吐率：2.59req/s] [内存消耗：621.25kb] [文件加载：63]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.037624s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'Ueditor',
+    2 => 'upload',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://www.bangbangyz.com/admin/order/addorder.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=o2eqvtuqa0pl9knmfbttog8tj5; admin_username=admin',
+)
+[ info ] [ PARAM ] array (
+  'action' => 'config',
+  'noCache' => '1519478214975',
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.034087s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\UeditorController->upload[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\user\controller\UeditorController.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000825s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.031213s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000628s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'upload_setting' LIMIT 1 [ RunTime:0.000943s ]
