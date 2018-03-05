@@ -534,3 +534,231 @@
 [ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
 [ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.019134s ]
 [ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-03-05T21:14:52+08:00 ] 127.0.0.1 GET /captcha/new.html?height=32&width=150&font_size=18&time=0.6802691025035466
+[ info ] www.bangbangyz.com/captcha/new.html?height=32&width=150&font_size=18&time=0.6802691025035466 [运行时间：0.172394s][吞吐率：5.80req/s] [内存消耗：346.24kb] [文件加载：51]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025503s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\cmf\\controller\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.bangbangyz.com/admin/public/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'admin_username=admin; PHPSESSID=h5tnv0vbigeudb69psqlhtr5e6; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'height' => '32',
+  'width' => '150',
+  'font_size' => '18',
+  'time' => '0.6802691025035466',
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.021284s ]
+[ info ] [ RUN ] cmf\controller\CaptchaController->index[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\cmf\controller\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-03-05T21:14:57+08:00 ] 127.0.0.1 POST /admin/public/dologin.html
+[ info ] www.bangbangyz.com/admin/public/dologin.html [运行时间：0.508936s][吞吐率：1.96req/s] [内存消耗：537.34kb] [文件加载：70]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.022000s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'public',
+    2 => 'dologin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'content-length' => '66',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://www.bangbangyz.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.bangbangyz.com/admin/public/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; admin_username=admin; PHPSESSID=h5tnv0vbigeudb69psqlhtr5e6; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'username' => 'admin',
+  'password' => '111111',
+  'captcha' => '5nty',
+  '_captcha_id' => '',
+  'redirect' => '',
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.019502s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\PublicController->doLogin[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\PublicController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001031s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.048139s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000634s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.038641s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `user_login` = 'admin' LIMIT 1 [ RunTime:0.054198s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_role_user` [ RunTime:0.031725s ]
+[ sql ] [ SQL ] SELECT `role_id` FROM `bangbang_role_user` `a` INNER JOIN `bangbang_role` `b` ON `a`.`role_id`=`b`.`id` WHERE  `user_id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.032236s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user_token` [ RunTime:0.032901s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user_token` WHERE  `user_id` = 1  AND `device_type` = 'web' LIMIT 1 [ RunTime:0.000949s ]
+[ sql ] [ SQL ] UPDATE `bangbang_user`  SET `user_type`=1,`sex`=0,`birthday`=0,`last_login_time`=1520255697,`score`=0,`coin`=0,`balance`=0,`create_time`=1519299231,`user_status`=1,`user_login`='admin',`user_pass`='###41db486ab474d7329263420baaf164e8',`user_nickname`='admin',`user_email`='591554596@qq.com',`user_url`='',`avatar`='',`signature`='',`last_login_ip`='127.0.0.1',`user_activation_key`='',`mobile`='',`more`=NULL  WHERE  `id` = 1 [ RunTime:0.051198s ]
+---------------------------------------------------------------
+[ 2018-03-05T21:15:00+08:00 ] 127.0.0.1 GET /admin/index/index.html
+[ info ] www.bangbangyz.com/admin/index/index.html [运行时间：0.520966s][吞吐率：1.92req/s] [内存消耗：710.46kb] [文件加载：79]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025059s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.bangbangyz.com/admin/public/login.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'admin_username=admin; PHPSESSID=h5tnv0vbigeudb69psqlhtr5e6; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.021674s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../data/lang/zh-cn/admin_menu.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\AdminLangBehavior @admin_init [ RunTime:0.031955s ]
+[ info ] [ RUN ] app\admin\controller\IndexController->index[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\IndexController.php ]
+[ info ] [ VIEW ] themes/admin_simpleboot3/admin\index\index.html [ array (
+  0 => 'admin',
+  1 => 'menus',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010092s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.018775s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.000533s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000680s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.021404s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000687s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000534s ]
+---------------------------------------------------------------
+[ 2018-03-05T21:15:00+08:00 ] 127.0.0.1 GET /admin/main/index.html
+[ info ] www.bangbangyz.com/admin/main/index.html [运行时间：0.553093s][吞吐率：1.81req/s] [内存消耗：643.01kb] [文件加载：77]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.031463s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\simplewind\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'main',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.bangbangyz.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.bangbangyz.com/admin/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'admin_username=admin; PHPSESSID=h5tnv0vbigeudb69psqlhtr5e6; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../simplewind/cmf/lang\zh-cn.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\common.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/portal\lang\zh-cn\common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.031432s ]
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/admin\lang\zh-cn\admin.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../app/user\lang\zh-cn\admin_menu.php
+[ info ] [ LANG ] D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\public/../data/lang/zh-cn/admin_menu.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\AdminLangBehavior @admin_init [ RunTime:0.027156s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\admin\controller\MainController->index[ D:\UPUPW_AP7.0_64\vhosts\www.bangbangyz.com\thinkcmf\app\admin\controller\MainController.php ]
+[ info ] [ VIEW ] themes/admin_simpleboot3/admin\main\index.html [ array (
+  0 => 'admin',
+  1 => 'dashboard_widgets',
+  2 => 'dashboard_widget_plugins',
+  3 => 'has_smtp_setting',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000791s ] mysql:host=127.0.0.1;port=3306;dbname=bangbangyz;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_option` [ RunTime:0.070711s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'cdn_settings' LIMIT 1 [ RunTime:0.003385s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bangbang_user` [ RunTime:0.014470s ]
+[ sql ] [ SQL ] SELECT * FROM `bangbang_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000639s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'smtp_setting' LIMIT 1 [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SELECT `option_value` FROM `bangbang_option` WHERE  `option_name` = 'admin_settings' LIMIT 1 [ RunTime:0.000596s ]
