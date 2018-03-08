@@ -137,6 +137,7 @@ return [
     "ACTIONS"                            => '操作',
     "SORT"                               => '排序',
     "DISPLAY"                            => '显示',
+    "FENJIE"                            => '分解',
     "HIDDEN"                             => '隐藏',
     "HIDE"                               => '隐藏',
     'DELETE_CONFIRM_MESSAGE'             => '你确定删除吗？',

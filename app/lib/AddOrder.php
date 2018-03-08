@@ -85,7 +85,7 @@ class AddOrder
      * 生成工单号码
      */
     private function generateOrderNum(){
-        $this->orderNum =  date('Ymd').mt_rand(0,9999);
+        $this->orderNum =  date('Ym').mt_rand(0,999999);
         return $this->orderNum;
     }
 
@@ -93,8 +93,11 @@ class AddOrder
      * 获取用户id
      */
     private function getOrderUid(){
-        $map = ['userTel'=>$this->userTel];
+        $map = ['mobile'=>$this->userTel];
         $this->orderUid =  $this->userModel->getUserField($map);
+        if(empty($this->orderUid)){
+            exception('未获取到用户id');
+        }
         return $this->orderUid;
     }
 
@@ -150,15 +153,15 @@ class AddOrder
      */
     private function checkData(){
         /*验证业主姓名*/
-        $this->checkOrderName();
+       // $this->checkOrderName();
         /*验证业主电话*/
-        $this->checkUserTel();
+        //$this->checkUserTel();
         /*验证用户id*/
         if(!isset($this->orderUid) || empty($this->orderUid) || !is_numeric($this->orderUid)){
             exception('未获取工单顾客的id');
         }
         /*验证工单号是否生成*/
-        if(!isset($this->orderNum) || empty($this->orderUid) ){
+        if(!isset($this->orderNum) || empty($this->orderNum) ){
             exception('生成工单号失败');
         }
         /*验证是否输入用户地址*/
@@ -174,7 +177,7 @@ class AddOrder
             exception('工单总价不为数字或者工单总价小于1000');
         }
         if(!isset($this->orderType) || empty($this->orderType) || !is_numeric($this->orderType)){
-            exception('装修类型未选择或者装修类型提交参数错误');
+            //exception('装修类型未选择或者装修类型提交参数错误');
         }
         if(!isset($this->orderCycle) || empty($this->orderCycle)){
             exception('未输入工单周期');
@@ -201,9 +204,11 @@ class AddOrder
         /*工单号*/
         $data['orderNum'] =         $this->generateOrderNum();
         /*工单推荐人*/
-        $data['orderRecommend'] =   $this->getOrderRecommend();
+       // $data['orderRecommend'] =   $this->getOrderRecommend();
+        $data['orderRecommend'] =   1;
         /*业主id*/
         $data['orderUid'] =         $this->getOrderUid();
+        //$data['orderUid'] =         11;
         $data['createId'] =         $this->opUid;
         $data['createTime'] =       $this->createTime;
         $data['orderName'] =        $this->orderName;
