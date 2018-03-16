@@ -27,6 +27,7 @@ class OrderController extends AdminBaseController
     }
 
     public function addOrder(){
+        echo 1;
         return $this->fetch();
     }
 
