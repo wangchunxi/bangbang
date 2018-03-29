@@ -26,11 +26,22 @@ class OrderController extends AdminBaseController
         return $this->fetch();
     }
 
+    /**
+     * 下单
+     * @return mixed
+     */
     public function addOrder(){
-        echo 1;
+//        try{
+//            exception('测试');
+//        }catch (\Exception $e){
+//            $this->error($e->getMessage());
+//        }
         return $this->fetch();
     }
 
+    /**
+     * 执行下单
+     */
     public function addPost(){
         if($this->request->isPost()){
             Db::transaction(function(){
@@ -62,11 +73,26 @@ class OrderController extends AdminBaseController
                         $model->save();
                     }
                 }catch (\Exception $e){
-                    $this->error(json_encode($e->getMessage()));
+                    $this->error($e->getMessage());
                 }
                 return true;
             });
             $this->success('工单添加成功');
         }
     }
+
+    /**
+     * 任务分解
+     */
+    public function addTask(){
+        if($this->request->isPost()){
+            Db::transaction(function(){
+
+            });
+        }else{
+
+        }
+    }
+
+
 }
