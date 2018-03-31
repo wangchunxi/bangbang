@@ -6,7 +6,7 @@
  * Time: 22:45
  */
 
-namespace app\lib;
+namespace app\lib\Order;
 
 
 use app\model\OrderInfoModel;
@@ -19,12 +19,18 @@ class OperatingTask
     protected $orderTaskId;
     protected $orderTaskModel;
     protected $orderInfoModel;
+    protected $orderLog;
+    protected $opUid;
     public function __construct($orderId)
     {
         $this->orderId  = $orderId;
     }
     public function setOrderTaskId($orderTaskId){
         $this->orderTaskId = $orderTaskId;
+        return $this;
+    }
+    public function setOpUid($opUid){
+        $this->opUid  = $opUid;
         return $this;
     }
 
@@ -41,6 +47,12 @@ class OperatingTask
         return   $this->orderInfoModel;
     }
 
+    protected function getOrderLogModel(){
+        if(!isset($this->orderLog)){
+            $this->orderLog =  new OrderOptionLog( $this->orderId );
+        }
+        return   $this->orderLog;
+    }
     /**
      * 任务发布
      * 1、修改所有的工单任务为待进行
@@ -57,12 +69,16 @@ class OperatingTask
         if(!$result){
             exception('任务状态修改失败');
         }
-
-        /*修改工单状态*/
+        /*发布任务*/
         $this->getOrderInfoModel()->editOrderStatus(2);
-
+        /*记入工单日志*/
+        $this->getOrderLogModel()->setOptionType('RELEASE');
+        $this->getOrderLogModel()->setTaskId(0);
+        $this->getOrderLogModel()->setOptionUserId($this->opUid);
+        $this->getOrderLogModel()->setOptionContent('工单id为'.$this->orderId.'发布了任务');
+        /*通知监工*/
+        /*通知客户*/
         $result = (new OrderMoneyModel())->where('orderId',$this->orderId)->find();
-
         /*判断是否可以开始任务*/
         if($result['status']!=1){
             /*通知用户缴纳金额 TODO*/

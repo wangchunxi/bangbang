@@ -1,12 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 订单分期交款
  * User: Administrator
  * Date: 2018/2/25/025
  * Time: 18:48
  */
 
-namespace app\lib;
+namespace app\lib\Order;
 
 
 use app\model\OrderMoneyModel;

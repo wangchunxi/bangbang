@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 100109
-Source Host           : localhost:3306
+Source Server Version : 50556
+Source Host           : 192.168.11.184:3306
 Source Database       : bangbangyz
 
 Target Server Type    : MYSQL
-Target Server Version : 100109
+Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2018-03-29 20:07:56
+Date: 2018-03-31 17:38:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -503,10 +503,14 @@ CREATE TABLE `bangbang_flow_log` (
   `createId` int(11) NOT NULL COMMENT '生成的操作人',
   `orderMoneyId` int(11) DEFAULT NULL COMMENT '对应的工单交款期数',
   `Money` decimal(11,2) NOT NULL DEFAULT '0.00' COMMENT '缴纳的钱数',
-  `payType` tinyint(1) NOT NULL DEFAULT '0' COMMENT '支付的类型0=>sys(系统支付),1=>admin(后台操作)',
+  `payType` varchar(25) NOT NULL DEFAULT '' COMMENT '支付的类型alipay(支付宝),weixin(微信),other(其他)',
   `flowContent` varchar(255) NOT NULL COMMENT '流水内容',
   `flowType` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>工单流水,2=>监控扣款流水,3=>日常工资流水',
-  PRIMARY KEY (`id`)
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否是后台操作 0=>''不是''，1=》''是''',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `flowSn` (`flowOn`) USING BTREE,
+  KEY `time` (`createTime`) USING BTREE,
+  KEY `order` (`orderId`,`orderMoneyId`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='流水日志表';
 
 -- ----------------------------
@@ -678,33 +682,34 @@ CREATE TABLE `bangbang_order_info` (
   `createTime` int(11) NOT NULL COMMENT '下单时间',
   `updateTime` int(11) DEFAULT NULL COMMENT '修改时间',
   `updateId` int(11) DEFAULT NULL COMMENT '修改人',
-  `orderNum` int(11) NOT NULL COMMENT '工单编号',
-  `orderName` varchar(255) NOT NULL COMMENT '订单所属人姓名',
+  `orderNum` varchar(50) CHARACTER SET utf8mb4 NOT NULL COMMENT '工单编号',
+  `orderName` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '订单所属人姓名',
   `orderUid` int(11) NOT NULL COMMENT '订单所属人id',
-  `userTel` varchar(20) NOT NULL COMMENT '订单所属人电话',
-  `userAddress` varchar(255) NOT NULL COMMENT '用户装修地址',
-  `userAddressNum` varchar(255) NOT NULL COMMENT '用户工单地址转换为经纬度',
+  `userTel` varchar(20) CHARACTER SET utf8mb4 NOT NULL COMMENT '订单所属人电话',
+  `userAddress` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '用户装修地址',
+  `userAddressNum` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '用户工单地址转换为经纬度',
   `orderTotal` decimal(11,2) NOT NULL COMMENT '订单总金额',
   `orderType` tinyint(2) NOT NULL COMMENT '工单装修类型',
   `orderCycle` int(6) NOT NULL COMMENT '装修总周期',
-  `orderImage` text COMMENT '效果图集合',
-  `orderContent` text COMMENT '工单装修风格简介',
+  `orderImage` text CHARACTER SET utf8mb4 COMMENT '效果图集合',
+  `orderContent` text CHARACTER SET utf8mb4 COMMENT '工单装修风格简介',
   `orderStatus` tinyint(2) NOT NULL DEFAULT '0' COMMENT '-1=>无效,0=>任务待分解,1=>''任务待发布'',2=>任务进行中,3=>任务完成',
   `orderDesigner` int(11) NOT NULL COMMENT '工单设计师',
   `orderSupervisor` int(11) NOT NULL COMMENT '工单监理',
   `orderRecommend` int(11) NOT NULL DEFAULT '0' COMMENT '工单推荐人',
   `orderStartTime` int(11) NOT NULL COMMENT '工程开始时间',
   `orderEndTime` int(11) DEFAULT NULL COMMENT '工单交付时间',
-  `coverImage` varchar(255) NOT NULL COMMENT '工单封面图',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='装修工单详情表';
+  `coverImage` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '工单封面图',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `orderNum` (`orderNum`) USING BTREE,
+  KEY `time` (`createTime`,`updateTime`,`orderStartTime`,`orderEndTime`) USING BTREE,
+  KEY `tel` (`userTel`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='装修工单详情表';
 
 -- ----------------------------
 -- Records of bangbang_order_info
 -- ----------------------------
-INSERT INTO `bangbang_order_info` VALUES ('1', '1', '1520260970', null, null, '2147483647', '王先', '11', '2147483647', '测试地点', '', '10000.00', '0', '90', 'a:1:{i:0;s:51:\"admin/20180225/499b0541eb59b25b647c077e003510a0.jpg\";}', '&lt;p&gt;测试&lt;/p&gt;', '0', '1', '1', '1', '0', null, '');
-INSERT INTO `bangbang_order_info` VALUES ('2', '1', '1520428112', null, null, '2147483647', '王生', '2', '2147483647', '湖北黄石', '', '10000.00', '0', '60', 'a:1:{i:0;s:51:\"admin/20180225/09cd31a4c6077c97c1ad3e57693b2a56.jpg\";}', '&lt;p&gt;test&lt;/p&gt;', '0', '1', '1', '1', '0', null, '');
-INSERT INTO `bangbang_order_info` VALUES ('3', '1', '1520428417', null, null, '20187880', '王总', '2', '15826962999', '湖北黄石', '', '20000.00', '1', '60', 'a:1:{i:0;s:51:\"admin/20180225/499b0541eb59b25b647c077e003510a0.jpg\";}', '&lt;p&gt;test&lt;/p&gt;', '0', '0', '0', '1', '0', null, '');
+INSERT INTO `bangbang_order_info` VALUES ('17', '1', '1522484970', null, null, '201803833863', '王生', '2', '15826962999', '湖北黄石', '', '10000.00', '1', '90', 's:4:\"test\";', '<p>test</p>', '0', '1', '1', '1', '0', null, '');
 
 -- ----------------------------
 -- Table structure for bangbang_order_money
@@ -713,7 +718,7 @@ DROP TABLE IF EXISTS `bangbang_order_money`;
 CREATE TABLE `bangbang_order_money` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `orderId` int(11) NOT NULL COMMENT '对应的工单id',
-  `name` varchar(255) NOT NULL COMMENT '简要说明',
+  `name` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '简要说明',
   `money` decimal(11,2) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=>未交付,1=>已交付',
   `createId` int(11) NOT NULL COMMENT '添加人',
@@ -721,43 +726,37 @@ CREATE TABLE `bangbang_order_money` (
   `updateId` int(11) DEFAULT NULL COMMENT '修改人',
   `updateTime` int(11) DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COMMENT='工单分期交款表';
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='工单分期交款表';
 
 -- ----------------------------
 -- Records of bangbang_order_money
 -- ----------------------------
-INSERT INTO `bangbang_order_money` VALUES ('1', '1', '第1期交款', '3000.00', '0', '1', '1520260970', null, null);
-INSERT INTO `bangbang_order_money` VALUES ('2', '1', '第2期交款', '3000.00', '0', '1', '1520260970', null, null);
-INSERT INTO `bangbang_order_money` VALUES ('3', '1', '第3期交款', '4000.00', '0', '1', '1520260970', null, null);
-INSERT INTO `bangbang_order_money` VALUES ('4', '2', '第1期交款', '4000.00', '0', '1', '1520428112', null, null);
-INSERT INTO `bangbang_order_money` VALUES ('5', '2', '第2期交款', '4000.00', '0', '1', '1520428112', null, null);
-INSERT INTO `bangbang_order_money` VALUES ('6', '2', '第3期交款', '2000.00', '0', '1', '1520428112', null, null);
-INSERT INTO `bangbang_order_money` VALUES ('7', '3', '第1期交款', '8000.00', '0', '1', '1520428417', null, null);
-INSERT INTO `bangbang_order_money` VALUES ('8', '3', '第2期交款', '8000.00', '0', '1', '1520428417', null, null);
-INSERT INTO `bangbang_order_money` VALUES ('9', '3', '第3期交款', '2000.00', '0', '1', '1520428417', null, null);
-INSERT INTO `bangbang_order_money` VALUES ('10', '3', '第4期交款', '2000.00', '0', '1', '1520428417', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('25', '17', '第1期交款', '3000.00', '0', '1', '1522484970', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('26', '17', '第2期交款', '3000.00', '0', '1', '1522484970', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('27', '17', '第3期交款', '4000.00', '0', '1', '1522484970', null, null);
 
 -- ----------------------------
 -- Table structure for bangbang_order_option_log
 -- ----------------------------
 DROP TABLE IF EXISTS `bangbang_order_option_log`;
 CREATE TABLE `bangbang_order_option_log` (
-  `id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `optionUserId` int(11) NOT NULL COMMENT '日志操作人',
-  `optionType` varchar(255) NOT NULL COMMENT 'ADDORDER(下单),\r\nRESOLVE(分解任务),\r\nRELEASE(发布任务),\r\nSTARTTACK(开始任务),\r\nENDTASK(完成任务),\r\nPAYMONEY(缴纳工单款),\r\nDUNNING(催交款工单款),\r\nSIGNTASK(签收任务),\r\nREMINDERSIG(催签任务),\r\nENDORDER(完结工单),',
+  `optionType` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'ADDORDER(下单),\r\nRESOLVE(分解任务),\r\nRELEASE(发布任务),\r\nSTARTTACK(开始任务),\r\nENDTASK(完成任务),\r\nPAYMONEY(缴纳工单款),\r\nDUNNING(催交款工单款),\r\nSIGNTASK(签收任务),\r\nREMINDERSIG(催签任务),\r\nENDORDER(完结工单),',
   `optionTime` int(11) NOT NULL COMMENT '操作时间',
   `orderId` int(11) NOT NULL COMMENT '操作对应的工单id',
-  `submitParameter` text NOT NULL COMMENT '请求参数',
-  `resultBefore` text COMMENT '请求前结果',
-  `resultRear` text COMMENT '请求后结果',
-  `optionContent` text NOT NULL COMMENT '日志说明',
+  `submitParameter` text CHARACTER SET utf8mb4 NOT NULL COMMENT '请求参数',
+  `resultBefore` text CHARACTER SET utf8mb4 COMMENT '请求前结果',
+  `resultRear` text CHARACTER SET utf8mb4 COMMENT '请求后结果',
+  `optionContent` text CHARACTER SET utf8mb4 NOT NULL COMMENT '日志说明',
   `taskId` int(11) DEFAULT NULL COMMENT '对应的工单任务id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='工单操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='工单操作日志';
 
 -- ----------------------------
 -- Records of bangbang_order_option_log
 -- ----------------------------
+INSERT INTO `bangbang_order_option_log` VALUES ('12', '1', 'ADDORDER', '1522484970', '17', '{\"orderNum\":\"201803833863\",\"orderRecommend\":1,\"orderUid\":2,\"createId\":1,\"createTime\":1522484970,\"orderName\":\"\\u738b\\u751f\",\"userTel\":\"15826962999\",\"userAddress\":\"\\u6e56\\u5317\\u9ec4\\u77f3\",\"orderTotal\":\"10000\",\"orderType\":\"1\",\"orderCycle\":\"90\",\"orderImage\":\"s:4:\\\"test\\\";\",\"orderContent\":\"<p>test<\\/p>\",\"orderStatus\":0,\"orderDesigner\":\"1\",\"orderSupervisor\":\"1\"}', null, null, '下单成功', '0');
 
 -- ----------------------------
 -- Table structure for bangbang_order_task
@@ -1193,7 +1192,7 @@ CREATE TABLE `bangbang_user` (
 -- ----------------------------
 -- Records of bangbang_user
 -- ----------------------------
-INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1521884626', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', null);
+INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1522480203', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', null);
 INSERT INTO `bangbang_user` VALUES ('2', '1', '0', '0', '0', '0', '0', '0.00', '0', '1', 'admin01', '###41db486ab474d7329263420baaf164e8', '', '591554595@qq.com', '', '', '', '', '', '15826962999', null);
 
 -- ----------------------------

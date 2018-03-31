@@ -1,12 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 订单列表
  * User: Administrator
  * Date: 2018/3/8/008
  * Time: 20:02
  */
 
-namespace app\lib;
+namespace app\lib\Order;
 
 
 use app\model\OrderInfoModel;

@@ -5,7 +5,7 @@
  * Date: 2018/2/23/023
  * Time: 20:50
  */
-namespace app\lib;
+namespace app\lib\Order;
 use app\model\OrderInfoModel;
 use app\model\UserModel;
 
@@ -196,7 +196,6 @@ class AddOrder
         }
 
     }
-
     /**
      * 数据存库操作
      */
@@ -225,10 +224,22 @@ class AddOrder
         $this->checkData();
         $model =  new OrderInfoModel();
         $result =  $model->insert($data);
+        //$result =db('OrderInfo')->insert($data);
         if(!$result){
             exception('新增工单失败');
         }
         $insId =  $model->getLastInsID();
+        /*记录工单日志*/
+        $log =  (new OrderOptionLog($insId));
+        $log->setOptionUserId($this->opUid);
+        $log->setTaskId(0);
+        $log->setOptionContent('下单成功');
+        $log->setOptionType('ADDORDER');
+        $log->setSubmitParameter(json_encode($data));
+        $result =  $log->save();
+        if(!$result){
+            exception('工单日志记录失败');
+        }
         return $insId;
     }
 }

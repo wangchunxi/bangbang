@@ -1,12 +1,11 @@
 <?php
-/**
- * 任务分解
+/**任务分解
  * User: wangcx
  * Date: 18-3-16
  * Time: 下午7:21
  */
 
-namespace app\lib;
+namespace app\lib\Order;
 
 
 use app\model\OrderInfoModel;
@@ -54,8 +53,8 @@ class AddOrderTask
         return $this;
     }
 
-    protected function getTaskEndTime(){
-        $this->taskEndTime = $this->taskStartTime+$this->taskCycle;
+    protected function setTaskEndTime($taskEndTime){
+        $this->taskEndTime = $taskEndTime;
         return $this;
     }
 
@@ -86,13 +85,16 @@ class AddOrderTask
         if(!isset($this->taskEndTime) || empty($this->taskEndTime)){
             exception('缺少任务结束时间');
         }
+        $map['taskStartTime'] = array('gt',$this->taskStartTime);
+        $map['orderId'] =  $this->orderId;
+        
     }
 
     /**
      * 执行
      */
     public function save(){
-        $data['taskEndTime'] = $this->getTaskEndTime();
+        $data['taskEndTime'] = $this->taskEndTime;
         $data['taskStartTime'] = $this->taskStartTime;
         $data['orderId'] = $this->orderId;
         $data['isVerify'] = isset($this->isVerify)?$this->isVerify:0;

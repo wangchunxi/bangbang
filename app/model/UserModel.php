@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 用户表
  * User: Administrator
  * Date: 2018/2/23/023
  * Time: 22:03

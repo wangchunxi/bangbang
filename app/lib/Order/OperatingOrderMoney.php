@@ -1,12 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 订单每期收款操作
  * User: Administrator
  * Date: 2018/3/24/024
  * Time: 16:38
  */
-
-namespace app\lib;
+namespace app\lib\Order;
 
 
 use app\model\OrderMoneyModel;

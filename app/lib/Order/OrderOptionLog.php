@@ -6,9 +6,9 @@
  * Time: 17:05
  */
 
-namespace app\lib;
+namespace app\lib\Order;
 
-use think\Exception;
+use app\model\OrderOptionLogModel;
 
 class OrderOptionLog
 {
@@ -62,12 +62,32 @@ class OrderOptionLog
      */
     protected function check(){
         if(!isset($this->orderId) || empty($this->orderId)){
-            throw new Exception();
             exception('未获取到参数id');
         }
+        if(!isset($this->optionUserId) || empty($this->optionUserId)){
+            exception('缺少操作人');
+        }
+        if(!isset($this->optionType) || empty($this->optionType)){
+            exception('缺少操作类型');
+        }
     }
-
+    /*
+     * 记录工单日志
+     */
     public function save(){
-
+        $data['orderId'] =  $this->orderId;
+        $data['optionUserId'] =  $this->optionUserId;
+        $data['optionType'] =  $this->optionType;
+        $data['optionTime'] =  $this->optionTime;
+        $data['submitParameter'] =  $this->submitParameter;
+        $data['resultBefore'] =  $this->resultBefore;
+        $data['resultRear'] =  $this->resultRear;
+        $data['optionContent'] =  $this->optionContent;
+        $data['taskId'] =  $this->taskId;
+        $result =  (new OrderOptionLogModel())->insert($data);
+        if(!$result){
+            exception('工单日志记录失败1');
+        }
+        return true;
     }
 }

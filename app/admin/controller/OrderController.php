@@ -9,9 +9,9 @@
 namespace app\admin\controller;
 
 
-use app\lib\AddOrder;
-use app\lib\AddOrderMoney;
-use app\lib\OrderList;
+use app\lib\Order\AddOrder;
+use app\lib\Order\AddOrderMoney;
+use app\lib\Order\OrderList;
 use cmf\controller\AdminBaseController;
 use think\Db;
 
