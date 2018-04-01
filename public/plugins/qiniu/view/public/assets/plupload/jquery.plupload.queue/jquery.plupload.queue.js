@@ -52,11 +52,11 @@ used as it is.
 	@param {String} [settings.file_data_name="file"] Name for the file field in Multipart formated message.
 	@param {Array} [settings.filters=[]] Set of file type filters, each one defined by hash of title and extensions. `e.g. {title : "Image files", extensions : "jpg,jpeg,gif,png"}`. Dispatches `plupload.FILE_EXTENSION_ERROR`
 	@param {String} [settings.flash_swf_url] URL of the Flash swf.
-	@param {Object} [settings.headers] Custom headers to send with the upload. Hash of name/value pairs.
+	@param {Object} [settings.headers] Custom headers to Send with the upload. Hash of name/value pairs.
 	@param {Number|String} [settings.max_file_size] Maximum file size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
 	@param {Number} [settings.max_retries=0] How many times to retry the chunk or file, before triggering Error event.
-	@param {Boolean} [settings.multipart=true] Whether to send file and additional parameters as Multipart formated message.
-	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every file upload.
+	@param {Boolean} [settings.multipart=true] Whether to Send file and additional parameters as Multipart formated message.
+	@param {Object} [settings.multipart_params] Hash of key/value pairs to Send with every file upload.
 	@param {Boolean} [settings.multi_selection=true] Enable ability to select multiple files at once in file dialog.
 	@param {Boolean} [settings.prevent_duplicates=false] Do not let duplicates into the queue. Dispatches `plupload.FILE_DUPLICATE_ERROR`.
 	@param {String|Object} [settings.required_features] Either comma-separated list or hash of required features that chosen runtime should absolutely possess.

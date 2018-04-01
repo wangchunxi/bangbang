@@ -23,7 +23,7 @@ class TestController
         }catch (Exception $e){
             throw  $e;
         }
-        $webhook = "https://oapi.dingtalk.com/robot/send?access_token=2bc87d1b37a25b790e02534ad6bca312cbba2dd0e1a6aa0299ab32b37ec5250b";
+        $webhook = "https://oapi.dingtalk.com/robot/Send?access_token=2bc87d1b37a25b790e02534ad6bca312cbba2dd0e1a6aa0299ab32b37ec5250b";
         $message="你们好！";
         //(new DingDingNotice())->setWebHook($webhook)->setContent($message)->setAtMobiles(18680151308)->save();
     }

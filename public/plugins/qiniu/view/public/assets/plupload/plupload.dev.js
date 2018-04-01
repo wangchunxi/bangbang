@@ -789,11 +789,11 @@ plupload.addFileFilter('prevent_empty', function(value, file, cb) {
 		@param {Boolean} [settings.filters.prevent_duplicates=false] Do not let duplicates into the queue. Dispatches `plupload.FILE_DUPLICATE_ERROR`.
 		@param {Boolean} [settings.filters.prevent_empty=true] Do not let empty files into the queue (IE10 is known to hang for example when trying to upload such). Dispatches `plupload.FILE_SIZE_ERROR`.
 	@param {String} [settings.flash_swf_url] URL of the Flash swf.
-	@param {Object} [settings.headers] Custom headers to send with the upload. Hash of name/value pairs.
+	@param {Object} [settings.headers] Custom headers to Send with the upload. Hash of name/value pairs.
 	@param {String} [settings.http_method="POST"] HTTP method to use during upload (only PUT or POST allowed).
 	@param {Number} [settings.max_retries=0] How many times to retry the chunk or file, before triggering Error event.
-	@param {Boolean} [settings.multipart=true] Whether to send file and additional parameters as Multipart formated message.
-	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every file upload.
+	@param {Boolean} [settings.multipart=true] Whether to Send file and additional parameters as Multipart formated message.
+	@param {Object} [settings.multipart_params] Hash of key/value pairs to Send with every file upload.
 	@param {Boolean} [settings.multi_selection=true] Enable ability to select multiple files at once in file dialog.
 	@param {String|Object} [settings.required_features] Either comma-separated list or hash of required features that chosen runtime should absolutely possess.
 	@param {Object} [settings.resize] Enable resizng of images on client-side. Applies to `image/jpeg` and `image/png` only. `e.g. {width : 200, height : 200, quality : 90, crop: true}`
@@ -803,8 +803,8 @@ plupload.addFileFilter('prevent_empty', function(value, file, cb) {
 		@param {Boolean} [settings.resize.crop=false] Whether to crop images to exact dimensions. By default they will be resized proportionally.
 	@param {String} [settings.runtimes="html5,flash,silverlight,html4"] Comma separated list of runtimes, that Plupload will try in turn, moving to the next if previous fails.
 	@param {String} [settings.silverlight_xap_url] URL of the Silverlight xap.
-	@param {Boolean} [settings.send_chunk_number=true] Whether to send chunks and chunk numbers, or total and offset bytes.
-	@param {Boolean} [settings.send_file_name=true] Whether to send file name as additional argument - 'name' (required for chunked uploads and some other cases where file name cannot be sent via normal ways).
+	@param {Boolean} [settings.send_chunk_number=true] Whether to Send chunks and chunk numbers, or total and offset bytes.
+	@param {Boolean} [settings.send_file_name=true] Whether to Send file name as additional argument - 'name' (required for chunked uploads and some other cases where file name cannot be sent via normal ways).
 	@param {String} settings.url URL of the server-side upload handler.
 	@param {Boolean} [settings.unique_names=false] If true will generate unique filenames for uploaded files.
 
@@ -1491,7 +1491,7 @@ plupload.Uploader = function(options) {
 				return;
 			}
 
-			// send additional 'name' parameter only if required
+			// Send additional 'name' parameter only if required
 			if (up.settings.send_file_name) {
 				args.name = file.target_name || file.name;
 			}
@@ -1617,11 +1617,11 @@ plupload.Uploader = function(options) {
 					formData.append(name, value);
 				});
 
-				// Add file and send it
+				// Add file and Send it
 				formData.append(up.settings.file_data_name, chunkBlob);
 				xhr.send(formData, runtimeOptions);
 			} else {
-				// if no multipart, send as binary stream
+				// if no multipart, Send as binary stream
 				url = plupload.buildUrl(up.settings.url, plupload.extend(args, up.settings.multipart_params));
 
 				xhr.open(up.settings.http_method, url, true);

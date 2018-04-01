@@ -9,6 +9,7 @@
 namespace app\lib\Order;
 
 
+use app\lib\Send\InternalPushOrder;
 use app\model\OrderInfoModel;
 use app\model\OrderMoneyModel;
 use app\model\OrderTaskModel;
@@ -65,27 +66,25 @@ class OperatingTask
     public function releaseTask(){
         /*修改任务状态*/
         $result = $this->getOrderTaskModel()->publishingTasks($this->orderId);
-
         if(!$result){
             exception('任务状态修改失败');
         }
-        /*发布任务*/
-        $this->getOrderInfoModel()->editOrderStatus(2);
-        /*记入工单日志*/
-        $this->getOrderLogModel()->setOptionType('RELEASE');
-        $this->getOrderLogModel()->setTaskId(0);
-        $this->getOrderLogModel()->setOptionUserId($this->opUid);
-        $this->getOrderLogModel()->setOptionContent('工单id为'.$this->orderId.'发布了任务');
         /*通知监工*/
+        $msg = '您有一个工单即将开始,请到我的工单监控中查看';
+        (new InternalPushOrder())->setOrderId()->setSendContent($msg)->masterSend();
         /*通知客户*/
+        $customerMsg = '您的装修任务已经开始';
         $result = (new OrderMoneyModel())->where('orderId',$this->orderId)->find();
         /*判断是否可以开始任务*/
         if($result['status']!=1){
             /*通知用户缴纳金额 TODO*/
+            $customerMsg.=',请您按时缴纳'.$result['name'].',以防延误工期对您装修造成不便';
         }else{
             /*开始任务*/
             $this->orderTaskStart();
         }
+        $customerMsg.='祝您生活愉快';
+
         return true;
     }
 

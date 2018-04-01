@@ -3108,7 +3108,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 			'oct open opendir ord pack pipe pop pos print printf prototype push ' + 
 			'quotemeta rand read readdir readline readlink readpipe recv rename ' + 
 			'reset reverse rewinddir rindex rmdir scalar seek seekdir select semctl ' + 
-			'semget semop send setgrent sethostent setnetent setpgrp setpriority ' + 
+			'semget semop Send setgrent sethostent setnetent setpgrp setpriority ' + 
 			'setprotoent setpwent setservent setsockopt shift shmctl shmget shmread ' + 
 			'shmwrite shutdown sin sleep socket socketpair sort splice split sprintf ' + 
 			'sqrt srand stat study substr symlink syscall sysopen sysread sysseek ' + 
@@ -3273,7 +3273,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 						'lt match ne not notcontains notlike notmatch or regex replace wildcard';
 						
 		var verbs =		'write where wait use update unregister undo trace test tee take suspend ' +
-						'stop start split sort skip show set send select scroll resume restore ' +
+						'stop start split sort skip show set Send select scroll resume restore ' +
 						'restart resolve resize reset rename remove register receive read push ' +
 						'pop ping out new move measure limit join invoke import group get format ' +
 						'foreach export expand exit enter enable disconnect disable debug cxnew ' +

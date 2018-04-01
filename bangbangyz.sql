@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50556
-Source Host           : 192.168.11.184:3306
+Source Server Version : 100109
+Source Host           : localhost:3306
 Source Database       : bangbangyz
 
 Target Server Type    : MYSQL
-Target Server Version : 50556
+Target Server Version : 100109
 File Encoding         : 65001
 
-Date: 2018-03-31 17:38:38
+Date: 2018-04-01 22:42:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -704,12 +704,15 @@ CREATE TABLE `bangbang_order_info` (
   UNIQUE KEY `orderNum` (`orderNum`) USING BTREE,
   KEY `time` (`createTime`,`updateTime`,`orderStartTime`,`orderEndTime`) USING BTREE,
   KEY `tel` (`userTel`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='装修工单详情表';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='装修工单详情表';
 
 -- ----------------------------
 -- Records of bangbang_order_info
 -- ----------------------------
-INSERT INTO `bangbang_order_info` VALUES ('17', '1', '1522484970', null, null, '201803833863', '王生', '2', '15826962999', '湖北黄石', '', '10000.00', '1', '90', 's:4:\"test\";', '<p>test</p>', '0', '1', '1', '1', '0', null, '');
+INSERT INTO `bangbang_order_info` VALUES ('17', '1', '1522484970', null, null, '201803833863', '王生', '2', '15826962999', '湖北黄石', '', '10000.00', '1', '90', 's:4:\"test\";', '<p>test</p>', '1', '1', '1', '1', '1522857600', null, '');
+INSERT INTO `bangbang_order_info` VALUES ('20', '1', '1522507936', null, null, '201803720982', '王生', '2', '15826962999', '湖北黄石', '', '10000.00', '1', '90', 's:4:\"test\";', '<p>test</p>', '1', '1', '1', '1', '1522857600', null, '');
+INSERT INTO `bangbang_order_info` VALUES ('21', '1', '1522508091', null, null, '201803296984', '王生', '2', '15826962999', '湖北黄石', '', '10000.00', '1', '90', 's:4:\"test\";', '<p>test</p>', '1', '1', '1', '1', '1522425600', null, '');
+INSERT INTO `bangbang_order_info` VALUES ('22', '1', '1522588994', null, null, '20180488229', '王生', '2', '15826962999', '湖北黄石', '', '10000.00', '1', '90', 's:4:\"test\";', '<p>test</p>', '1', '1', '1', '1', '1522425600', null, '');
 
 -- ----------------------------
 -- Table structure for bangbang_order_money
@@ -726,7 +729,7 @@ CREATE TABLE `bangbang_order_money` (
   `updateId` int(11) DEFAULT NULL COMMENT '修改人',
   `updateTime` int(11) DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='工单分期交款表';
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='工单分期交款表';
 
 -- ----------------------------
 -- Records of bangbang_order_money
@@ -734,6 +737,15 @@ CREATE TABLE `bangbang_order_money` (
 INSERT INTO `bangbang_order_money` VALUES ('25', '17', '第1期交款', '3000.00', '0', '1', '1522484970', null, null);
 INSERT INTO `bangbang_order_money` VALUES ('26', '17', '第2期交款', '3000.00', '0', '1', '1522484970', null, null);
 INSERT INTO `bangbang_order_money` VALUES ('27', '17', '第3期交款', '4000.00', '0', '1', '1522484970', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('34', '20', '第1期交款', '3000.00', '0', '1', '1522507936', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('35', '20', '第2期交款', '3000.00', '0', '1', '1522507936', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('36', '20', '第3期交款', '4000.00', '0', '1', '1522507936', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('37', '21', '第1期交款', '3000.00', '0', '1', '1522508091', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('38', '21', '第2期交款', '3000.00', '0', '1', '1522508091', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('39', '21', '第3期交款', '4000.00', '0', '1', '1522508091', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('40', '22', '第1期交款', '3000.00', '0', '1', '1522588994', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('41', '22', '第2期交款', '3000.00', '0', '1', '1522588994', null, null);
+INSERT INTO `bangbang_order_money` VALUES ('42', '22', '第3期交款', '4000.00', '0', '1', '1522588994', null, null);
 
 -- ----------------------------
 -- Table structure for bangbang_order_option_log
@@ -751,12 +763,20 @@ CREATE TABLE `bangbang_order_option_log` (
   `optionContent` text CHARACTER SET utf8mb4 NOT NULL COMMENT '日志说明',
   `taskId` int(11) DEFAULT NULL COMMENT '对应的工单任务id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='工单操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='工单操作日志';
 
 -- ----------------------------
 -- Records of bangbang_order_option_log
 -- ----------------------------
 INSERT INTO `bangbang_order_option_log` VALUES ('12', '1', 'ADDORDER', '1522484970', '17', '{\"orderNum\":\"201803833863\",\"orderRecommend\":1,\"orderUid\":2,\"createId\":1,\"createTime\":1522484970,\"orderName\":\"\\u738b\\u751f\",\"userTel\":\"15826962999\",\"userAddress\":\"\\u6e56\\u5317\\u9ec4\\u77f3\",\"orderTotal\":\"10000\",\"orderType\":\"1\",\"orderCycle\":\"90\",\"orderImage\":\"s:4:\\\"test\\\";\",\"orderContent\":\"<p>test<\\/p>\",\"orderStatus\":0,\"orderDesigner\":\"1\",\"orderSupervisor\":\"1\"}', null, null, '下单成功', '0');
+INSERT INTO `bangbang_order_option_log` VALUES ('20', '1', 'RESOLVE', '1522507604', '17', '{\"orderId\":17,\"endTime\":1530633600,\"task\":{\"25\":{\"1\":{\"taskName\":\"25test\",\"taskCycle\":5,\"taskStartTime\":1522857600,\"taskEndTime\":1523289600,\"isVerify\":0},\"2\":{\"taskName\":\"25test\",\"taskCycle\":5,\"taskStartTime\":1523289600,\"taskEndTime\":1523721600,\"isVerify\":0},\"3\":{\"taskName\":\"25test\",\"taskCycle\":5,\"taskStartTime\":1523721600,\"taskEndTime\":1524153600,\"isVerify\":0},\"4\":{\"taskName\":\"25test\",\"taskCycle\":5,\"taskStartTime\":1524153600,\"taskEndTime\":1524585600,\"isVerify\":0},\"5\":{\"taskName\":\"25test\",\"taskCycle\":5,\"taskStartTime\":1524585600,\"taskEndTime\":1525017600,\"isVerify\":0},\"6\":{\"taskName\":\"25test\",\"taskCycle\":5,\"taskStartTime\":1525017600,\"taskEndTime\":1525449600,\"isVerify\":0}},\"26\":{\"1\":{\"taskName\":\"26test\",\"taskCycle\":5,\"taskStartTime\":1525449600,\"taskEndTime\":1525881600,\"isVerify\":0},\"2\":{\"taskName\":\"26test\",\"taskCycle\":5,\"taskStartTime\":1525881600,\"taskEndTime\":1526313600,\"isVerify\":0},\"3\":{\"taskName\":\"26test\",\"taskCycle\":5,\"taskStartTime\":1526313600,\"taskEndTime\":1526745600,\"isVerify\":0},\"4\":{\"taskName\":\"26test\",\"taskCycle\":5,\"taskStartTime\":1526745600,\"taskEndTime\":1527177600,\"isVerify\":0},\"5\":{\"taskName\":\"26test\",\"taskCycle\":5,\"taskStartTime\":1527177600,\"taskEndTime\":1527609600,\"isVerify\":0},\"6\":{\"taskName\":\"26test\",\"taskCycle\":5,\"taskStartTime\":1527609600,\"taskEndTime\":1528041600,\"isVerify\":0}},\"27\":{\"1\":{\"taskName\":\"27test\",\"taskCycle\":5,\"taskStartTime\":1528041600,\"taskEndTime\":1528473600,\"isVerify\":0},\"2\":{\"taskName\":\"27test\",\"taskCycle\":5,\"taskStartTime\":1528473600,\"taskEndTime\":1528905600,\"isVerify\":0},\"3\":{\"taskName\":\"27test\",\"taskCycle\":5,\"taskStartTime\":1528905600,\"taskEndTime\":1529337600,\"isVerify\":0},\"4\":{\"taskName\":\"27test\",\"taskCycle\":5,\"taskStartTime\":1529337600,\"taskEndTime\":1529769600,\"isVerify\":0},\"5\":{\"taskName\":\"27test\",\"taskCycle\":5,\"taskStartTime\":1529769600,\"taskEndTime\":1530201600,\"isVerify\":0},\"6\":{\"taskName\":\"27test\",\"taskCycle\":5,\"taskStartTime\":1530201600,\"taskEndTime\":1530633600,\"isVerify\":0}}}}', null, null, '任务分解', '0');
+INSERT INTO `bangbang_order_option_log` VALUES ('21', '1', 'ADDORDER', '1522507936', '20', '{\"orderNum\":\"201803720982\",\"orderRecommend\":1,\"orderUid\":2,\"createId\":1,\"createTime\":1522507936,\"orderName\":\"\\u738b\\u751f\",\"userTel\":\"15826962999\",\"userAddress\":\"\\u6e56\\u5317\\u9ec4\\u77f3\",\"orderTotal\":\"10000\",\"orderType\":\"1\",\"orderCycle\":\"90\",\"orderImage\":\"s:4:\\\"test\\\";\",\"orderContent\":\"<p>test<\\/p>\",\"orderStatus\":0,\"orderDesigner\":\"1\",\"orderSupervisor\":\"1\"}', null, null, '下单成功', '0');
+INSERT INTO `bangbang_order_option_log` VALUES ('22', '1', 'RESOLVE', '1522508086', '20', '{\"orderId\":20,\"endTime\":1530633600,\"task\":{\"34\":{\"1\":{\"taskName\":\"34test\",\"taskCycle\":5,\"taskStartTime\":1522857600,\"taskEndTime\":1523289600,\"isVerify\":0},\"2\":{\"taskName\":\"34test\",\"taskCycle\":5,\"taskStartTime\":1523289600,\"taskEndTime\":1523721600,\"isVerify\":0},\"3\":{\"taskName\":\"34test\",\"taskCycle\":5,\"taskStartTime\":1523721600,\"taskEndTime\":1524153600,\"isVerify\":0},\"4\":{\"taskName\":\"34test\",\"taskCycle\":5,\"taskStartTime\":1524153600,\"taskEndTime\":1524585600,\"isVerify\":0},\"5\":{\"taskName\":\"34test\",\"taskCycle\":5,\"taskStartTime\":1524585600,\"taskEndTime\":1525017600,\"isVerify\":0},\"6\":{\"taskName\":\"34test\",\"taskCycle\":5,\"taskStartTime\":1525017600,\"taskEndTime\":1525449600,\"isVerify\":0}},\"35\":{\"1\":{\"taskName\":\"35test\",\"taskCycle\":5,\"taskStartTime\":1525449600,\"taskEndTime\":1525881600,\"isVerify\":0},\"2\":{\"taskName\":\"35test\",\"taskCycle\":5,\"taskStartTime\":1525881600,\"taskEndTime\":1526313600,\"isVerify\":0},\"3\":{\"taskName\":\"35test\",\"taskCycle\":5,\"taskStartTime\":1526313600,\"taskEndTime\":1526745600,\"isVerify\":0},\"4\":{\"taskName\":\"35test\",\"taskCycle\":5,\"taskStartTime\":1526745600,\"taskEndTime\":1527177600,\"isVerify\":0},\"5\":{\"taskName\":\"35test\",\"taskCycle\":5,\"taskStartTime\":1527177600,\"taskEndTime\":1527609600,\"isVerify\":0},\"6\":{\"taskName\":\"35test\",\"taskCycle\":5,\"taskStartTime\":1527609600,\"taskEndTime\":1528041600,\"isVerify\":0}},\"36\":{\"1\":{\"taskName\":\"36test\",\"taskCycle\":5,\"taskStartTime\":1528041600,\"taskEndTime\":1528473600,\"isVerify\":0},\"2\":{\"taskName\":\"36test\",\"taskCycle\":5,\"taskStartTime\":1528473600,\"taskEndTime\":1528905600,\"isVerify\":0},\"3\":{\"taskName\":\"36test\",\"taskCycle\":5,\"taskStartTime\":1528905600,\"taskEndTime\":1529337600,\"isVerify\":0},\"4\":{\"taskName\":\"36test\",\"taskCycle\":5,\"taskStartTime\":1529337600,\"taskEndTime\":1529769600,\"isVerify\":0},\"5\":{\"taskName\":\"36test\",\"taskCycle\":5,\"taskStartTime\":1529769600,\"taskEndTime\":1530201600,\"isVerify\":0},\"6\":{\"taskName\":\"36test\",\"taskCycle\":5,\"taskStartTime\":1530201600,\"taskEndTime\":1530633600,\"isVerify\":0}}}}', null, null, '任务分解', '0');
+INSERT INTO `bangbang_order_option_log` VALUES ('23', '1', 'ADDORDER', '1522508091', '21', '{\"orderNum\":\"201803296984\",\"orderRecommend\":1,\"orderUid\":2,\"createId\":1,\"createTime\":1522508091,\"orderName\":\"\\u738b\\u751f\",\"userTel\":\"15826962999\",\"userAddress\":\"\\u6e56\\u5317\\u9ec4\\u77f3\",\"orderTotal\":\"10000\",\"orderType\":\"1\",\"orderCycle\":\"90\",\"orderImage\":\"s:4:\\\"test\\\";\",\"orderContent\":\"<p>test<\\/p>\",\"orderStatus\":0,\"orderDesigner\":\"1\",\"orderSupervisor\":\"1\",\"orderStartTime\":1522425600}', null, null, '下单成功', '0');
+INSERT INTO `bangbang_order_option_log` VALUES ('24', '1', 'RESOLVE', '1522508096', '21', '{\"orderId\":21,\"endTime\":1530201600,\"task\":{\"37\":{\"1\":{\"taskName\":\"37test\",\"taskCycle\":5,\"taskStartTime\":1522425600,\"taskEndTime\":1522857600,\"isVerify\":0},\"2\":{\"taskName\":\"37test\",\"taskCycle\":5,\"taskStartTime\":1522857600,\"taskEndTime\":1523289600,\"isVerify\":0},\"3\":{\"taskName\":\"37test\",\"taskCycle\":5,\"taskStartTime\":1523289600,\"taskEndTime\":1523721600,\"isVerify\":0},\"4\":{\"taskName\":\"37test\",\"taskCycle\":5,\"taskStartTime\":1523721600,\"taskEndTime\":1524153600,\"isVerify\":0},\"5\":{\"taskName\":\"37test\",\"taskCycle\":5,\"taskStartTime\":1524153600,\"taskEndTime\":1524585600,\"isVerify\":0},\"6\":{\"taskName\":\"37test\",\"taskCycle\":5,\"taskStartTime\":1524585600,\"taskEndTime\":1525017600,\"isVerify\":0}},\"38\":{\"1\":{\"taskName\":\"38test\",\"taskCycle\":5,\"taskStartTime\":1525017600,\"taskEndTime\":1525449600,\"isVerify\":0},\"2\":{\"taskName\":\"38test\",\"taskCycle\":5,\"taskStartTime\":1525449600,\"taskEndTime\":1525881600,\"isVerify\":0},\"3\":{\"taskName\":\"38test\",\"taskCycle\":5,\"taskStartTime\":1525881600,\"taskEndTime\":1526313600,\"isVerify\":0},\"4\":{\"taskName\":\"38test\",\"taskCycle\":5,\"taskStartTime\":1526313600,\"taskEndTime\":1526745600,\"isVerify\":0},\"5\":{\"taskName\":\"38test\",\"taskCycle\":5,\"taskStartTime\":1526745600,\"taskEndTime\":1527177600,\"isVerify\":0},\"6\":{\"taskName\":\"38test\",\"taskCycle\":5,\"taskStartTime\":1527177600,\"taskEndTime\":1527609600,\"isVerify\":0}},\"39\":{\"1\":{\"taskName\":\"39test\",\"taskCycle\":5,\"taskStartTime\":1527609600,\"taskEndTime\":1528041600,\"isVerify\":0},\"2\":{\"taskName\":\"39test\",\"taskCycle\":5,\"taskStartTime\":1528041600,\"taskEndTime\":1528473600,\"isVerify\":0},\"3\":{\"taskName\":\"39test\",\"taskCycle\":5,\"taskStartTime\":1528473600,\"taskEndTime\":1528905600,\"isVerify\":0},\"4\":{\"taskName\":\"39test\",\"taskCycle\":5,\"taskStartTime\":1528905600,\"taskEndTime\":1529337600,\"isVerify\":0},\"5\":{\"taskName\":\"39test\",\"taskCycle\":5,\"taskStartTime\":1529337600,\"taskEndTime\":1529769600,\"isVerify\":0},\"6\":{\"taskName\":\"39test\",\"taskCycle\":5,\"taskStartTime\":1529769600,\"taskEndTime\":1530201600,\"isVerify\":0}}}}', null, null, '任务分解', '0');
+INSERT INTO `bangbang_order_option_log` VALUES ('25', '1', 'ADDORDER', '1522588994', '22', '{\"orderNum\":\"20180488229\",\"orderRecommend\":1,\"orderUid\":2,\"createId\":1,\"createTime\":1522588994,\"orderName\":\"\\u738b\\u751f\",\"userTel\":\"15826962999\",\"userAddress\":\"\\u6e56\\u5317\\u9ec4\\u77f3\",\"orderTotal\":\"10000\",\"orderType\":\"1\",\"orderCycle\":\"90\",\"orderImage\":\"s:4:\\\"test\\\";\",\"orderContent\":\"<p>test<\\/p>\",\"orderStatus\":0,\"orderDesigner\":\"1\",\"orderSupervisor\":\"1\",\"orderStartTime\":1522425600}', null, null, '下单成功', '0');
+INSERT INTO `bangbang_order_option_log` VALUES ('28', '1', 'RESOLVE', '1522589548', '22', '{\"orderId\":22,\"endTime\":1530201600,\"task\":{\"40\":{\"1\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1522425600,\"taskEndTime\":1522857600,\"isVerify\":0},\"2\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1522857600,\"taskEndTime\":1523289600,\"isVerify\":0},\"3\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1523289600,\"taskEndTime\":1523721600,\"isVerify\":0},\"4\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1523721600,\"taskEndTime\":1524153600,\"isVerify\":0},\"5\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1524153600,\"taskEndTime\":1524585600,\"isVerify\":0},\"6\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1524585600,\"taskEndTime\":1525017600,\"isVerify\":0}},\"41\":{\"1\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1525017600,\"taskEndTime\":1525449600,\"isVerify\":0},\"2\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1525449600,\"taskEndTime\":1525881600,\"isVerify\":0},\"3\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1525881600,\"taskEndTime\":1526313600,\"isVerify\":0},\"4\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1526313600,\"taskEndTime\":1526745600,\"isVerify\":0},\"5\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1526745600,\"taskEndTime\":1527177600,\"isVerify\":0},\"6\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1527177600,\"taskEndTime\":1527609600,\"isVerify\":0}},\"42\":{\"1\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1527609600,\"taskEndTime\":1528041600,\"isVerify\":0},\"2\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1528041600,\"taskEndTime\":1528473600,\"isVerify\":0},\"3\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1528473600,\"taskEndTime\":1528905600,\"isVerify\":0},\"4\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1528905600,\"taskEndTime\":1529337600,\"isVerify\":0},\"5\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1529337600,\"taskEndTime\":1529769600,\"isVerify\":0},\"6\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1529769600,\"taskEndTime\":1530201600,\"isVerify\":0}}}}', null, null, '任务分解', '0');
+INSERT INTO `bangbang_order_option_log` VALUES ('29', '1', 'RESOLVE', '1522589548', '22', '{\"orderId\":22,\"endTime\":1530201600,\"task\":{\"40\":{\"1\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1522425600,\"taskEndTime\":1522857600,\"isVerify\":0},\"2\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1522857600,\"taskEndTime\":1523289600,\"isVerify\":0},\"3\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1523289600,\"taskEndTime\":1523721600,\"isVerify\":0},\"4\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1523721600,\"taskEndTime\":1524153600,\"isVerify\":0},\"5\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1524153600,\"taskEndTime\":1524585600,\"isVerify\":0},\"6\":{\"taskName\":\"40test\",\"taskCycle\":5,\"taskStartTime\":1524585600,\"taskEndTime\":1525017600,\"isVerify\":0}},\"41\":{\"1\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1525017600,\"taskEndTime\":1525449600,\"isVerify\":0},\"2\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1525449600,\"taskEndTime\":1525881600,\"isVerify\":0},\"3\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1525881600,\"taskEndTime\":1526313600,\"isVerify\":0},\"4\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1526313600,\"taskEndTime\":1526745600,\"isVerify\":0},\"5\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1526745600,\"taskEndTime\":1527177600,\"isVerify\":0},\"6\":{\"taskName\":\"41test\",\"taskCycle\":5,\"taskStartTime\":1527177600,\"taskEndTime\":1527609600,\"isVerify\":0}},\"42\":{\"1\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1527609600,\"taskEndTime\":1528041600,\"isVerify\":0},\"2\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1528041600,\"taskEndTime\":1528473600,\"isVerify\":0},\"3\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1528473600,\"taskEndTime\":1528905600,\"isVerify\":0},\"4\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1528905600,\"taskEndTime\":1529337600,\"isVerify\":0},\"5\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1529337600,\"taskEndTime\":1529769600,\"isVerify\":0},\"6\":{\"taskName\":\"42test\",\"taskCycle\":5,\"taskStartTime\":1529769600,\"taskEndTime\":1530201600,\"isVerify\":0}}}}', null, null, '任务分解', '0');
 
 -- ----------------------------
 -- Table structure for bangbang_order_task
@@ -764,7 +784,7 @@ INSERT INTO `bangbang_order_option_log` VALUES ('12', '1', 'ADDORDER', '15224849
 DROP TABLE IF EXISTS `bangbang_order_task`;
 CREATE TABLE `bangbang_order_task` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `taskName` varchar(255) NOT NULL COMMENT '任务名称',
+  `taskName` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '任务名称',
   `taskCycle` int(10) NOT NULL COMMENT '任务周期',
   `taskStartTime` int(11) NOT NULL COMMENT '任务开始时间',
   `taskEndTime` int(11) NOT NULL COMMENT '任务结束时间',
@@ -777,12 +797,88 @@ CREATE TABLE `bangbang_order_task` (
   `ActualStartTime` int(11) DEFAULT NULL COMMENT '任务时间开始时间',
   `ActualEndTime` int(11) DEFAULT NULL COMMENT '任务时间结束时间',
   `ActualDay` int(11) DEFAULT NULL COMMENT '任务时间周期',
+  `createId` int(11) NOT NULL COMMENT '分解人',
+  `createTime` int(11) NOT NULL COMMENT '分解时间',
+  `updateId` int(11) DEFAULT NULL COMMENT '修改人',
+  `updateTime` int(11) DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='工单每期任务分解';
+) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8 COMMENT='工单每期任务分解';
 
 -- ----------------------------
 -- Records of bangbang_order_task
 -- ----------------------------
+INSERT INTO `bangbang_order_task` VALUES ('145', '25test', '5', '1522857600', '1523289600', null, '-2', '25', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('146', '25test', '5', '1523289600', '1523721600', null, '-2', '25', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('147', '25test', '5', '1523721600', '1524153600', null, '-2', '25', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('148', '25test', '5', '1524153600', '1524585600', null, '-2', '25', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('149', '25test', '5', '1524585600', '1525017600', null, '-2', '25', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('150', '25test', '5', '1525017600', '1525449600', null, '-2', '25', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('151', '26test', '5', '1525449600', '1525881600', null, '-2', '26', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('152', '26test', '5', '1525881600', '1526313600', null, '-2', '26', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('153', '26test', '5', '1526313600', '1526745600', null, '-2', '26', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('154', '26test', '5', '1526745600', '1527177600', null, '-2', '26', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('155', '26test', '5', '1527177600', '1527609600', null, '-2', '26', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('156', '26test', '5', '1527609600', '1528041600', null, '-2', '26', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('157', '27test', '5', '1528041600', '1528473600', null, '-2', '27', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('158', '27test', '5', '1528473600', '1528905600', null, '-2', '27', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('159', '27test', '5', '1528905600', '1529337600', null, '-2', '27', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('160', '27test', '5', '1529337600', '1529769600', null, '-2', '27', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('161', '27test', '5', '1529769600', '1530201600', null, '-2', '27', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('162', '27test', '5', '1530201600', '1530633600', null, '-2', '27', '17', '0', '0', null, null, null, '1', '1522507604', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('163', '34test', '5', '1522857600', '1523289600', null, '-2', '34', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('164', '34test', '5', '1523289600', '1523721600', null, '-2', '34', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('165', '34test', '5', '1523721600', '1524153600', null, '-2', '34', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('166', '34test', '5', '1524153600', '1524585600', null, '-2', '34', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('167', '34test', '5', '1524585600', '1525017600', null, '-2', '34', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('168', '34test', '5', '1525017600', '1525449600', null, '-2', '34', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('169', '35test', '5', '1525449600', '1525881600', null, '-2', '35', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('170', '35test', '5', '1525881600', '1526313600', null, '-2', '35', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('171', '35test', '5', '1526313600', '1526745600', null, '-2', '35', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('172', '35test', '5', '1526745600', '1527177600', null, '-2', '35', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('173', '35test', '5', '1527177600', '1527609600', null, '-2', '35', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('174', '35test', '5', '1527609600', '1528041600', null, '-2', '35', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('175', '36test', '5', '1528041600', '1528473600', null, '-2', '36', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('176', '36test', '5', '1528473600', '1528905600', null, '-2', '36', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('177', '36test', '5', '1528905600', '1529337600', null, '-2', '36', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('178', '36test', '5', '1529337600', '1529769600', null, '-2', '36', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('179', '36test', '5', '1529769600', '1530201600', null, '-2', '36', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('180', '36test', '5', '1530201600', '1530633600', null, '-2', '36', '20', '0', '0', null, null, null, '1', '1522508086', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('181', '37test', '5', '1522425600', '1522857600', null, '-2', '37', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('182', '37test', '5', '1522857600', '1523289600', null, '-2', '37', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('183', '37test', '5', '1523289600', '1523721600', null, '-2', '37', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('184', '37test', '5', '1523721600', '1524153600', null, '-2', '37', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('185', '37test', '5', '1524153600', '1524585600', null, '-2', '37', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('186', '37test', '5', '1524585600', '1525017600', null, '-2', '37', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('187', '38test', '5', '1525017600', '1525449600', null, '-2', '38', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('188', '38test', '5', '1525449600', '1525881600', null, '-2', '38', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('189', '38test', '5', '1525881600', '1526313600', null, '-2', '38', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('190', '38test', '5', '1526313600', '1526745600', null, '-2', '38', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('191', '38test', '5', '1526745600', '1527177600', null, '-2', '38', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('192', '38test', '5', '1527177600', '1527609600', null, '-2', '38', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('193', '39test', '5', '1527609600', '1528041600', null, '-2', '39', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('194', '39test', '5', '1528041600', '1528473600', null, '-2', '39', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('195', '39test', '5', '1528473600', '1528905600', null, '-2', '39', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('196', '39test', '5', '1528905600', '1529337600', null, '-2', '39', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('197', '39test', '5', '1529337600', '1529769600', null, '-2', '39', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('198', '39test', '5', '1529769600', '1530201600', null, '-2', '39', '21', '0', '0', null, null, null, '1', '1522508096', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('235', '40test', '5', '1522425600', '1522857600', null, '-2', '40', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('236', '40test', '5', '1522857600', '1523289600', null, '-2', '40', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('237', '40test', '5', '1523289600', '1523721600', null, '-2', '40', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('238', '40test', '5', '1523721600', '1524153600', null, '-2', '40', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('239', '40test', '5', '1524153600', '1524585600', null, '-2', '40', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('240', '40test', '5', '1524585600', '1525017600', null, '-2', '40', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('241', '41test', '5', '1525017600', '1525449600', null, '-2', '41', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('242', '41test', '5', '1525449600', '1525881600', null, '-2', '41', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('243', '41test', '5', '1525881600', '1526313600', null, '-2', '41', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('244', '41test', '5', '1526313600', '1526745600', null, '-2', '41', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('245', '41test', '5', '1526745600', '1527177600', null, '-2', '41', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('246', '41test', '5', '1527177600', '1527609600', null, '-2', '41', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('247', '42test', '5', '1527609600', '1528041600', null, '-2', '42', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('248', '42test', '5', '1528041600', '1528473600', null, '-2', '42', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('249', '42test', '5', '1528473600', '1528905600', null, '-2', '42', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('250', '42test', '5', '1528905600', '1529337600', null, '-2', '42', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('251', '42test', '5', '1529337600', '1529769600', null, '-2', '42', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
+INSERT INTO `bangbang_order_task` VALUES ('252', '42test', '5', '1529769600', '1530201600', null, '-2', '42', '22', '0', '0', null, null, null, '1', '1522589548', null, null);
 
 -- ----------------------------
 -- Table structure for bangbang_plugin
@@ -1032,6 +1128,31 @@ INSERT INTO `bangbang_route` VALUES ('1', '5000', '1', '2', 'portal/List/index?i
 INSERT INTO `bangbang_route` VALUES ('2', '4999', '1', '2', 'portal/Article/index?cid=1', '测试/:id');
 
 -- ----------------------------
+-- Table structure for bangbang_send_sms_log
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_send_sms_log`;
+CREATE TABLE `bangbang_send_sms_log` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `smsContent` text NOT NULL COMMENT '推送消息',
+  `AcceptUid` int(11) NOT NULL COMMENT '接受人id',
+  `createTime` int(11) NOT NULL COMMENT '推送时间',
+  `sendType` varchar(50) NOT NULL DEFAULT '' COMMENT '推送工具DingDing(钉钉机器人),sms(短信推送)',
+  `isSuccess` tinyint(1) NOT NULL COMMENT '是否成功',
+  `smsId` int(11) NOT NULL DEFAULT '1' COMMENT '对应的推送模板id',
+  `orderId` int(11) DEFAULT NULL COMMENT '工单id',
+  `orderMoneyId` int(11) DEFAULT NULL COMMENT '工单交款期数id',
+  `orderTaskId` int(11) DEFAULT NULL COMMENT '工单任务id',
+  PRIMARY KEY (`id`),
+  KEY `smsId` (`smsId`,`AcceptUid`) USING BTREE,
+  KEY `time` (`createTime`) USING BTREE,
+  KEY `other` (`sendType`,`isSuccess`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of bangbang_send_sms_log
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for bangbang_slide
 -- ----------------------------
 DROP TABLE IF EXISTS `bangbang_slide`;
@@ -1192,7 +1313,7 @@ CREATE TABLE `bangbang_user` (
 -- ----------------------------
 -- Records of bangbang_user
 -- ----------------------------
-INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1522480203', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', null);
+INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1522588978', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', null);
 INSERT INTO `bangbang_user` VALUES ('2', '1', '0', '0', '0', '0', '0', '0.00', '0', '1', 'admin01', '###41db486ab474d7329263420baaf164e8', '', '591554595@qq.com', '', '', '', '', '', '15826962999', null);
 
 -- ----------------------------

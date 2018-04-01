@@ -1154,7 +1154,7 @@ class Process
 {
         if (!$this->isRunning()) {
             if ($throwException) {
-                throw new \LogicException('Can not send signal on a non running process.');
+                throw new \LogicException('Can not Send signal on a non running process.');
             }
 
             return false;

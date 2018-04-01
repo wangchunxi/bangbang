@@ -31,6 +31,8 @@ class AddOrder
     private $userAddressNum;
     /***@var UserModel $userModel**/
     private $userModel;
+    private $orderStartTime;
+
     public function __construct($opUid = '')
     {
         $this->opUid =  $opUid;
@@ -79,6 +81,10 @@ class AddOrder
     }
     public function setOrderSupervisor($data=''){
         $this->orderSupervisor=$data;
+        return $this;
+    }
+    public function setOrderStartTime($data){
+        $this->orderStartTime =  strtotime(date('Y-m-d',strtotime($data)));
         return $this;
     }
     /**
@@ -221,6 +227,7 @@ class AddOrder
         $data['orderStatus'] =      0;
         $data['orderDesigner'] =    $this->orderDesigner;
         $data['orderSupervisor'] =  $this->orderSupervisor;
+        $data['orderStartTime'] =  $this->orderStartTime;
         $this->checkData();
         $model =  new OrderInfoModel();
         $result =  $model->insert($data);
@@ -236,10 +243,7 @@ class AddOrder
         $log->setOptionContent('下单成功');
         $log->setOptionType('ADDORDER');
         $log->setSubmitParameter(json_encode($data));
-        $result =  $log->save();
-        if(!$result){
-            exception('工单日志记录失败');
-        }
+        $log->save();
         return $insId;
     }
 }

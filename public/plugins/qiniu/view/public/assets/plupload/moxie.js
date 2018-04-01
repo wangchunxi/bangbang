@@ -2363,7 +2363,7 @@ define('moxie/runtime/Runtime', [
 			return_response_type: false,
 			// return http status code of the response
 			return_status_code: true,
-			// send custom http header with the request
+			// Send custom http header with the request
 			send_custom_headers: false,
 			// pick up the files from a dialog
 			select_file: false,
@@ -2371,11 +2371,11 @@ define('moxie/runtime/Runtime', [
 			select_folder: false,
 			// select multiple files at once in file browse dialog
 			select_multiple: true,
-			// send raw binary data, that is generated after image resizing or manipulation of other kind
+			// Send raw binary data, that is generated after image resizing or manipulation of other kind
 			send_binary_string: false,
-			// send cookies with http request and therefore retain session
+			// Send cookies with http request and therefore retain session
 			send_browser_cookies: true,
-			// send data formatted as multipart/form-data
+			// Send data formatted as multipart/form-data
 			send_multipart: true,
 			// slice the file or blob to smaller parts
 			slice_blob: false,
@@ -4805,7 +4805,7 @@ define("moxie/xhr/FormData", [
 				if (value instanceof Blob) {
 					_blob = {
 						name: name,
-						value: value // unfortunately we can only send single Blob in one FormData
+						value: value // unfortunately we can only Send single Blob in one FormData
 					};
 				} else if ('array' === valueType) {
 					name += '[]';
@@ -5021,7 +5021,7 @@ define("moxie/xhr/XMLHttpRequest", [
 				The object has been constructed.
 
 				OPENED (numeric value 1)
-				The open() method has been successfully invoked. During this state request headers can be set using setRequestHeader() and the request can be made using the send() method.
+				The open() method has been successfully invoked. During this state request headers can be set using setRequestHeader() and the request can be made using the Send() method.
 
 				HEADERS_RECEIVED (numeric value 2)
 				All redirects (if any) have been followed and all HTTP headers of the final response have been received. Several response members of the object are now available.
@@ -5228,7 +5228,7 @@ define("moxie/xhr/XMLHttpRequest", [
 
 				// 14 - terminate abort()
 
-				// 15 - terminate send()
+				// 15 - terminate Send()
 
 				// 18
 				_sync_flag = !_async;
@@ -5247,7 +5247,7 @@ define("moxie/xhr/XMLHttpRequest", [
 			Appends an header to the list of author request headers, or if header is already
 			in the list of author request headers, combines its value with value.
 
-			Throws an "InvalidStateError" exception if the state is not OPENED or if the send() flag is set.
+			Throws an "InvalidStateError" exception if the state is not OPENED or if the Send() flag is set.
 			Throws a "SyntaxError" exception if header is not a valid HTTP header field name or if value
 			is not a valid HTTP header field value.
 
@@ -5414,9 +5414,9 @@ define("moxie/xhr/XMLHttpRequest", [
 			Initiates the request. The optional argument provides the request entity body.
 			The argument is ignored if request method is GET or HEAD.
 
-			Throws an "InvalidStateError" exception if the state is not OPENED or if the send() flag is set.
+			Throws an "InvalidStateError" exception if the state is not OPENED or if the Send() flag is set.
 
-			@method send
+			@method Send
 			@param {Blob|Document|String|FormData} [data] Request entity body
 			@param {Object} [options] Set of requirements and pre-requisities for runtime initialization
 			*/
@@ -5482,7 +5482,7 @@ define("moxie/xhr/XMLHttpRequest", [
 						// this.upload.dispatchEvent('loadstart');	// will be dispatched either by native or runtime xhr
 					//}
 				}
-				// 8.5 - Return the send() method call, but continue running the steps in this algorithm.
+				// 8.5 - Return the Send() method call, but continue running the steps in this algorithm.
 				_doXHR.call(this, data);
 			},
 
@@ -6179,7 +6179,7 @@ define("moxie/image/Image", [
 						// upload complete
 					};
 					xhr.open('post', 'upload.php');
-					xhr.send(formData);
+					xhr.Send(formData);
 				};
 				img.load("http://www.moxiecode.com/images/mox-logo.jpg"); // notice file extension (.jpg)
 
@@ -7709,10 +7709,10 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 							data = _prepareMultipart.call(target, data); // _xhr must be instantiated and be in OPENED state
 							mustSendAsBinary = true;
 						} else if ((isGecko2_5_6 || isAndroidBrowser) && Basic.typeOf(data.getBlob().getSource()) === 'blob' && window.FileReader) {
-							// Gecko 2/5/6 can't send blob in FormData: https://bugzilla.mozilla.org/show_bug.cgi?id=649150
+							// Gecko 2/5/6 can't Send blob in FormData: https://bugzilla.mozilla.org/show_bug.cgi?id=649150
 							// Android browsers (default one and Dolphin) seem to have the same issue, see: #613
 							_preloadAndSend.call(target, meta, data);
-							return; // _preloadAndSend will reinvoke send() with transmutated FormData =%D
+							return; // _preloadAndSend will reinvoke Send() with transmutated FormData =%D
 						}	
 					}
 
@@ -7831,7 +7831,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 					}
 				}
 
-				// send ...
+				// Send ...
 				if (!mustSendAsBinary) {
 					_xhr.send(data);
 				} else {
@@ -7939,7 +7939,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 					type: blob.type,
 					data: fr.result
 				}));
-				// invoke send operation again
+				// invoke Send operation again
 				self.send.call(target, meta, data);
 			};
 			fr.readAsBinaryString(blob);

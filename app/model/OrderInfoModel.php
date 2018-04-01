@@ -16,6 +16,7 @@ class OrderInfoModel extends Model
     protected $orderId;
     public function setOrderId($orderId ){
         $this->orderId = $orderId;
+        return $this;
     }
 
     public function editOrderStatus($status ){

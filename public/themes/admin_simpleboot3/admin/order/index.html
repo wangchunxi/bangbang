@@ -96,7 +96,8 @@
 
                     <td>
                         <a href="{:url('AdminArticle/edit',array('id'=>$vo['id']))}">废弃</a>
-                        <a href="{:url('AdminArticle/delete',array('id'=>$vo['id']))}" >{:lang('FENJIE')}</a>
+                        <input type="hidden" value="{:url('addTask',array('id'=>$vo['id']))}" id="addTask{$vo.id}"/>
+                        <a href="javascript:;"  onclick="addTask({$vo['id']})" >{:lang('FENJIE')}</a>
                     </td>
                 </tr>
             </foreach>
@@ -168,6 +169,17 @@
             });
         });
     });
+    function addTask(id) {
+        var url =  $("#addTask"+id).val();
+        layer.open({
+            type: 2,
+            title: '弹窗',
+            maxmin: true,
+            shadeClose: true,
+            area: ['840px', '560px'],
+            content:url,
+        })
+    }
 </script>
 </body>
 </html>

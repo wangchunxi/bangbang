@@ -8,7 +8,14 @@
 namespace app\admin\controller;
 use app\lib\Order\AddOrder;
 use app\lib\Order\AddOrderMoney;
+use app\lib\Order\AddOrderTask;
+use app\lib\Order\OrderList;
+use app\lib\Order\OrderOption;
+use app\lib\Order\OrderOptionLog;
 use app\lib\Test\OrderTest;
+use app\model\OrderInfoModel;
+use app\model\OrderMoneyModel;
+use app\model\OrderTaskModel;
 use cmf\controller\AdminBaseController;
 use think\Db;
 
@@ -53,6 +60,7 @@ class OrderTestController  extends AdminBaseController
                 $addOrder->setOrderType($post['orderType']);
                 $addOrder->setUserAddress($post['userAddress']);
                 $addOrder->setUserTel($post['userTel']);
+                $addOrder->setOrderStartTime($post['orderStartTime']);
                 $orderId = $addOrder->save();
                 foreach ($money as $k=>$v){
                     $model = (new AddOrderMoney(1,$orderId,$k));
@@ -73,4 +81,80 @@ class OrderTestController  extends AdminBaseController
         echo '下单成功';
     }
 
+    public function taskDecomposition(){
+        Db::transaction(function(){
+            try{
+                $post = $this->getSubmitData();
+                dump($post);
+                $task = $post['task'];
+                foreach ($task as $k=>$value){
+                    foreach($value as $v){
+                        (new AddOrderTask($post['orderId']))->setOpUid(cmf_get_current_admin_id())
+                            ->setIsVerify($v['isVerify'])->setMoneyId($k)->setOrderEnd($post['endTime'])
+                            ->setTaskCycle($v['taskCycle'])->setTaskEndTime($v['taskEndTime'])
+                            ->setTaskName($v['taskName'])->setTaskStartTime($v['taskStartTime'])->save();
+                    }
+                }
+                $log =  (new OrderOptionLog($post['orderId']));
+                $log->setOptionUserId(cmf_get_current_admin_id());
+                $log->setTaskId(0);
+                $log->setOptionContent('任务分解');
+                $log->setOptionType('RESOLVE');
+                $log->setSubmitParameter(json_encode($post));
+                $log->save();
+                (new OrderOption($post['orderId']))
+                    ->setOpUid(cmf_get_current_admin_id())
+                    ->setData($post)->addOrderTask();
+                /*任务分解检验*/
+                (new OrderTest($post['orderId']))->taskDecomposition();
+                return true;
+            }catch(\Exception $e){
+                $url = Url('index','error='.$e->getMessage());
+                $this->error($e->getMessage(),$url);
+            }
+        });
+        echo '分解完成';
+    }
+    /*
+     * 获取待分解工单
+     * */
+    protected function getOrder(){
+        $orderInfo = (new OrderInfoModel())->where('orderStatus',0)->find();
+        if(empty($orderInfo)){
+            $this->addOrder();
+            return $this->getOrder();
+        }
+        $orderMoney = (new OrderMoneyModel())->where('orderId',$orderInfo['id'])->select();
+        $data['orderInfo'] = $orderInfo;
+        $data['orderMoney'] = $orderMoney;
+        return $data;
+    }
+
+    protected function getSubmitData(){
+        $data =  $this->getOrder();
+        //dump($data);
+        $result = [];
+        $task = [];
+        $result['orderId'] = $data['orderInfo']['id'];
+        $result['endTime'] = $data['orderInfo']['orderStartTime']+($data['orderInfo']['orderCycle']*24*3600);
+        $start = ($data['orderInfo']['orderStartTime']);
+        foreach ($data['orderMoney'] as $key=>$v){
+            $num = 6;
+            for($i=0;$i<$num;$i++){
+                $task[$i+1]['taskName'] = $v['id'].'test';
+                $task[$i+1]['taskCycle'] = 5;
+                $task[$i+1]['taskStartTime'] =($start+(5*24*3600)*(($i+1)+($key*6)))-5*24*3600;
+                $task[$i+1]['taskEndTime'] = $start+(5*24*3600)*(($i+1)+($key*6));
+                $task[$i+1]['isVerify'] = 0;
+            }
+            $result['task'][$v['id']] = $task;
+        }
+        return $result;
+    }
+    public function test(){
+        $order = (new OrderTaskModel())->where('orderId',17)->field('taskStartTime,taskEndTime')->select();
+        foreach ($order as $v){
+            echo date('Y-m-d',$v['taskStartTime']).'-----'.date('Y-m-d',$v['taskEndTime']);echo "<br/>";
+        }
+    }
 }

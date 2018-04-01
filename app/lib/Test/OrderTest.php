@@ -9,6 +9,7 @@ namespace app\lib\Test;
 use app\model\OrderInfoModel;
 use app\model\OrderMoneyModel;
 use app\model\OrderOptionLogModel;
+use app\model\OrderTaskModel;
 
 class OrderTest
 {
@@ -35,8 +36,7 @@ class OrderTest
             exception('下单失败');
         }
 
-        $money =  (new OrderMoneyModel())->sum('money');
-
+        $money =  (new OrderMoneyModel())->where('orderId',$this->orderId)->sum('money');
         if($result['orderTotal']!=$money){
             exception('总价不符');
         }
@@ -50,6 +50,31 @@ class OrderTest
         }
         if($log['optionUserId']!=$result['createId']){
             exception('操作人无法对应');
+        }
+        return true;
+    }
+
+    /**
+     * 检验分解任务
+     */
+    public function taskDecomposition(){
+        $result = (new OrderInfoModel())->where('id',$this->orderId)->where('orderStatus',1)->count();
+        if(!$result){
+            exception('工单任务状态不符合');
+        }
+        $id =  (new OrderMoneyModel())->where('id',$this->orderId)->column('id');
+        foreach ($id as $v){
+            $result = (new OrderTaskModel())->where('orderMoneyId',$v)->count();
+            if(!$result){
+                exception('id为'.$v.'未有任务');
+            }
+        }
+        $log = (new OrderOptionLogModel())
+            ->where('orderId',$this->orderId)
+            ->where('optionType','RESOLVE')
+            ->find();
+        if(!$log){
+            exception('未获取到工单日志');
         }
         return true;
     }

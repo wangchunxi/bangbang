@@ -3463,7 +3463,7 @@
                         ~idx && pending.splice( idx, 1, file );
                     });
     
-                    // befeore-send-file的钩子就有错误发生。
+                    // befeore-Send-file的钩子就有错误发生。
                     promise.fail(function( reason ) {
                         file.setStatus( Status.ERROR, reason );
                         me.owner.trigger( 'uploadError', file, reason );
@@ -3707,7 +3707,7 @@
                 var owner = this.owner;
     
                 return owner
-                        .request( 'after-send-file', arguments, function() {
+                        .request( 'after-Send-file', arguments, function() {
                             file.setStatus( Status.COMPLETE );
                             owner.trigger( 'uploadSuccess', file, ret, hds );
                         })
