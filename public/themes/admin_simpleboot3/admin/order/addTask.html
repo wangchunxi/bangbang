@@ -19,6 +19,33 @@
             width:96%; min-height: 400px; padding-bottom: 30px;
             margin: 2%;
         }
+        #myform div.project-date{
+            position: relative;
+            width: 100%; height: 26px;
+            margin-bottom: 20px;
+            background: #e6e6e6;
+        }
+        p.project-start-date{
+            float: left;
+            min-width: 150px; height: 100%;
+            margin-left: 10px;
+            line-height: 26px;
+            text-align: center;
+        }
+        p.project-expect-date{
+            position: absolute; top:0; left: 0;
+            width:100%; height: 100%;
+            line-height: 26px;
+            text-align: center;
+        }
+        p.project-end-date{
+            float: right;
+            min-width: 150px; height: 100%;
+            margin-right: 10px;
+            line-height: 26px;
+            text-align: center;
+        }
+
         #myform div.project{
             width: 100%;
             margin-bottom: 20px;
@@ -28,6 +55,7 @@
             width: 100%; height: 26px;
             background: #bfbfbf;
         }
+
         .pjt-top span{
             float: left;
             height: 20px;
@@ -41,33 +69,20 @@
         .pjt-top .sort{
             margin-left: 34px;
         }
-        .pjt-top .sort strong{
-            margin: 0 5px;
-            color: #0000ac;
-        }
         .pjt-top .money{
 
         }
         .pjt-top .money strong{
             margin: 0 5px;
-            color: #b00000;
+            color: #7a2e23;
         }
-        .pjt-top .start-date{
-
-        }
-        .pjt-top .start-date .layDate{
-            display: inline-block;
-            width: 100px; height: 16px;
-            border: 2px solid #ececec;
-            line-height: 18px;
-            text-align: center;
-            outline: none;
-            color: #555;
-            background: #ffffff;
-            vertical-align: top;
+        .pjt-top .end-date{
+            float: right;
         }
         .pjt-top .expect-date{
-
+            float: right;
+            font-size: 12px;
+            margin-right: 5px;
         }
         .pjt-top .expect-date strong{
             margin: 0 5px;
@@ -76,7 +91,7 @@
         .pjt-top .add{
             float: left;
             width: 80px; height: 22px;
-            margin-top: 2px;
+            margin: 2px 4px;
             background: #7a7a7a;
             font-size: 12px;
             line-height: 18px;
@@ -86,12 +101,12 @@
 
         .project ul.pjt-list{
             width: 100%;
-            -background: #eaeaea;
+            color: #555;
         }
         .pjt-list li{
             width: 100%; height: 26px;
             margin: 5px 0;
-            -background: #d3d3d3;
+            -background: #7d7d7d;
         }
         .pjt-list li i.index{
             float: left;
@@ -99,34 +114,45 @@
             margin-left: 5px;
             font-size: 12px;
             font-style: normal;
-            line-height: 26px; text-align: right;
+            line-height: 28px; text-align: right;
             white-space: nowrap;
         }
-
-        .pjt-list li input{
-            float: left;
-        }
         .pjt-list li input.explain{
-            width: 600px; height: 18px;
+            float: left;
+            width: 440px; height: 18px;
             margin-left: 1px;
             border: 4px solid #cdcdcd;
             font-size: 12px;
             text-indent: 5px;
-            -line-height: 26px;
+            line-height: 26px;
         }
-
-        .pjt-list li input.date{
-            width: 60px; height: 18px;
+        .pjt-list li span.start-date{
+            float: right;
+            height: 26px;
+            margin: 0 10px;
+            font-size: 12px;
+            line-height: 26px;
+        }
+        .pjt-list li span.start-date i{
+            font-style: normal;
+            color:#0a9b00;
+        }
+        .pjt-list li span.time{
+            float: right;
+            height: 26px;
+            margin: 0 10px;
+            font-size: 12px;
+        }
+        .pjt-list li span.time input{
+            width: 30px; height: 18px;
             border: 4px solid #cdcdcd;
-            font: 12px "Microsoft Yahei";
-            text-indent: 5px;
+            text-align: center;
             line-height: 18px;
         }
-
         .pjt-list li input.remove{
             float: right;
             width:22px; height:22px;
-            margin: 2px 16px 2px 0px;
+            margin: 2px 14px 2px 0px;
             border-radius: 50%;
             background: #5c5c5c;
             font: 12px "Microsoft Yahei";
@@ -149,26 +175,33 @@
 <body>
 <div id="box">
     <form action="" id="myform">
+        <div class="project-date">
+            <p class="project-start-date">开工日期 <strong>2018-04-01</strong></p>
+            <p class="project-expect-date">预计用时 <strong>30</strong> 天</p>
+            <p class="project-end-date">竣工日期 <strong>2018-05-01</strong></p>
+        </div>
         <foreach name="result" item="vo">
             <div class="project">
                 <div class="pjt-top">
                     <span class="sort">
-                       {$vo.name}
+                        {$vo.name}
                     </span>
                     <span class="money">
-                        {$vo.money}元
-                    </span>
-                    <span class="expect-date">
-                        预计用时<strong>0</strong>天
+                        <strong>{$vo.money}</strong>元
                     </span>
                     <input type="button" class="add" value="添加事项">
+                    <span class="end-date">本期完工：<strong>2018-04-01</strong></span>
+                    <span class="expect-date">
+                        本期用时<strong>0</strong>天
+                    </span>
                 </div>
                 <ul class="pjt-list">
                     <li class="pjt-detail">
                         <i class="index">1.</i>
-                        <input type="text" name="explain" maxlength="240" class="explain" placeholder="工作说明">
-                        <input type="text" name="date" maxlength="6" class="date" placeholder="预计用时">
+                        <input type="text" name="explain" maxlength="240" class="explain" placeholder="项目说明">
                         <input type="button" class="remove" value="×">
+                        <span class="time">用时: <input type="text" class="time-date" maxlength="4" value="" placeholder="">天</span>
+                        <span class="start-date">开始日期: <i>2018-04-01</i></span>
                     </li>
                 </ul>
             </div>
@@ -179,60 +212,138 @@
 
 
 <script>
+    //记录初始日期
+    var firstDate = ($('.project-start-date strong').text()).replace(/-([0-9]{1})/g, '-0$1');
 
     //添加子项目 li
     $('#myform .project .pjt-top .add').click(function (e) {
         var $this = $(this);
-        var index = $this.parent().next().children().length+1;
-        var $li = '<li class="pjt-detail">' +
-            '<i class="index">'+index+'.</i>' +
-            '<input type="text" name="explain" maxlength="240" class="explain" placeholder="工作说明">' +
-            '<input type="text" name="date" maxlength="6" class="date" placeholder="预计用时">' +
-            '<input type="button" class="remove" value="×">' +
-            '</li>';
+        var liSiblings= $this.parent().next().children();
+
+        //计算出开始日期
+        var dateStr = startDate(liSiblings.eq(liSiblings.length-1));
+
+        var $li = $('<li class="pjt-detail"></li>');
+        $li.append('<i class="index">'+(liSiblings.length+1) +'.</i>');
+        $li.append('<input type="text" name="explain" maxlength="240" class="explain" placeholder="项目说明">');
+        $li.append('<input type="button" class="remove" value="×">');
+        $li.append('<span class="time">用时: <input type="text" class="time-date" maxlength="3" placeholder="">天</span>');
+        $li.append('<span class="start-date">开始日期: <i>'+dateStr+'</i></span>');
+
         $this.parent().next().append($li);
     })
+
     //移除子项目 li
     $('#myform .project .pjt-list').click(function (e) {
+        var $this = $(this);
         var $target = $(e.target),
             $parent2 = $target.parent().parent();
         if ($target.get(0).className == 'remove') {
+            if ($target.parent().parent().children().length < 2) {
+                //必须留一个子项
+                return
+            }
+
             $target.parent().remove();
             sumDate($(this));//计算项目总时间
 
-            //修正列表 index
             var $lis = $parent2.children();
+
+            //修正列表 index
             for (var i = 0; i < $lis.length; i++) {
                 $lis.eq(i).find('.index').text(i+1+'.');
+                if (i === 0) {
+                    $lis.eq(i).find('.start-date i').text( firstDate );
+                    continue
+                }
             }
+            //重新计算所有子项目开始日期
+            termTime();
         }
     })
 
-    //
+    //用时发生改变，重新计算开始日期 和 总用时
     $('#myform .project .pjt-list').change(function (e) {
         var $this = $(this);
         var $target = $(e.target);
-        if ($target.get(0).className == 'date') {
+        if ($target.get(0).className == 'time-date') {
             sumDate($this);//计算项目总时间
+
+            termTime();
         }
     }).keyup(function (e) {
         //去掉非数字字符
         $target = $(e.target);
-        if ($target.get(0).className == 'date') {
+        if ($target.get(0).className == 'time-date') {
             $target.eq(0).val( $target.eq(0).val().replace(/\D/g, '') );
         }
     });
 
-    //计算项目总时间
+    //计算每一期总时间
     function sumDate($ele) {
         //传入 $ul
-        var dateS = $ele.find('.date');
+        var dateS = $ele.find('.time-date');
         var sum = 0;
         for (var i = 0; i < dateS.length; i++) {
-            sum = sum + (dateS.eq(i).val()? parseFloat( dateS.eq(i).val() ) : 0);
+            sum = sum + (dateS.eq(i).val()? (Number(dateS.eq(i).val())): 0);
         }
         $ele.siblings('.pjt-top').find('.expect-date strong').text(sum);
     }
+
+
+    function termTime() {
+        //重新计算所有子项目开始日期
+        //第一个子项目不用算
+        var $liAll = $('.project .pjt-list li');
+        for (var i = 1; i < $liAll.length; i++) {
+            $liAll.eq(i).find('.start-date i').text( startDate($liAll.eq(i-1)) )
+        }
+
+        //重新计算每一期的完工日期
+        var $uls = $('.project .pjt-list');
+        for (var u = 0; u < $uls.length; u++) {
+            $uls.eq(u).siblings('.pjt-top').find('.end-date strong').text(startDate($uls.eq(u).children().last()));
+        }
+    }
+
+    //计算子项目开始日期
+    function startDate(before$Li) {
+        //根据前一个 子项目的时间 计算 下一个子项目的开始日期
+        var date0 = before$Li.find('.start-date i').text();
+        var time = Number( before$Li.find('.time .time-date').val() ) * 1000*60*60*24;
+        var date = new Date( Date.parse(date0) +  time  );
+        var dateStr = date.getFullYear() + '-0' +(date.getMonth()+1) + '-0' + date.getDate();
+        dateStr = dateStr.replace(/-0([0-9]{2})/g, '-$1');
+        return dateStr;
+    }
+
+    //表单验证
+    $('#sub').click(function (e) {
+        //验证项目时间是否超出设定
+
+        var endDate = Date.parse( $('.end-date strong').last().text() );
+        var setDate = Date.parse( $('.project-end-date strong').text() );
+
+        if (endDate > setDate) {
+            e.preventDefault();
+            layer.msg('工程总时间超出')
+            return
+        }
+
+        //验证信息完整度
+        var $liAll = $('.project .pjt-list li');
+        var prevent = false;
+        for (var k = 0; k < $liAll.length; k++) {
+            if ($liAll.eq(k).find('.explain').val().length==0 || $liAll.eq(k).find('.time-date').val().length == 0) {
+                prevent = true;
+                break
+            }
+        }
+        if (prevent) {
+            e.preventDefault();
+            layer.msg('项目说明与项目用时都不能为空，请补全信息');
+        }
+    })
 
 </script>
 </body>
