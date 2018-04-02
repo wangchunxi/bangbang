@@ -53,7 +53,7 @@ class OrderController extends AdminBaseController
                 try{
                     $post = input('post.');
                     $money =  $post['post']['money'];
-                    $photoUrls = $post['photo_urls'];
+                    $photoUrls = $post['orderImage'];
                     $post = $post['post'];
                     if( $post['orderTotal'] != array_sum($money)){
                         exception('每期交款数不等于工单总价值');
@@ -121,7 +121,19 @@ class OrderController extends AdminBaseController
 
 
     public function publishingTasks(){
-
+        if($this->request->isPost()){
+            Db::transaction(function(){
+                try{
+                    $post = input('post');
+                    (new OrderOption($post['orderId']))
+                        ->setData($post)->setOpUid(cmf_get_current_admin_id())
+                        ->releaseTask();
+                    $this->success('操作成功');
+                }catch(\Exception $e){
+                    $this->error($e->getMessage());
+                }
+            });
+        }
     }
 
 

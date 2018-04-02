@@ -7,6 +7,7 @@
  */
 namespace app\lib\Send;
 use app\lib\DingDing\DingDingNotice;
+use app\lib\Sms\RecordingSms;
 
 class InternalPushOrder
 {
@@ -34,9 +35,9 @@ class InternalPushOrder
     public function masterSend(){
         /* TODO 获取推送群*/
         $webHook = "https://oapi.dingtalk.com/robot/Send?access_token=2bc87d1b37a25b790e02534ad6bca312cbba2dd0e1a6aa0299ab32b37ec5250b";
-        $this->getDingDingModel()->setWebHook($webHook)->setContent($this->sendContent)->save();
+        $result = $this->getDingDingModel()->setWebHook($webHook)->setContent($this->sendContent)->save();
         /*记录推送日志*/
-
-
+        (new RecordingSms())->setOrderId($this->orderId)
+            ->setAcceptUid(0)->setIsSuccess(1)->setSendType('DingDing')->setSmsContent()->setSmsId()->save();
     }
 }

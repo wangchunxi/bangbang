@@ -84,7 +84,8 @@ class OperatingTask
             $this->orderTaskStart();
         }
         $customerMsg.='祝您生活愉快';
-
+        /*发短信给用户*/
+        (new InternalPushOrder())->setOrderId()->setSendContent($customerMsg)->masterSend();
         return true;
     }
 
