@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 100109
-Source Host           : localhost:3306
+Source Server Version : 50556
+Source Host           : 192.168.11.184:3306
 Source Database       : bangbangyz
 
 Target Server Type    : MYSQL
-Target Server Version : 100109
+Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2018-04-01 22:42:04
+Date: 2018-04-03 18:07:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1191,6 +1191,28 @@ CREATE TABLE `bangbang_slide_item` (
 
 -- ----------------------------
 -- Records of bangbang_slide_item
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bangbang_sms_tel
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_sms_tel`;
+CREATE TABLE `bangbang_sms_tel` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL COMMENT '标题',
+  `pushTitle` varchar(255) NOT NULL COMMENT '推送标题',
+  `pushContent` text NOT NULL COMMENT '推送模板',
+  `smsType` varchar(255) NOT NULL COMMENT 'Email,Dingding,Sms短信模板类型',
+  `discernCode` varchar(50) NOT NULL COMMENT '推送模板识别码',
+  `createId` int(11) NOT NULL COMMENT '创建人',
+  `createTime` int(11) NOT NULL COMMENT '创建时间',
+  `updateId` int(11) DEFAULT NULL COMMENT '修改人id',
+  `updateTime` int(11) DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bangbang_sms_tel
 -- ----------------------------
 
 -- ----------------------------
