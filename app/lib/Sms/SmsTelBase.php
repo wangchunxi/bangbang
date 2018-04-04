@@ -18,6 +18,8 @@ class SmsTelBase
     protected $discernCode;
     protected $opUid;
     protected $opTime;
+    protected $rule;
+    protected $msg;
 
     public function setTitle($title){
         $this->title =  $title;
@@ -53,4 +55,27 @@ class SmsTelBase
         $data['discernCode'] = $this->discernCode;
         return $data;
     }
+
+    protected function getRule(){
+        $this->rule = [
+            'title'=>'require',
+            'pushTitle'=>'require',
+            'pushContent'=>'require',
+            'smsType'=>'require|alpha',
+            'discernCode'=>'require|alpha'
+        ];
+    }
+
+    protected function getMsg(){
+        $this->msg = [
+            'title.require'=>'短信模板标题不能为空',
+            'pushTitle.require'=>'推送标题不能为空',
+            'pushContent.require'=>'推送内容不能为空',
+            'smsType.require'=>'短信类型不能为空',
+            'smsType.alpha'=>'模板类型只能为字母',
+            'discernCode.require'=>'识别码不能为空',
+            'discernCode.alpha'=>'识别码只能为字母',
+        ];
+    }
+
 }
