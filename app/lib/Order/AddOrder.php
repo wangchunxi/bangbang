@@ -228,6 +228,7 @@ class AddOrder
         $data['orderDesigner'] =    $this->orderDesigner;
         $data['orderSupervisor'] =  $this->orderSupervisor;
         $data['orderStartTime'] =  $this->orderStartTime;
+        $data['orderEndTime'] =  $this->orderStartTime+($this->orderCycle*(24*3600));
         $this->checkData();
         $model =  new OrderInfoModel();
         $result =  $model->insert($data);

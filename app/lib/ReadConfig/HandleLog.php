@@ -5,6 +5,9 @@
  * Date: 18-4-4
  * Time: 下午3:18
  */
+namespace app\lib\ReadConfig;
+
+use app\admin\controller\TestController;
 
 class HandleLog
 {
@@ -18,7 +21,11 @@ class HandleLog
      * 获取旧的配置
      */
     protected function getOldConfig(){
-
+        $runtimeConfig = include CMF_ROOT . "data/conf/handleLog.php";
+        if(!empty($runtimeConfig)){
+            $runtimeConfig = json_decode($runtimeConfig,true);
+        }
+        return $runtimeConfig;
     }
 
     /**
@@ -36,20 +43,59 @@ class HandleLog
     /**
      * 获取全部的方法
      * @param $controller
+     * @return string
      */
     protected function getAction($controller){
-
+        $result =  get_class_methods('app\admin\controller'.'\\'.$controller);
+        $curFunctions = [
+            '__construct',
+            '__destruct',
+            '__call',
+            '__callStatic',
+            '__get',
+            '__set',
+            '__isset',
+            '__unset',
+            '__sleep',
+            '__wakeup',
+            '__toString',
+            '__invoke',
+            '__set_state',
+            '__clone',
+            '__debugInfo',
+            '_initialize',
+            '_initializeView',
+            'initMenu'
+            ];
+        foreach ($result as $v){
+            $func = trim($v);
+            if(!in_array($func,$curFunctions)){
+                $customerFunctions[$func] = '';
+            }
+        }
+        return $customerFunctions;
     }
 
     /**
      * 数组重组
      */
     protected function handleArray(){
-
+        $config =  $this->getOldConfig();
+        $data  =  $this->getAllController();
+        foreach ($data as $v){
+            $value =  $this->getAction($v);
+            $newData[$v]=$value;
+            if(!empty($config)){
+                foreach ($value as $k=>$val){
+                    $newData[$v][$k] = empty($config[$v][$k])?'':$config[$v][$k];
+                }
+            }
+        }
+        return $newData;
     }
 
     public function save(){
-
+        return $this->handleArray();
     }
 
 
