@@ -9,14 +9,13 @@
 namespace app\admin\controller;
 
 
-use app\lib\Order\AddOrder;
-use app\lib\Order\AddOrderMoney;
 use app\lib\Order\AddOrderTask;
-use app\lib\Order\OrderList;
+use app\lib\Order\OrderInfo\AddOrder;
+use app\lib\Order\OrderInfo\OrderList;
+use app\lib\Order\OrderMoney\AddOrderMoney;
 use app\lib\Order\OrderOption;
-use app\lib\Order\OrderOptionLog;
+use app\model\OrderInfoModel;
 use app\model\OrderMoneyModel;
-use app\model\OrderTaskModel;
 use cmf\controller\AdminBaseController;
 use think\Db;
 
@@ -36,11 +35,6 @@ class OrderController extends AdminBaseController
      * @return mixed
      */
     public function addOrder(){
-//        try{
-//            exception('测试');
-//        }catch (\Exception $e){
-//            $this->error($e->getMessage());
-//        }
         return $this->fetch();
     }
 
@@ -112,10 +106,15 @@ class OrderController extends AdminBaseController
                 }
             });
         }else{
-            $result = (new OrderMoneyModel())->where('orderId',input('id'))->field('name,id,money')->select();
+            $result = (new OrderMoneyModel())
+                ->where('orderId',input('id'))
+                ->field('name,id,money')->select();
+            $orderInfo = (new OrderInfoModel())
+                ->where('id',input('id'))->field('orderStartTime,orderEndTime,orderCycle')->find();
             //dump($result);
+            $this->assign('orderInfo',$orderInfo);
             $this->assign('result',$result);
-            return $this->fetch();
+            return $this->fetch('addTask');
         }
     }
 

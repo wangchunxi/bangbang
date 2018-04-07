@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 100109
-Source Host           : localhost:3306
+Source Server Version : 50556
+Source Host           : 192.168.11.184:3306
 Source Database       : bangbangyz
 
 Target Server Type    : MYSQL
-Target Server Version : 100109
+Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2018-04-01 22:42:04
+Date: 2018-04-04 18:01:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1081,13 +1081,14 @@ CREATE TABLE `bangbang_role` (
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`),
   KEY `status` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
 
 -- ----------------------------
 -- Records of bangbang_role
 -- ----------------------------
 INSERT INTO `bangbang_role` VALUES ('1', '0', '1', '1329633709', '1329633709', '0', '超级管理员', '拥有网站最高管理员权限！');
 INSERT INTO `bangbang_role` VALUES ('2', '0', '1', '1329633709', '1329633709', '0', '普通管理员', '权限由最高管理员分配！');
+INSERT INTO `bangbang_role` VALUES ('3', '0', '1', '0', '0', '0', '设计师', '设计师');
 
 -- ----------------------------
 -- Table structure for bangbang_role_user
@@ -1191,6 +1192,28 @@ CREATE TABLE `bangbang_slide_item` (
 
 -- ----------------------------
 -- Records of bangbang_slide_item
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bangbang_sms_tel
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_sms_tel`;
+CREATE TABLE `bangbang_sms_tel` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL COMMENT '标题',
+  `pushTitle` varchar(255) NOT NULL COMMENT '推送标题',
+  `pushContent` text NOT NULL COMMENT '推送模板',
+  `smsType` varchar(255) NOT NULL COMMENT 'Email,Dingding,Sms短信模板类型',
+  `discernCode` varchar(50) NOT NULL COMMENT '推送模板识别码',
+  `createId` int(11) NOT NULL COMMENT '创建人',
+  `createTime` int(11) NOT NULL COMMENT '创建时间',
+  `updateId` int(11) DEFAULT NULL COMMENT '修改人id',
+  `updateTime` int(11) DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bangbang_sms_tel
 -- ----------------------------
 
 -- ----------------------------
@@ -1313,8 +1336,8 @@ CREATE TABLE `bangbang_user` (
 -- ----------------------------
 -- Records of bangbang_user
 -- ----------------------------
-INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1522588978', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', null);
-INSERT INTO `bangbang_user` VALUES ('2', '1', '0', '0', '0', '0', '0', '0.00', '0', '1', 'admin01', '###41db486ab474d7329263420baaf164e8', '', '591554595@qq.com', '', '', '', '', '', '15826962999', null);
+INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1522812315', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', null);
+INSERT INTO `bangbang_user` VALUES ('2', '1', '0', '0', '1522812169', '0', '0', '0.00', '0', '1', 'admin01', '###41db486ab474d7329263420baaf164e8', '', '591554595@qq.com', '', '', '', '127.0.0.1', '', '15826962999', null);
 
 -- ----------------------------
 -- Table structure for bangbang_user_action
@@ -1401,6 +1424,28 @@ CREATE TABLE `bangbang_user_favorite` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for bangbang_user_handle_log
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_user_handle_log`;
+CREATE TABLE `bangbang_user_handle_log` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `opUid` int(11) NOT NULL COMMENT '操作人',
+  `opController` varchar(255) NOT NULL COMMENT '访问的控制器',
+  `opControllerStr` varchar(255) NOT NULL COMMENT '控制器中文',
+  `opAction` varchar(255) NOT NULL COMMENT '访问的方法',
+  `opActionStr` varchar(255) NOT NULL,
+  `opTime` int(11) NOT NULL COMMENT '访问时间',
+  `remark` varchar(255) NOT NULL COMMENT '备注',
+  `requestData` text COMMENT '请求数据',
+  `dataResult` text COMMENT '数据结果',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='后台操作日志';
+
+-- ----------------------------
+-- Records of bangbang_user_handle_log
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for bangbang_user_login_attempt
 -- ----------------------------
 DROP TABLE IF EXISTS `bangbang_user_login_attempt`;
@@ -1448,12 +1493,13 @@ CREATE TABLE `bangbang_user_token` (
   `token` varchar(64) NOT NULL DEFAULT '' COMMENT 'token',
   `device_type` varchar(10) NOT NULL DEFAULT '' COMMENT '设备类型;mobile,android,iphone,ipad,web,pc,mac,wxapp',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='用户客户端登录 token 表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='用户客户端登录 token 表';
 
 -- ----------------------------
 -- Records of bangbang_user_token
 -- ----------------------------
 INSERT INTO `bangbang_user_token` VALUES ('1', '1', '1534851311', '1519299311', '75d1f1fbe77aa5e81c3edb5f8b757653ef4c03be0d050be6826d2839798d5f9e', 'web');
+INSERT INTO `bangbang_user_token` VALUES ('2', '2', '1538364169', '1522812169', 'e0cd8a5228586b9510616f834eebe714108f908948c5c3517be1000dfff16a52', 'web');
 
 -- ----------------------------
 -- Table structure for bangbang_verification_code

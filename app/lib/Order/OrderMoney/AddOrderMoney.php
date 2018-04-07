@@ -6,7 +6,7 @@
  * Time: 18:48
  */
 
-namespace app\lib\Order;
+namespace app\lib\Order\OrderMoney;
 
 
 use app\model\OrderMoneyModel;

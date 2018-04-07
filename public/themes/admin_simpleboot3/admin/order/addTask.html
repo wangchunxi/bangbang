@@ -6,7 +6,6 @@
     <script src="__TMPL__/public/assets/js/jquery-1.10.2.min.js"></script>
     <script src="__TMPL__/public/assets/layer/layer.js"></script>
     <link href="__TMPL__/public/assets/simpleboot3/css/reset.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
     <style>
         #box{
             width: 800px; min-height: 400px;
@@ -176,9 +175,9 @@
 <div id="box">
     <form action="" id="myform">
         <div class="project-date">
-            <p class="project-start-date">开工日期 <strong>2018-04-01</strong></p>
-            <p class="project-expect-date">预计用时 <strong>30</strong> 天</p>
-            <p class="project-end-date">竣工日期 <strong>2018-05-01</strong></p>
+            <p class="project-start-date">开工日期 <strong>{:date('Y-m-d',$orderInfo['orderStartTime'])}</strong></p>
+            <p class="project-expect-date">预计用时 <strong>{$orderInfo.orderCycle}</strong> 天</p>
+            <p class="project-end-date">竣工日期 <strong>{:date('Y-m-d',$orderInfo['orderEndTime'])}</strong></p>
         </div>
         <foreach name="result" item="vo">
             <div class="project">
@@ -190,7 +189,8 @@
                         <strong>{$vo.money}</strong>元
                     </span>
                     <input type="button" class="add" value="添加事项">
-                    <span class="end-date">本期完工：<strong>2018-04-01</strong></span>
+
+                    <span class="end-date">本期完工：<strong>??</strong></span>
                     <span class="expect-date">
                         本期用时<strong>0</strong>天
                     </span>
@@ -201,7 +201,16 @@
                         <input type="text" name="explain" maxlength="240" class="explain" placeholder="项目说明">
                         <input type="button" class="remove" value="×">
                         <span class="time">用时: <input type="text" class="time-date" maxlength="4" value="" placeholder="">天</span>
-                        <span class="start-date">开始日期: <i>2018-04-01</i></span>
+                        <span class="start-date">
+                            开始日期:
+                            <i>
+                                <if condition="$key == 0">
+                                    {:date('Y-m-d',$orderInfo['orderStartTime'])}
+                                    <else/>
+                                    ???-???
+                                </if>
+                            </i>
+                        </span>
                     </li>
                 </ul>
             </div>

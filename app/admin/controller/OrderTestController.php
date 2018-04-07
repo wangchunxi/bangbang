@@ -9,6 +9,7 @@ namespace app\admin\controller;
 use app\lib\Order\AddOrder;
 use app\lib\Order\AddOrderMoney;
 use app\lib\Order\AddOrderTask;
+use app\lib\Order\GetOrder;
 use app\lib\Order\OrderList;
 use app\lib\Order\OrderOption;
 use app\lib\Order\OrderOptionLog;
@@ -85,7 +86,6 @@ class OrderTestController  extends AdminBaseController
         Db::transaction(function(){
             try{
                 $post = $this->getSubmitData();
-                dump($post);
                 $task = $post['task'];
                 foreach ($task as $k=>$value){
                     foreach($value as $v){
@@ -115,24 +115,9 @@ class OrderTestController  extends AdminBaseController
         });
         echo '分解完成';
     }
-    /*
-     * 获取待分解工单
-     * */
-    protected function getOrder(){
-        $orderInfo = (new OrderInfoModel())->where('orderStatus',0)->find();
-        if(empty($orderInfo)){
-            $this->addOrder();
-            return $this->getOrder();
-        }
-        $orderMoney = (new OrderMoneyModel())->where('orderId',$orderInfo['id'])->select();
-        $data['orderInfo'] = $orderInfo;
-        $data['orderMoney'] = $orderMoney;
-        return $data;
-    }
 
     protected function getSubmitData(){
-        $data =  $this->getOrder();
-        //dump($data);
+        $data =  (new GetOrder())->getOrder();
         $result = [];
         $task = [];
         $result['orderId'] = $data['orderInfo']['id'];
@@ -151,6 +136,27 @@ class OrderTestController  extends AdminBaseController
         }
         return $result;
     }
+
+    /**
+     * 任务发布
+     */
+    public function releaseTask(){
+        Db::transaction(function(){
+            try{
+                $post['orderId'] = (new GetOrder())->getReleaseTaskOrderId();
+                (new OrderOption($post['orderId']))
+                    ->setData($post)->setOpUid(cmf_get_current_admin_id())
+                    ->releaseTask();
+                return true;
+            }catch (\Exception $e){
+                $url = Url('index','error='.$e->getMessage());
+                $this->error($e->getMessage(),$url);
+            }
+        });
+        echo  '任务发布成功';
+    }
+
+
     public function test(){
         $order = (new OrderTaskModel())->where('orderId',17)->field('taskStartTime,taskEndTime')->select();
         foreach ($order as $v){

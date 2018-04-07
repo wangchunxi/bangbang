@@ -6,7 +6,7 @@
  * Time: 20:02
  */
 
-namespace app\lib\Order;
+namespace app\lib\Order\OrderInfo;
 
 
 use app\model\OrderInfoModel;

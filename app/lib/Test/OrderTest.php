@@ -78,4 +78,19 @@ class OrderTest
         }
         return true;
     }
+
+    /**
+     * 检验任务分解是否正确
+     */
+    public function checkReleaseTask(){
+        /*工单状态是否正确*/
+        $result =  (new OrderInfoModel())->where('id',$this->orderId)->where('orderStatus',2)->count();
+        /*如果交付第一期的钱任务是否开始*/
+
+        /*没交钱任务不能开始*/
+
+        /*通知是否发送*/
+
+        /*客户通知是否发送*/
+    }
 }

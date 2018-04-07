@@ -1,6 +1,6 @@
 <?php
 /**
- * 工单状态操作
+ * 工单操作唯一入口
  * User: Administrator
  * Date: 2018/3/31/031
  * Time: 22:28
@@ -61,7 +61,10 @@ class OrderOption
     }
 
     /**
-     * 发布任务改变状态
+     * 发布工单改变状态
+     * 1、修改工单状态
+     * 2、修改任务状态
+     *
      */
     public function releaseTask(){
         /*修改工单状态*/

@@ -5,7 +5,7 @@
  * Time: 下午7:21
  */
 
-namespace app\lib\Order;
+namespace app\lib\Order\OrderTask;
 
 
 use app\model\OrderInfoModel;

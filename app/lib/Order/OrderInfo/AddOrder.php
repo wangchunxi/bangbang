@@ -5,7 +5,7 @@
  * Date: 2018/2/23/023
  * Time: 20:50
  */
-namespace app\lib\Order;
+namespace app\lib\Order\OrderInfo;
 use app\model\OrderInfoModel;
 use app\model\UserModel;
 
@@ -228,6 +228,7 @@ class AddOrder
         $data['orderDesigner'] =    $this->orderDesigner;
         $data['orderSupervisor'] =  $this->orderSupervisor;
         $data['orderStartTime'] =  $this->orderStartTime;
+        $data['orderEndTime'] =  $this->orderStartTime+($this->orderCycle*(24*3600));
         $this->checkData();
         $model =  new OrderInfoModel();
         $result =  $model->insert($data);
