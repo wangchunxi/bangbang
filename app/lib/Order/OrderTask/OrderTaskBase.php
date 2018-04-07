@@ -1,12 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 工单任务操作基类
  * User: Administrator
  * Date: 2018/3/31/031
  * Time: 19:45
  */
 
-namespace app\lib\Order;
+namespace app\lib\Order\OrderTask;
 
 
 use app\model\OrderInfoModel;

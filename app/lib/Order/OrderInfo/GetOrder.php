@@ -1,12 +1,12 @@
 <?php
 /**
- * 测试工单数据
+ * 获取工单数据
  * User: wangcx
  * Date: 18-4-3
  * Time: 下午4:51
  */
 
-namespace app\lib\Order;
+namespace app\lib\Order\OrderInfo;
 
 
 use app\model\OrderInfoModel;
