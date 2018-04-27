@@ -82,6 +82,7 @@ class HandleLog
     protected function handleArray(){
         $config =  $this->getOldConfig();
         $data  =  $this->getAllController();
+        $newData = array();
         foreach ($data as $v){
             $value =  $this->getAction($v);
             $newData[$v]=$value;

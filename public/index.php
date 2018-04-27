@@ -8,7 +8,8 @@
 // +----------------------------------------------------------------------
 
 // [ 入口文件 ]
-
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 // 调试模式开关
 define("APP_DEBUG", true);
 
