@@ -1,5 +1,6 @@
 <?php
 return array (
+  'ADMIN_HANDLE_LOG_INDEX' => '用户操作日志配置',
   'ADMIN_HOOK_INDEX' => '钩子管理',
   'ADMIN_HOOK_PLUGINLISTORDER' => '钩子插件排序',
   'ADMIN_HOOK_PLUGINS' => '钩子插件管理',
@@ -26,6 +27,7 @@ return array (
   'ADMIN_MENU_INDEX' => '后台菜单',
   'ADMIN_MENU_LISTORDER' => '后台菜单排序',
   'ADMIN_MENU_LISTS' => '所有菜单',
+  'ADMIN_MYSQL_HANDLE_INDEX' => '数据库操作',
   'ADMIN_NAV_ADD' => '添加导航',
   'ADMIN_NAV_ADDPOST' => '添加导航提交保存',
   'ADMIN_NAV_DELETE' => '删除导航',

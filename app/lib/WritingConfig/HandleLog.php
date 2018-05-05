@@ -17,5 +17,6 @@ class HandleLog extends WritingBase
         $this->checkData();
         $str =  "<?php  return '".json_encode($this->post)."';";
         file_put_contents($this->path.'/'.$this->fileName,$str);
+        return true;
     }
 }

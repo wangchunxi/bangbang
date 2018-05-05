@@ -12,16 +12,23 @@ use app\admin\controller\TestController;
 class HandleLog
 {
     protected $path;
-    public function __construct($path)
+    protected $filePath;
+    public function __construct()
     {
-        $this->path =  $path;
+        $this->path =   APP_PATH.'admin/controller';
+        $this->filePath =  CMF_ROOT . "data/conf/handleLog.php";
     }
 
     /**
      * 获取旧的配置
      */
     protected function getOldConfig(){
-        $runtimeConfig = include CMF_ROOT . "data/conf/handleLog.php";
+        /*判断路径是否存在*/
+        if(!file_exists($this->filePath))
+        {
+            file_put_contents($this->filePath,'');
+        }
+        $runtimeConfig =include $this->filePath ;
         if(!empty($runtimeConfig)){
             $runtimeConfig = json_decode($runtimeConfig,true);
         }

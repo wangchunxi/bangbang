@@ -1,31 +1,104 @@
-<include file="public@header"/>
-<style type="text/css">
-    .pic-list li {
-        margin-bottom: 5px;
-    }
-</style>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>拓扑图</title>
+    <script src="__TMPL__/public/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="__TMPL__/public/assets/layer/layer.js"></script>
+    <link href="__TMPL__/public/assets/simpleboot3/css/reset.css" rel="stylesheet">
+    <style>
+        #box{
+            width: 800px; min-height: 300px;
+            margin: 10px auto;
+            border: 1px solid #ccc;
+            font-family: "Helvetica Neue",Helvetica,"Microsoft YaHei",Arial,sans-serif;
+        }
+        #box form#myform{
+            position: relative;
+            width:96%;
+            margin: 2%;
+        }
+        .pjt{
+            position: relative;
+            margin: 10px 0;
+            border: 5px solid #b4b4b4;
+            background: #c0c0c0;
+            font-size: 0;
+        }
+        .pjt h5.pjt-title{
+            display: inline-block;
+            width: 10%;
+            margin: 0 10px;
+            font-size: 18px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .pjt ul{
+            display: inline-block;
+            width: 84%; height: 100%;
+            padding: 5px;
+            vertical-align: middle;
+        }
+        .pjt ul li{
+            width: 100%;
+            margin: 5px 0;
+            background: #d3d3d3;
+        }
+        .pjt ul li h6{
+            display: inline-block;
+            width: 20%;
+            margin: 0 10px;
+            text-align: center;
+            font-weight: normal;
+            font-size: 16px;
+            vertical-align: middle;
+        }
+        .pjt ul li div{
+            display: inline-block;
+            width: 76%;
+            vertical-align: middle;
+        }
+        .pjt ul li div p{
+            width: 96%; height: 26px;
+            margin: 5px 0;
+            font-size: 16px;
+            line-height: 26px;text-align: center;
+            vertical-align: middle;
+        }
+        .pjt ul li div input{
+            display: block;
+            width: 96%; height: 26px;
+            margin: 5px 0;
+            font-size: 16px;
+            text-indent: 10px;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-<div class="wrap js-check-wrap">
-    <form action="{:url('Order/addPost')}" method="post" class="form-horizontal js-ajax-form margin-top-20">
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-bordered">
-                    <tr>
-                        <th>业主姓名<span class="form-required">*</span></th>
-
-                    </tr>
-                </table>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('ADD')}</button>
-                        <a class="btn btn-default" href="{:url('AdminArticle/index')}">{:lang('BACK')}</a>
-                    </div>
-                </div>
+<div id="box">
+    <form action="save" id="myform"  method="post" >
+        <foreach name="result" item="vo" key="key">
+            <div class="pjt">
+                <h5 class="pjt-title">控制器：{$key}</h5>
+                <ul>
+                    <foreach name="vo" item="v" key="k">
+                        <li>
+                            <h6 class="x1">方法名：{$k}</h6>
+                            <div>
+                                <input type="text" placeholder="操作说明" name="data[{$key}][{$k}]" value="{$v}">
+                            </div>
+                        </li>
+                    </foreach>
+                </ul>
             </div>
-        </div>
+        </foreach>
+        <input type="submit" id="sub" class="sub">
     </form>
 </div>
+
+<script>
+
+</script>
 </body>
 </html>
