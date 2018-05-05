@@ -11,7 +11,7 @@ namespace app\model;
 
 use think\Model;
 
-class UserHandleLog extends Model
+class UserHandleLogModel extends Model
 {
 
 }

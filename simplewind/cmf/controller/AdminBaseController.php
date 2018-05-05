@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace cmf\controller;
 
+use app\lib\User\AddUserHandleLog;
 use think\Db;
 
 class AdminBaseController extends BaseController
@@ -36,6 +37,7 @@ class AdminBaseController extends BaseController
                 exit();
             }
         }
+        $this->saveUserHandleLog();
     }
 
     public function _initializeView()
@@ -103,4 +105,17 @@ class AdminBaseController extends BaseController
         }
     }
 
+    /**
+     * 记录用户的操作日志
+     */
+    protected function saveUserHandleLog(){
+        $controller = $this->request->controller();
+        $action = $this->request->action();
+        $ip = $this->request->ip();
+        $uid = session('ADMIN_ID');
+        $userLog = new AddUserHandleLog();
+        $logId =  $userLog->setOpUid($uid)->setOpAction($action)
+            ->setOpController($controller)->setIp($ip)->save();
+        session('opLog',$logId);
+    }
 }

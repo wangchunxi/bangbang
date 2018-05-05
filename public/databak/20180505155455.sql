@@ -2,7 +2,7 @@
 MySQL Database Backup Tools
 Server:127.0.0.1:3306
 Database:bangbangyz
-Data:2018-05-05 13:07:40
+Data:2018-05-05 15:54:56
 */
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
@@ -1386,18 +1386,40 @@ CREATE TABLE `bangbang_user_handle_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `opUid` int(11) NOT NULL COMMENT '操作人',
   `opController` varchar(255) NOT NULL COMMENT '访问的控制器',
-  `opControllerStr` varchar(255) NOT NULL COMMENT '控制器中文',
   `opAction` varchar(255) NOT NULL COMMENT '访问的方法',
-  `opActionStr` varchar(255) NOT NULL,
+  `opContent` varchar(255) NOT NULL COMMENT '操作的中文内容',
   `opTime` int(11) NOT NULL COMMENT '访问时间',
-  `remark` varchar(255) NOT NULL COMMENT '备注',
+  `opIp` varchar(255) NOT NULL COMMENT 'ip',
   `requestData` text COMMENT '请求数据',
   `dataResult` text COMMENT '数据结果',
+  `resultId` int(11) NOT NULL DEFAULT '0' COMMENT '操作的结果id',
+  `type` varchar(255) NOT NULL COMMENT '操作类型:访问=>access，上下架=>changeStatus 添加=>add 删除=>del 修改=>edit',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='后台操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='后台操作日志';
 -- ----------------------------
 -- Records of bangbang_user_handle_log
 -- ----------------------------
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('4','1','HandleLog','index','用户日志配置列表','1525506570','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('5','1','MysqlHandle','index','未设置日志配置','1525506596','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('6','1','Order','index','访问工单主页面','1525506621','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('7','1','Order','index','访问工单主页面','1525506666','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('8','1','Order','index','访问工单主页面','1525506667','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('9','1','Order','index','访问工单主页面','1525506669','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('10','1','Order','index','访问工单主页面','1525506670','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('11','1','Order','index','访问工单主页面','1525506672','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('12','1','Order','index','访问工单主页面','1525506674','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('13','1','MysqlHandle','index','未设置日志配置','1525506717','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('14','1','HandleLog','index','用户日志配置列表','1525506719','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('15','1','HandleLog','index','用户日志配置列表','1525506726','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('16','1','Storage','index','未设置日志配置','1525506739','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('17','1','Setting','upload','未设置日志配置','1525506741','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('18','1','Index','index','未设置日志配置','1525506746','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('19','1','Main','index','未设置日志配置','1525506747','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('20','1','Order','index','访问工单主页面','1525506782','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('21','1','Order','index','访问工单主页面','1525506784','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('22','1','Plugin','index','未设置日志配置','1525506799','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('23','1','MysqlHandle','index','未设置日志配置','1525506890','127.0.0.1','','','0','access');
+INSERT INTO `bangbang_user_handle_log` (`id`,`opUid`,`opController`,`opAction`,`opContent`,`opTime`,`opIp`,`requestData`,`dataResult`,`resultId`,`type`) VALUES ('24','1','MysqlHandle','operating','未设置日志配置','1525506895','127.0.0.1','','','0','access');
 
 -- ----------------------------
 -- Table structure for bangbang_user_login_attempt
