@@ -39,7 +39,10 @@ class AddUserHandleLog
     protected function getOpContent(){
         $runtimeConfig =include CMF_ROOT . "data/conf/handleLog.php";
         $runtimeConfig = json_decode($runtimeConfig,true);
-        $content = $runtimeConfig[$this->opController."Controller"][$this->opAction];
+        $content = '';
+        if(isset( $runtimeConfig[$this->opController."Controller"][$this->opAction])){
+            $content = $runtimeConfig[$this->opController."Controller"][$this->opAction];
+        }
         $this->opContent = empty($content)?'未设置日志配置':$content;
         return $this;
     }
