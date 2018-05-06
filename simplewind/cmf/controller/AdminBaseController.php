@@ -10,7 +10,8 @@
 // +----------------------------------------------------------------------
 namespace cmf\controller;
 
-use app\lib\User\AddUserHandleLog;
+use app\lib\User\UserHandleLog\AddUserHandleLog;
+use app\lib\User\UserHandleLog\CompletionUserHandleLog;
 use think\Db;
 
 class AdminBaseController extends BaseController
@@ -117,5 +118,28 @@ class AdminBaseController extends BaseController
         $logId =  $userLog->setOpUid($uid)->setOpAction($action)
             ->setOpController($controller)->setIp($ip)->save();
         session('opLog',$logId);
+    }
+
+    /**
+     * 对于赠删改的数据进行操作日志补全监控
+     * @param $data 请求参数
+     * @param $result 请求后的结果
+     * @param $type     操作类型
+     * @param $resultId 被操作的id
+     */
+    protected function updateUserHandleLog($data='',$result='',$type='access',$resultId='0'){
+        (new CompletionUserHandleLog(session('opLog')))
+            ->setDataResult($result)->setRequestData($data)
+            ->setType($type)->setResultId($resultId)->save();
+    }
+
+
+    protected function checkPost($data,$array = []){
+        foreach ($array as $k=>$v){
+            if(!isset($data[$k])){
+                $data[$k] = $v;
+            }
+        }
+        return $data;
     }
 }

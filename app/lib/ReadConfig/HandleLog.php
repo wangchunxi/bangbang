@@ -58,24 +58,24 @@ class HandleLog
             '__construct',
             '__destruct',
             '__call',
-            '__callStatic',
+            '__callstatic',
             '__get',
             '__set',
             '__isset',
             '__unset',
             '__sleep',
             '__wakeup',
-            '__toString',
+            '__tostring',
             '__invoke',
             '__set_state',
             '__clone',
-            '__debugInfo',
+            '__debuginfo',
             '_initialize',
-            '_initializeView',
-            'initMenu'
+            '_initializeview',
+            'initmenu'
             ];
         foreach ($result as $v){
-            $func = trim($v);
+            $func = strtolower(trim($v));
             if(!in_array($func,$curFunctions)){
                 $customerFunctions[$func] = '';
             }

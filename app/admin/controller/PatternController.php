@@ -9,9 +9,7 @@
 namespace app\admin\controller;
 
 
-use cmf\controller\AdminBaseController;
-
-class PatternController extends AdminBaseController
+class PatternController extends TagController
 {
     public function index(){
 

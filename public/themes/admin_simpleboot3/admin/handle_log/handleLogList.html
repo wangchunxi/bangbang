@@ -1,0 +1,67 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <form class="well form-inline margin-top-20" method="post" action="">
+        分类:
+        <select class="form-control" name="keywordType" style="width: 140px;">
+            <option >请选择</option>
+            <foreach name="keywordType" item="vo" key="key">
+                <option value='{$key}' {$vo.class}>{$vo.name}</option>
+            </foreach>
+        </select> &nbsp;&nbsp;
+        关键字:
+        <input type="text" class="form-control" name="keyword" style="width: 200px;"
+               value="{$data['keyword']}" placeholder="请输入关键字...">
+        时间:
+        <input type="text" class="form-control js-bootstrap-datetime" name="startTime"
+               value=""
+               style="width: 140px;" autocomplete="off">-
+        <input type="text" class="form-control js-bootstrap-datetime" name="endTime"
+               value=""
+               style="width: 140px;" autocomplete="off">
+        操作类型:
+        <select class="form-control" name="type" style="width: 140px;">
+            <option >请选择</option>
+            <foreach name="type" item="vo" key="key">
+                <option value='{$key}' {$vo.class}>{$vo.name}</option>
+            </foreach>
+        </select> &nbsp;&nbsp;&nbsp; &nbsp;
+        <input type="submit" class="btn btn-primary" value="搜索"/>
+    </form>
+    <form class="js-ajax-form" action="" method="post">
+        <div class="table-actions">
+        </div>
+        <table class="table table-hover table-bordered table-list">
+            <thead>
+            <tr>
+
+                <th width="50">序号</th>
+                <th>操作账号</th>
+                <th>操作时间</th>
+                <th>操作类型</th>
+                <th >操作内容</th>
+                <th >请求参数</th>
+                <th >操作控制器</th>
+                <th >操作方法</th>
+            </tr>
+            </thead>
+            <foreach name="list" item="vo">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.user_login}</td>
+                    <td>{$vo.opTime}</td>
+                    <td>{$vo.typeStr}</td>
+                    <td>{$vo.opContent}</td>
+                    <td>{$vo.requestData}</td>
+                    <td>{$vo.opController}</td>
+                    <td>{$vo.opAction}</td>
+                </tr>
+            </foreach>
+        </table>
+        <ul class="pagination">{$page|default=''}</ul>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

@@ -9,14 +9,14 @@
 namespace app\admin\controller;
 
 
-class StyleController
+class StyleController extends  TagController
 {
-    public function index(){
-
+    public function styleIndex(){
+        $this->index();
     }
 
     public function addStyle(){
-
+        return $this->add('style');
     }
 
     public function editStyle(){

@@ -5,7 +5,7 @@
  * Date: 18-4-4
  * Time: 下午1:28
  */
-namespace app\lib\User;
+namespace app\lib\User\UserHandleLog;
 use app\model\UserHandleLogModel;
 use think\Request;
 use think\Validate;
@@ -37,7 +37,7 @@ class AddUserHandleLog
         return $this;
     }
     protected function getOpContent(){
-        $runtimeConfig =include CMF_ROOT . "data/conf/handleLog.php";
+        $runtimeConfig = include CMF_ROOT . "data/conf/handleLog.php";
         $runtimeConfig = json_decode($runtimeConfig,true);
         $content = '';
         if(isset( $runtimeConfig[$this->opController."Controller"][$this->opAction])){

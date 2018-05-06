@@ -1,5 +1,6 @@
 <?php
 return array (
+  'ADMIN_HANDLELOG_HANDLELOGLIST' => '用户操作日志列表',
   'ADMIN_HANDLE_LOG_INDEX' => '用户操作日志配置',
   'ADMIN_HOOK_INDEX' => '钩子管理',
   'ADMIN_HOOK_PLUGINLISTORDER' => '钩子插件排序',
