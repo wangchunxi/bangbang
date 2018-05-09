@@ -39,10 +39,11 @@ class TagController extends AdminBaseController
             }
             $data = input('post.');
             $data['tagType'] = $type;
-            $result = $this->getTable()->insert($data);
-            if(!$result){
-                exception('标签添加失败');
-            }
+            dump($_FILES);
+           // $result = $this->getTable()->insert($data);
+//            if(!$result){
+//                exception('标签添加失败');
+//            }
             return true;
         }else{
             return $this->fetch('tag/add');
