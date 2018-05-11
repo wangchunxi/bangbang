@@ -16,7 +16,8 @@ use think\Db;
 
 class AdminBaseController extends BaseController
 {
-
+    protected $loginId = 0;
+    protected $publicStatus = [];
     public function _initialize()
     {
         // 监听admin_init
@@ -38,7 +39,10 @@ class AdminBaseController extends BaseController
                 exit();
             }
         }
+        $this->loginId =  session('ADMIN_ID');
         $this->saveUserHandleLog();
+        /*引入通用配置*/
+        $this->includeConfig();
     }
 
     public function _initializeView()
@@ -141,5 +145,12 @@ class AdminBaseController extends BaseController
             }
         }
         return $data;
+    }
+
+    private function includeConfig(){
+        if (!file_exists( CMF_ROOT . "data/conf/handleLog.php")) {
+            $this->error('缺少通用状态配置，请联系管理员');
+        }
+        $this->publicStatus = include CMF_ROOT . "data/conf/publicStatus.php";
     }
 }

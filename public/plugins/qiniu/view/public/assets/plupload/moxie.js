@@ -9225,7 +9225,7 @@ define("moxie/runtime/html5/image/ImageInfo", [
 			Sets Exif tag. Currently applicable only for width and height tags. Obviously works only with JPEGs.
 
 			@method setExif
-			@param {String} tag Tag to set
+			@param {String} tag AddTag to set
 			@param {Mixed} value Value to assign to the tag
 			*/
 			setExif: function() {},

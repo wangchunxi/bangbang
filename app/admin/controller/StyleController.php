@@ -20,7 +20,7 @@ class StyleController extends  TagController
     }
 
     public function editStyle(){
-
+        return $this->edit('style');
     }
 
     public function delStyle(){

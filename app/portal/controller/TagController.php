@@ -32,7 +32,7 @@ class TagController extends HomeBaseController
             abort(404, '标签不存在!');
         }
 
-        $this->assign('tag', $tag);
+        $this->assign('AddTag', $tag);
 
         return $this->fetch('/tag');
     }
