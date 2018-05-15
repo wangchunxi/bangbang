@@ -14,6 +14,7 @@ use app\lib\Tag\ChangeStatusTag;
 use app\lib\Tag\DelTag;
 use app\lib\Tag\EditTag;
 use app\lib\Tag\FindTagInfo;
+use app\lib\Tag\GetTagList;
 use cmf\controller\AdminBaseController;
 use think\Db;
 
@@ -27,6 +28,7 @@ class TagController extends AdminBaseController
         $map['tagType'] = $type;
         $map['tagStatus'] = 1;
         $list = $this->getTable()->where($map)->select();
+        (new GetTagList($type))->setKeyword()->setStatus($this->publicStatus)->getList();
         $this->assign('list',$list);
         return $this->fetch();
     }

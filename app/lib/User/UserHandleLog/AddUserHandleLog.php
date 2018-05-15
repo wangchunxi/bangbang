@@ -38,7 +38,7 @@ class AddUserHandleLog
     }
     protected function getOpContent(){
         if (!file_exists( CMF_ROOT . "data/conf/handleLog.php")) {
-            file_put_contents(CMF_ROOT . "data/conf/handleLog.php");
+            file_put_contents(CMF_ROOT . "data/conf/handleLog.php",'');
         }
         $runtimeConfig = include CMF_ROOT . "data/conf/handleLog.php";
         $runtimeConfig = json_decode($runtimeConfig,true);
