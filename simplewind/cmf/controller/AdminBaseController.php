@@ -148,8 +148,8 @@ class AdminBaseController extends BaseController
     }
 
     private function includeConfig(){
-        if (!file_exists( CMF_ROOT . "data/conf/handleLog.php")) {
-            $this->error('缺少通用状态配置，请联系管理员');
+        if (!file_exists( CMF_ROOT . "data/conf/publicStatus.php")) {
+            file_put_contents(CMF_ROOT . "data/conf/publicStatus.php",'');
         }
         $this->publicStatus = include CMF_ROOT . "data/conf/publicStatus.php";
     }
