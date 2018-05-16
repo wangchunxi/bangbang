@@ -77,6 +77,6 @@ class HandleLogController extends AdminBaseController
         $this->assign('keywordType',$keywordType);
         $this->assign("page", $result['page']);
         $this->assign("list", $result['list']);
-        return $this->fetch();
+        return $this->fetch('handle_log/handleLogList');
     }
 }
