@@ -348,7 +348,7 @@
           }]
         ];
       }
-      else if (this.component && this.hasInput) { // component: input + button
+      else if (this.component && this.hasInput) { // component: input + Button
         this._events = [
           // For components that are not readonly, allow keyboard nav
           [this.element.find('input'), {

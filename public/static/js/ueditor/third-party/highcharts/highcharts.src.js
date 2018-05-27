@@ -3393,7 +3393,7 @@ SVGRenderer.prototype = {
 	},
 
 	/**
-	 * Create a button with preset states
+	 * Create a Button with preset states
 	 * @param {String} text
 	 * @param {Number} x
 	 * @param {Number} y
@@ -4500,7 +4500,7 @@ SVGRenderer.prototype = {
 			destroy: function () {
 				removeEvent(wrapper, 'add', getSizeAfterAdd);
 
-				// Added by button implementation
+				// Added by Button implementation
 				removeEvent(wrapper.element, 'mouseenter');
 				removeEvent(wrapper.element, 'mouseleave');
 
@@ -7830,7 +7830,7 @@ Axis.prototype = {
 			}
 		}
 
-		// In full view, displaying the reset zoom button is not required
+		// In full view, displaying the reset zoom Button is not required
 		this.displayBtn = newMin !== UNDEFINED || newMax !== UNDEFINED;
 		
 		// Do it
@@ -11062,7 +11062,7 @@ Chart.prototype = {
 	},
 
 	/**
-	 * Display the zoom button
+	 * Display the zoom Button
 	 */
 	showResetZoom: function () {
 		var chart = this,
@@ -11123,7 +11123,7 @@ Chart.prototype = {
 			});
 		}
 		
-		// Show or hide the Reset zoom button
+		// Show or hide the Reset zoom Button
 		resetZoomButton = chart.resetZoomButton;
 		if (displayButton && !resetZoomButton) {
 			chart.showResetZoom();
@@ -11240,7 +11240,7 @@ Chart.prototype = {
 			options = this.options,
 			titleOptions = options.title,
 			subtitleOptions = options.subtitle,
-			autoWidth = this.spacingBox.width - 44; // 44 makes room for default context button
+			autoWidth = this.spacingBox.width - 44; // 44 makes room for default context Button
 
 		if (title) {
 			title

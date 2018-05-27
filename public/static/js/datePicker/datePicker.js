@@ -243,7 +243,7 @@
 			}
 
 			var body = root.find("#" + css.body);
-			$('<div class="caltime"><button type="button" class="btn btn_submit fr" name="submit">确认</button><input id="calHour" type="number" class="input" min="0" max="23" size="2" value="0"><span>点</span><input id="calMin" class="input" type="number" size="2" min="1" max="59" value="0"><span>分</span></div>').appendTo(body);
+			$('<div class="caltime"><Button type="Button" class="btn btn_submit fr" name="submit">确认</Button><input id="calHour" type="number" class="input" min="0" max="23" size="2" value="0"><span>点</span><input id="calMin" class="input" type="number" size="2" min="1" max="59" value="0"><span>分</span></div>').appendTo(body);
 
 			$("body").append(root);
 

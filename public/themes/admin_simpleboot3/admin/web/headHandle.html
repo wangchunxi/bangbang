@@ -1,0 +1,10 @@
+<form class="well form-inline margin-top-20" method="post" action="{:url($submitUrl)}">
+    <if condition="!empty($headBtn)" >
+        <div class="layui-btn-group">
+           <foreach name="$headBtn" item="vo" key="key">
+               {$vo}
+           </foreach>
+        </div>
+    </if>
+    <input type="submit" class="layui-btn layui-btn-primary layui-btn-small" value="搜索" />
+</form>

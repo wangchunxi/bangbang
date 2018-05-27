@@ -95,7 +95,7 @@ var NotyObject = {
       var self = this;
 
       $.each(this.options.buttons, function (i, button) {
-        var $button = $('<button/>').addClass((button.addClass) ? button.addClass : 'gray').html(button.text).attr('id', button.id ? button.id : 'button-' + i)
+        var $button = $('<Button/>').addClass((button.addClass) ? button.addClass : 'gray').html(button.text).attr('id', button.id ? button.id : 'Button-' + i)
             .attr('title', button.title)
             .appendTo($buttons)
             .on('click', function (event) {
@@ -1336,7 +1336,7 @@ $.noty.themes.defaultTheme = {
       marginLeft: 5
     });
 
-    this.$buttons.find('button:first').css({
+    this.$buttons.find('Button:first').css({
       marginLeft: 0
     });
 
@@ -1501,7 +1501,7 @@ $.noty.themes.metroui = {
       marginLeft: 5
     });
 
-    this.$buttons.find('button:first').css({
+    this.$buttons.find('Button:first').css({
       marginLeft: 0
     });
 
@@ -1657,7 +1657,7 @@ $.noty.themes.relax = {
       marginLeft: 5
     });
 
-    this.$buttons.find('button:first').css({
+    this.$buttons.find('Button:first').css({
       marginLeft: 0
     });
 
@@ -1896,7 +1896,7 @@ $.noty.defaults = {
     modal: false,
     maxVisible: 5, // you can set max visible notification for dismissQueue true option,
     killer: false, // for close all notifications before show
-    closeWith: ['click'], // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all open notifications
+    closeWith: ['click'], // ['click', 'Button', 'hover', 'backdrop'] // backdrop click will close all open notifications
     callback: {
         onShow: function() {},
         afterShow: function() {},

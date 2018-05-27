@@ -48,12 +48,12 @@ $.extend( $.fn, {
 					validator.submitButton = event.target;
 				}
 
-				// Allow suppressing validation by adding a cancel class to the submit button
+				// Allow suppressing validation by adding a cancel class to the submit Button
 				if ( $( this ).hasClass( "cancel" ) ) {
 					validator.cancelSubmit = true;
 				}
 
-				// Allow suppressing validation by adding the html5 formnovalidate attribute to the submit button
+				// Allow suppressing validation by adding the html5 formnovalidate attribute to the submit Button
 				if ( $( this ).attr( "formnovalidate" ) !== undefined ) {
 					validator.cancelSubmit = true;
 				}
@@ -71,7 +71,7 @@ $.extend( $.fn, {
 					if ( validator.settings.submitHandler ) {
 						if ( validator.submitButton ) {
 
-							// Insert a hidden input as a replacement for the missing submit button
+							// Insert a hidden input as a replacement for the missing submit Button
 							hidden = $( "<input type='hidden'/>" )
 								.attr( "name", validator.submitButton.name )
 								.val( $( validator.submitButton ).val() )

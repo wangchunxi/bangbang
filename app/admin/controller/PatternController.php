@@ -11,7 +11,7 @@ namespace app\admin\controller;
 
 class PatternController extends TagController
 {
-    public function index(){
+    public function patternIndex(){
 
     }
 

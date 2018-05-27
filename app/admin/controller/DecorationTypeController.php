@@ -11,7 +11,7 @@ namespace app\admin\controller;
 
 class DecorationTypeController extends TagController
 {
-    public function  index(){
+    public function  decorationIndex(){
 
     }
 

@@ -1,5 +1,5 @@
 /**
- * Dark blue theme for Highcharts JS
+ * Dark blue skin for Highcharts JS
  * @author Torstein Hønsi
  */
 
@@ -251,5 +251,5 @@ Highcharts.theme = {
 	maskColor: 'rgba(255,255,255,0.3)'
 };
 
-// Apply the theme
+// Apply the skin
 var highchartsOptions = Highcharts.setOptions(Highcharts.theme);

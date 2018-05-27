@@ -665,7 +665,7 @@ function exec(scrawlObj) {
             ajax.request(url, options);
         }
     } else {
-        addMaskLayer(lang.noScarwl + "&nbsp;&nbsp;&nbsp;<input type='button' value='" + lang.continueBtn + "'  onclick='removeMaskLayer()'/>");
+        addMaskLayer(lang.noScarwl + "&nbsp;&nbsp;&nbsp;<input type='Button' value='" + lang.continueBtn + "'  onclick='removeMaskLayer()'/>");
     }
 }
 

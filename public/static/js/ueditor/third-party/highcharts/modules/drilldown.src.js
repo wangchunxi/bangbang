@@ -62,7 +62,7 @@
 				y: 10
 			}
 			// relativeTo: 'plotBox'
-			// theme
+			// skin
 		}
 	};	
 

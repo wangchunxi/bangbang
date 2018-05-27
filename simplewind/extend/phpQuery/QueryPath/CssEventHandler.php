@@ -534,7 +534,7 @@ class QueryPathCssEventHandler implements CssEventHandler {
       case 'submit':
       case 'image':
       case 'reset':
-      case 'button':
+      case 'Button':
         $this->attribute('type', $name);
         break;
 

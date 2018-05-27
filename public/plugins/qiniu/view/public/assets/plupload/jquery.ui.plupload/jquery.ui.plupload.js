@@ -10,7 +10,7 @@
  * Depends:
  *	jquery.ui.core.js
  *	jquery.ui.widget.js
- *	jquery.ui.button.js
+ *	jquery.ui.Button.js
  *	jquery.ui.progressbar.js
  *
  * Optionally:
@@ -22,7 +22,7 @@
 /**
 jQuery UI based implementation of the Plupload API - multi-runtime file uploading API.
 
-To use the widget you must include _jQuery_ and _jQuery UI_ bundle (including `ui.core`, `ui.widget`, `ui.button`,
+To use the widget you must include _jQuery_ and _jQuery UI_ bundle (including `ui.core`, `ui.widget`, `ui.Button`,
 `ui.progressbar` and `ui.sortable`).
 
 In general the widget is designed the way that you do not usually need to do anything to it after you instantiate it.
@@ -103,9 +103,9 @@ _jQuery UI_ widget factory, there are some specifics. See examples below for mor
 	@param {Boolean} [settings.rename=false] Enable ability to rename files in the queue.
 	@param {Boolean} [settings.sortable=false] Enable ability to sort files in the queue, changing their uploading priority.
 	@param {Object} [settings.buttons] Control the visibility of functional buttons.
-		@param {Boolean} [settings.buttons.browse=true] Display browse button.
-		@param {Boolean} [settings.buttons.start=true] Display start button.
-		@param {Boolean} [settings.buttons.stop=true] Display stop button.
+		@param {Boolean} [settings.buttons.browse=true] Display browse Button.
+		@param {Boolean} [settings.buttons.start=true] Display start Button.
+		@param {Boolean} [settings.buttons.stop=true] Display stop Button.
 	@param {Object} [settings.views] Control various views of the file queue.
 		@param {Boolean} [settings.views.list=true] Enable list view.
 		@param {Boolean} [settings.views.thumbs=false] Enable thumbs view.
@@ -214,7 +214,7 @@ function renderUI(obj) {
 					'<div class="plupload_header_content">' +
 						'<div class="plupload_logo"> </div>' +
 						'<div class="plupload_header_title">' + _("Select files") + '</div>' +
-						'<div class="plupload_header_text">' + _("Add files to the upload queue and click the start button.") + '</div>' +
+						'<div class="plupload_header_text">' + _("Add files to the upload queue and click the start Button.") + '</div>' +
 						'<div class="plupload_view_switch">' +
 							'<input type="radio" id="'+obj.id+'_view_list" name="view_mode_'+obj.id+'" checked="checked" /><label class="plupload_button" for="'+obj.id+'_view_list" data-view="list">' + _('List') + '</label>' +
 							'<input type="radio" id="'+obj.id+'_view_thumbs" name="view_mode_'+obj.id+'" /><label class="plupload_button"  for="'+obj.id+'_view_thumbs" data-view="thumbs">' + _('Thumbnails') + '</label>' +
@@ -683,7 +683,7 @@ $.widget("ui.plupload", {
 
 
 	/**
-	Enable browse button.
+	Enable browse Button.
 
 	@method enable
 	*/
@@ -694,7 +694,7 @@ $.widget("ui.plupload", {
 
 
 	/**
-	Disable browse button.
+	Disable browse Button.
 
 	@method disable
 	*/
@@ -820,7 +820,7 @@ $.widget("ui.plupload", {
 		// destroy uploader instance
 		this.uploader.destroy();
 
-		// unbind all button events
+		// unbind all Button events
 		$('.plupload_button', this.element).unbind();
 
 		// destroy buttons
@@ -897,9 +897,9 @@ $.widget("ui.plupload", {
 		}
 
 		if (up.total.queued === 0) {
-			$('.ui-button-text', this.browse_button).html(_('Add Files'));
+			$('.ui-Button-text', this.browse_button).html(_('Add Files'));
 		} else {
-			$('.ui-button-text', this.browse_button).html(plupload.sprintf(_('%d files queued'), up.total.queued));
+			$('.ui-Button-text', this.browse_button).html(plupload.sprintf(_('%d files queued'), up.total.queued));
 		}
 
 		// have a helper class on a container expressing whether it has files queued or not
@@ -1251,7 +1251,7 @@ $.widget("ui.plupload", {
 			switcher
 				.show()
 				.buttonset()
-				.find('.ui-button')
+				.find('.ui-Button')
 					.click(function(e) {
 						view = $(this).data('view');
 						self._viewChanged(view);

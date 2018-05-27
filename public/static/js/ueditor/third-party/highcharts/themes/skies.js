@@ -1,5 +1,5 @@
 /**
- * Skies theme for Highcharts JS
+ * Skies skin for Highcharts JS
  * @author Torstein Hønsi
  */
 
@@ -85,5 +85,5 @@ Highcharts.theme = {
 	}
 };
 
-// Apply the theme
+// Apply the skin
 var highchartsOptions = Highcharts.setOptions(Highcharts.theme);

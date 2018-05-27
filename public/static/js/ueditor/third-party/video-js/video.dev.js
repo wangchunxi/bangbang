@@ -489,7 +489,7 @@ vjs.fixEvent = function(event) {
     // Handle key presses
     event.which = event.charCode || event.keyCode;
 
-    // Fix button for mouse clicks:
+    // Fix Button for mouse clicks:
     // 0 == left; 1 == middle; 2 == right
     if (event.button != null) {
       event.button = (event.button & 1 ? 0 :
@@ -1301,21 +1301,21 @@ vjs.findPosition = function(el) {
  * javascript object and an element in the DOM. They can be children of other
  * components, and can have many children themselves.
  *
- *     // adding a button to the player
- *     var button = player.addChild('button');
- *     button.el(); // -> button element
+ *     // adding a Button to the player
+ *     var Button = player.addChild('Button');
+ *     Button.el(); // -> Button element
  *
  *     <div class="video-js">
- *       <div class="vjs-button">Button</div>
+ *       <div class="vjs-Button">Button</div>
  *     </div>
  *
  * Components are also event emitters.
  *
- *     button.on('click', function(){
+ *     Button.on('click', function(){
  *       console.log('Button Clicked!');
  *     });
  *
- *     button.trigger('customevent');
+ *     Button.trigger('customevent');
  *
  * @param {Object} player  Main Player
  * @param {Object=} options
@@ -1612,7 +1612,7 @@ vjs.Component.prototype.getChild = function(name){
  *     // [empty array]
  *
  *     var myButton = myComponent.addChild('MyButton');
- *     // -> <div class='my-component'><div class="my-button">myButton<div></div>
+ *     // -> <div class='my-component'><div class="my-Button">myButton<div></div>
  *     // -> myButton === myComonent.children()[0];
  *
  * Pass in options for child constructors and options for children of the child
@@ -2193,7 +2193,7 @@ vjs.Button.prototype.createEl = function(type, props){
     className: this.buildCSSClass(),
     innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text">' + (this.buttonText || 'Need Text') + '</span></div>',
     role: 'button',
-    'aria-live': 'polite', // let the screen reader user know that the text of the button may change
+    'aria-live': 'polite', // let the screen reader user know that the text of the Button may change
     tabIndex: 0
   }, props);
 
@@ -2201,11 +2201,11 @@ vjs.Button.prototype.createEl = function(type, props){
 };
 
 vjs.Button.prototype.buildCSSClass = function(){
-  // TODO: Change vjs-control to vjs-button?
+  // TODO: Change vjs-control to vjs-Button?
   return 'vjs-control ' + vjs.Component.prototype.buildCSSClass.call(this);
 };
 
-  // Click - Override with specific functionality for button
+  // Click - Override with specific functionality for Button
 vjs.Button.prototype.onClick = function(){};
 
   // Focus - Add keyboard functionality to element
@@ -2422,7 +2422,7 @@ vjs.Slider.prototype.onBlur = function(){
 
 /**
  * Listener for click events on slider, used to prevent clicks
- *   from bubbling up to parent elements like button menus.
+ *   from bubbling up to parent elements like Button menus.
  * @param  {Object} event Event object
  */
 vjs.Slider.prototype.onClick = function(event){
@@ -2551,7 +2551,7 @@ vjs.MenuItem.prototype.selected = function(selected){
 
 
 /**
- * A button class with a popup menu
+ * A Button class with a popup menu
  * @param {vjs.Player|Object} player
  * @param {Object=} options
  * @constructor
@@ -2578,7 +2578,7 @@ vjs.MenuButton = vjs.Button.extend({
 });
 
 /**
- * Track the state of the menu button
+ * Track the state of the menu Button
  * @type {Boolean}
  * @private
  */
@@ -2615,20 +2615,20 @@ vjs.MenuButton.prototype.createItems = function(){};
 
 /** @inheritDoc */
 vjs.MenuButton.prototype.buildCSSClass = function(){
-  return this.className + ' vjs-menu-button ' + vjs.Button.prototype.buildCSSClass.call(this);
+  return this.className + ' vjs-menu-Button ' + vjs.Button.prototype.buildCSSClass.call(this);
 };
 
 // Focus - Add keyboard functionality to element
 // This function is not needed anymore. Instead, the keyboard functionality is handled by
-// treating the button as triggering a submenu. When the button is pressed, the submenu
-// appears. Pressing the button again makes the submenu disappear.
+// treating the Button as triggering a submenu. When the Button is pressed, the submenu
+// appears. Pressing the Button again makes the submenu disappear.
 vjs.MenuButton.prototype.onFocus = function(){};
 // Can't turn off list display that we turned on with focus, because list would go away.
 vjs.MenuButton.prototype.onBlur = function(){};
 
 vjs.MenuButton.prototype.onClick = function(){
-  // When you click the button it adds focus, which will show the menu indefinitely.
-  // So we'll remove focus when the mouse leaves the button.
+  // When you click the Button it adds focus, which will show the menu indefinitely.
+  // So we'll remove focus when the mouse leaves the Button.
   // Focus is needed for tab navigation.
   this.one('mouseout', vjs.bind(this, function(){
     this.menu.unlockShowing();
@@ -4126,14 +4126,14 @@ vjs.PlayToggle.prototype.onClick = function(){
 vjs.PlayToggle.prototype.onPlay = function(){
   vjs.removeClass(this.el_, 'vjs-paused');
   vjs.addClass(this.el_, 'vjs-playing');
-  this.el_.children[0].children[0].innerHTML = 'Pause'; // change the button text to "Pause"
+  this.el_.children[0].children[0].innerHTML = 'Pause'; // change the Button text to "Pause"
 };
 
   // OnPause - Add the vjs-paused class to the element so it can change appearance
 vjs.PlayToggle.prototype.onPause = function(){
   vjs.removeClass(this.el_, 'vjs-playing');
   vjs.addClass(this.el_, 'vjs-paused');
-  this.el_.children[0].children[0].innerHTML = 'Play'; // change the button text to "Play"
+  this.el_.children[0].children[0].innerHTML = 'Play'; // change the Button text to "Play"
 };
 /**
  * Displays the current time
@@ -4297,10 +4297,10 @@ vjs.FullscreenToggle.prototype.buildCSSClass = function(){
 vjs.FullscreenToggle.prototype.onClick = function(){
   if (!this.player_.isFullScreen) {
     this.player_.requestFullScreen();
-    this.el_.children[0].children[0].innerHTML = 'Non-Fullscreen'; // change the button text to "Non-Fullscreen"
+    this.el_.children[0].children[0].innerHTML = 'Non-Fullscreen'; // change the Button text to "Non-Fullscreen"
   } else {
     this.player_.cancelFullScreen();
-    this.el_.children[0].children[0].innerHTML = 'Fullscreen'; // change the button to "Fullscreen"
+    this.el_.children[0].children[0].innerHTML = 'Fullscreen'; // change the Button to "Fullscreen"
   }
 };
 /**
@@ -4647,7 +4647,7 @@ vjs.VolumeLevel.prototype.createEl = function(){
    });
  };
 /**
- * A button component for muting the audio
+ * A Button component for muting the audio
  *
  * @param {vjs.Player|Object} player
  * @param {Object=} options
@@ -4697,16 +4697,16 @@ vjs.MuteToggle.prototype.update = function(){
     level = 2;
   }
 
-  // Don't rewrite the button text if the actual text doesn't change.
+  // Don't rewrite the Button text if the actual text doesn't change.
   // This causes unnecessary and confusing information for screen reader users.
   // This check is needed because this function gets called every time the volume level is changed.
   if(this.player_.muted()){
       if(this.el_.children[0].children[0].innerHTML!='Unmute'){
-          this.el_.children[0].children[0].innerHTML = 'Unmute'; // change the button text to "Unmute"
+          this.el_.children[0].children[0].innerHTML = 'Unmute'; // change the Button text to "Unmute"
       }
   } else {
       if(this.el_.children[0].children[0].innerHTML!='Mute'){
-          this.el_.children[0].children[0].innerHTML = 'Mute'; // change the button text to "Mute"
+          this.el_.children[0].children[0].innerHTML = 'Mute'; // change the Button text to "Mute"
       }
   }
 
@@ -4717,7 +4717,7 @@ vjs.MuteToggle.prototype.update = function(){
   vjs.addClass(this.el_, 'vjs-vol-'+level);
 };
 /**
- * Menu button with a popup for showing the volume slider.
+ * Menu Button with a popup for showing the volume slider.
  * @constructor
  */
 vjs.VolumeMenuButton = vjs.MenuButton.extend({
@@ -4739,7 +4739,7 @@ vjs.VolumeMenuButton = vjs.MenuButton.extend({
         this.removeClass('vjs-hidden');
       }
     }));
-    this.addClass('vjs-menu-button');
+    this.addClass('vjs-menu-Button');
   }
 });
 
@@ -4759,7 +4759,7 @@ vjs.VolumeMenuButton.prototype.onClick = function(){
 
 vjs.VolumeMenuButton.prototype.createEl = function(){
   return vjs.Button.prototype.createEl.call(this, 'div', {
-    className: 'vjs-volume-menu-button vjs-menu-button vjs-control',
+    className: 'vjs-volume-menu-Button vjs-menu-Button vjs-control',
     innerHTML: '<div><span class="vjs-control-text">Mute</span></div>'
   });
 };
@@ -4856,8 +4856,8 @@ vjs.LoadingSpinner.prototype.createEl = function(){
 /* Big Play Button
 ================================================================================ */
 /**
- * Initial play button. Shows before the video has played. The hiding of the
- * big play button is done via CSS and player states.
+ * Initial play Button. Shows before the video has played. The hiding of the
+ * big play Button is done via CSS and player states.
  * @param {vjs.Player|Object} player
  * @param {Object=} options
  * @class
@@ -4867,7 +4867,7 @@ vjs.BigPlayButton = vjs.Button.extend();
 
 vjs.BigPlayButton.prototype.createEl = function(){
   return vjs.Button.prototype.createEl.call(this, 'div', {
-    className: 'vjs-big-play-button',
+    className: 'vjs-big-play-Button',
     innerHTML: '<span aria-hidden="true"></span>',
     'aria-label': 'play video'
   });
@@ -6791,7 +6791,7 @@ vjs.TextTrackButton.prototype.createItems = function(){
 };
 
 /**
- * The button component for toggling and selecting captions
+ * The Button component for toggling and selecting captions
  *
  * @constructor
  */
@@ -6804,10 +6804,10 @@ vjs.CaptionsButton = vjs.TextTrackButton.extend({
 });
 vjs.CaptionsButton.prototype.kind_ = 'captions';
 vjs.CaptionsButton.prototype.buttonText = 'Captions';
-vjs.CaptionsButton.prototype.className = 'vjs-captions-button';
+vjs.CaptionsButton.prototype.className = 'vjs-captions-Button';
 
 /**
- * The button component for toggling and selecting subtitles
+ * The Button component for toggling and selecting subtitles
  *
  * @constructor
  */
@@ -6820,12 +6820,12 @@ vjs.SubtitlesButton = vjs.TextTrackButton.extend({
 });
 vjs.SubtitlesButton.prototype.kind_ = 'subtitles';
 vjs.SubtitlesButton.prototype.buttonText = 'Subtitles';
-vjs.SubtitlesButton.prototype.className = 'vjs-subtitles-button';
+vjs.SubtitlesButton.prototype.className = 'vjs-subtitles-Button';
 
 // Chapters act much differently than other text tracks
 // Cues are navigation vs. other tracks of alternative languages
 /**
- * The button component for toggling and selecting chapters
+ * The Button component for toggling and selecting chapters
  *
  * @constructor
  */
@@ -6838,7 +6838,7 @@ vjs.ChaptersButton = vjs.TextTrackButton.extend({
 });
 vjs.ChaptersButton.prototype.kind_ = 'chapters';
 vjs.ChaptersButton.prototype.buttonText = 'Chapters';
-vjs.ChaptersButton.prototype.className = 'vjs-chapters-button';
+vjs.ChaptersButton.prototype.className = 'vjs-chapters-Button';
 
 // Create a menu item for each text track
 vjs.ChaptersButton.prototype.createItems = function(){

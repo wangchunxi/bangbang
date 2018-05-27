@@ -29,13 +29,26 @@ class GetTagList
         $this->keyword =  $keyword;
         return $this;
     }
+
     public function setStatus($status){
         $this->status = $status;
         return $this;
     }
-    private function getParam(){
 
+    private function getParam(){
+        $map = [];
+        $keyword = $this->keyword;
+        if(!empty($keyword)){
+            if(isset($keyword['tagStatus'])){
+                $map['tagStatus'] = $keyword['tagStatus'];
+            }
+            if(isset($keyword['tagType'])){
+                $map['tagType'] = $keyword['tagType'];
+            }
+        }
+        return $map;
     }
+
     public function getList(){
         $map = $this->getParam();
         $model =  (new TagModel());

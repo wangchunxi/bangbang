@@ -140,7 +140,7 @@ fonts to show/hide properly.
   height: 3.0em;
   width: 4em;
 }
-/* FontAwsome button icons */
+/* FontAwsome Button icons */
 .vjs-default-skin .vjs-control:before {
   font-family: VideoJS;
   font-size: 1.5em;
@@ -356,9 +356,9 @@ fonts to show/hide properly.
 .vjs-default-skin.vjs-fullscreen .vjs-fullscreen-control:before {
   content: "\e00b";
 }
-/* Big Play Button (play button at start)
+/* Big Play Button (play Button at start)
 --------------------------------------------------------------------------------
-Positioning of the play button in the center or other corners can be done more
+Positioning of the play Button in the center or other corners can be done more
 easily in the skin designer. http://designer.videojs.com/
 */
 .vjs-default-skin .vjs-big-play-button {
@@ -436,7 +436,7 @@ easily in the skin designer. http://designer.videojs.com/
   content: "\e001";
   font-family: VideoJS;
   /* In order to center the play icon vertically we need to set the line height
-     to the same as the button height */
+     to the same as the Button height */
 
   line-height: 2.6em;
   text-shadow: 0.05em 0.05em 0.1em #000;
@@ -522,7 +522,7 @@ easily in the skin designer. http://designer.videojs.com/
   position: absolute;
   bottom: 0;
   left: 0em;
-  /* (Width of vjs-menu - width of button) / 2 */
+  /* (Width of vjs-menu - width of Button) / 2 */
 
   width: 0em;
   height: 0em;
@@ -549,7 +549,7 @@ easily in the skin designer. http://designer.videojs.com/
   max-height: 15em;
   overflow: auto;
   left: -5em;
-  /* Width of menu - width of button / 2 */
+  /* Width of menu - width of Button / 2 */
 
   /* background-color-with-alpha */
   background-color: #07141e;

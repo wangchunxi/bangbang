@@ -320,7 +320,7 @@ var CodeMirror = (function() {
                     if (start) setCursor(start.line, start.ch, true);
                     return;
             }
-            // For button 1, if it was clicked inside the editor
+            // For Button 1, if it was clicked inside the editor
             // (posFromMouse returning non-null), we have to adjust the
             // selection.
             if (!start) {if (e_target(e) == scroller) e_preventDefault(e); return;}

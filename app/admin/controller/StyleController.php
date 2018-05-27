@@ -12,7 +12,7 @@ namespace app\admin\controller;
 class StyleController extends  TagController
 {
     public function styleIndex(){
-        $this->index();
+        return $this->index('style');
     }
 
     public function addStyle(){

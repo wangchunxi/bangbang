@@ -812,7 +812,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
             },
 
             /**
-             * Generates HTML markup for a regular button in the toolbar.
+             * Generates HTML markup for a regular Button in the toolbar.
              * @param {Highlighter} highlighter Highlighter instance.
              * @param {String} commandName		Command name that would be executed.
              * @param {String} label			Label text to display.

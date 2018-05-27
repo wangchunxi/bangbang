@@ -65,7 +65,7 @@
         Wind.css('artDialog');
         Wind.use('ajaxForm', 'artDialog', 'noty', 'validate', function () {
             var $btn;
-            $('button.js-ajax-submit').on('click', function (e) {
+            $('Button.js-ajax-submit').on('click', function (e) {
                 var btn = $(this), form = btn.parents('form.js-ajax-form');
                 $btn    = btn;
                 if (btn.data("loading")) {

@@ -1,5 +1,5 @@
 /**
- * Grid theme for Highcharts JS
+ * Grid skin for Highcharts JS
  * @author Torstein Hønsi
  */
 
@@ -99,5 +99,5 @@ Highcharts.theme = {
 	}
 };
 
-// Apply the theme
+// Apply the skin
 var highchartsOptions = Highcharts.setOptions(Highcharts.theme);

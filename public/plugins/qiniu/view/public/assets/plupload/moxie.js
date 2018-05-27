@@ -3701,7 +3701,7 @@ define('moxie/file/FileInput', [
 		'mouseleave',
 
 		/**
-		Dispatched when functional mouse button is pressed on top of file-picker area.
+		Dispatched when functional mouse Button is pressed on top of file-picker area.
 
 		@event mousedown
 		@param {Object} event
@@ -3709,7 +3709,7 @@ define('moxie/file/FileInput', [
 		'mousedown',
 
 		/**
-		Dispatched when functional mouse button is released on top of file-picker area.
+		Dispatched when functional mouse Button is released on top of file-picker area.
 
 		@event mouseup
 		@param {Object} event
@@ -3732,7 +3732,7 @@ define('moxie/file/FileInput', [
 		// this will help us to find proper default container
 		browseButton = Dom.get(options.browse_button);
 		if (!browseButton) {
-			// browse button is required
+			// browse Button is required
 			throw new x.DOMException(x.DOMException.NOT_FOUND_ERR);
 		}
 

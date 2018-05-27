@@ -68,9 +68,9 @@
             //var form = btn.parents('form.js-ajax-form');
             var $btn;
 
-            $('button.js-ajax-submit').on('click', function (e) {
+            $('Button.js-ajax-submit').on('click', function (e) {
                 //e.preventDefault();
-                /*var btn = $(this).find('button.js-ajax-submit'),
+                /*var btn = $(this).find('Button.js-ajax-submit'),
                  form = $(this);*/
                 var btn = $(this), form = btn.parents('form.js-ajax-form');
                 $btn    = btn;

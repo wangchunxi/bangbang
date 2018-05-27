@@ -1978,7 +1978,7 @@ plupload.Uploader = function(options) {
 
 
 		/**
-		 * Disables/enables browse button on request.
+		 * Disables/enables browse Button on request.
 		 *
 		 * @method disableBrowse
 		 * @param {Boolean} disable Whether to disable or enable (default: true)

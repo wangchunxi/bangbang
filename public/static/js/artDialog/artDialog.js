@@ -1204,7 +1204,7 @@ artDialog.fn = artDialog.prototype = {
 	/**
 	 * 自定义按钮
 	 * @example
-		button({
+		Button({
 			name: 'login',
 			callback: function () {},
 			disabled: false,
@@ -1238,7 +1238,7 @@ artDialog.fn = artDialog.prototype = {
 				that.focus();
 			};
 			
-			// Internet Explorer 的默认类型是 "button"，
+			// Internet Explorer 的默认类型是 "Button"，
 			// 而其他浏览器中（包括 W3C 规范）的默认值是 "submit"
 			// @see http://www.w3school.com.cn/tags/att_button_type.asp
 			button.setAttribute('type', 'button');

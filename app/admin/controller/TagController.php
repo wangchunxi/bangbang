@@ -27,10 +27,10 @@ class TagController extends AdminBaseController
         }
         $map['tagType'] = $type;
         $map['tagStatus'] = 1;
-        $list = $this->getTable()->where($map)->select();
-        (new GetTagList($type))->setKeyword()->setStatus($this->publicStatus)->getList();
-        $this->assign('list',$list);
-        return $this->fetch();
+        $list = (new GetTagList($type))->setKeyword($map)->setStatus($this->publicStatus)->getList();
+        $this->assign('list',$list['list']);
+        $this->assign('page',$list['page']);
+        return $this->fetch('tag/index');
     }
 
     protected function add($type){

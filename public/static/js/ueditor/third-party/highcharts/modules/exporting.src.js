@@ -372,7 +372,7 @@ extend(Chart.prototype, {
 			body = doc.body,
 			childNodes = body.childNodes;
 
-		if (chart.isPrinting) { // block the button while in printing mode
+		if (chart.isPrinting) { // block the Button while in printing mode
 			return;
 		}
 
@@ -417,10 +417,10 @@ extend(Chart.prototype, {
 	 *
 	 * @param {String} className An identifier for the menu
 	 * @param {Array} items A collection with text and onclicks for the items
-	 * @param {Number} x The x position of the opener button
-	 * @param {Number} y The y position of the opener button
-	 * @param {Number} width The width of the opener button
-	 * @param {Number} height The height of the opener button
+	 * @param {Number} x The x position of the opener Button
+	 * @param {Number} y The y position of the opener Button
+	 * @param {Number} width The width of the opener Button
+	 * @param {Number} height The height of the opener Button
 	 */
 	contextMenu: function (className, items, x, y, width, height, button) {
 		var chart = this,
@@ -534,7 +534,7 @@ extend(Chart.prototype, {
 	},
 
 	/**
-	 * Add the export button to the chart
+	 * Add the export Button to the chart
 	 */
 	addButton: function (options) {
 		var chart = this,
@@ -553,7 +553,7 @@ extend(Chart.prototype, {
 			chart.btnCount = 0;
 		}
 
-		// Keeps references to the button elements
+		// Keeps references to the Button elements
 		if (!chart.exportDivElements) {
 			chart.exportDivElements = [];
 			chart.exportSVGElements = [];

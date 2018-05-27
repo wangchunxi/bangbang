@@ -1022,7 +1022,7 @@
         var $el = $(target);
 
         if (!$el.is('[type=submit],[type=image]')) {
-            // is this a child element of the submit el?  (ex: a span within a button)
+            // is this a child element of the submit el?  (ex: a span within a Button)
             var t = $el.closest('[type=submit]');
 
             if (t.length === 0) {
@@ -1328,8 +1328,8 @@
      *  - input text fields will have their 'value' property set to the empty string
      *  - select elements will have their 'selectedIndex' property set to -1
      *  - checkbox and radio inputs will have their 'checked' property set to false
-     *  - inputs of type submit, button, reset, and hidden will *not* be effected
-     *  - button elements will *not* be effected
+     *  - inputs of type submit, Button, reset, and hidden will *not* be effected
+     *  - Button elements will *not* be effected
      */
     $.fn.clearForm = function(includeHidden) {
         return this.each(function() {

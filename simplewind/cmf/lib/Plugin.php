@@ -62,7 +62,7 @@ abstract class Plugin
 
         $config = $this->getConfig();
 
-        $theme = isset($config['theme']) ? $config['theme'] : '';
+        $theme = isset($config['skin']) ? $config['skin'] : '';
 
         $depr = "/";
 

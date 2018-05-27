@@ -155,7 +155,7 @@ class HomeBaseController extends BaseController
         $file      = str_replace('//', '/', $file);
         $file      = str_replace(['.html', '.php', $themePath . $theme . "/"], '', $file);
 
-        $files = Db::name('theme_file')->field('more')->where(['theme' => $theme])->where(function ($query) use ($file) {
+        $files = Db::name('theme_file')->field('more')->where(['skin' => $theme])->where(function ($query) use ($file) {
             $query->where(['is_public' => 1])->whereOr(['file' => $file]);
         })->select();
 
