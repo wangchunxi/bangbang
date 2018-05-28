@@ -65,7 +65,7 @@ class ThemeController extends AdminBaseController
 
         $themeModel = new ThemeModel();
 
-        $themesInstalled = $themeModel->column('skin');
+        $themesInstalled = $themeModel->column('theme');
 
         $themesDirs = array_diff($themesDirs, $themesInstalled);
 
@@ -75,7 +75,7 @@ class ThemeController extends AdminBaseController
             if (file_exists_case($manifest)) {
                 $manifest       = file_get_contents($manifest);
                 $theme          = json_decode($manifest, true);
-                $theme['skin'] = $dir;
+                $theme['theme'] = $dir;
                 array_push($themes, $theme);
             }
         }
@@ -99,18 +99,18 @@ class ThemeController extends AdminBaseController
      */
     public function uninstall()
     {
-        $theme      = $this->request->param('skin');
+        $theme      = $this->request->param('theme');
         if ($theme == "simpleboot3" || config('cmf_default_theme') == $theme ){
             $this->error("官方自带模板或当前使用中的模板不可以卸载");
         }
 
         $themeModel = new ThemeModel();
         $themeModel->transaction(function () use ($theme, $themeModel) {
-            $themeModel->where(['skin' => $theme])->delete();
-            Db::name('theme_file')->where(['skin' => $theme])->delete();
+            $themeModel->where(['theme' => $theme])->delete();
+            Db::name('theme_file')->where(['theme' => $theme])->delete();
         });
 
-        $this->success("卸载成功", url("skin/index"));
+        $this->success("卸载成功", url("theme/index"));
 
     }
 
@@ -129,9 +129,9 @@ class ThemeController extends AdminBaseController
      */
     public function installTheme()
     {
-        $theme      = $this->request->param('skin');
+        $theme      = $this->request->param('theme');
         $themeModel = new ThemeModel();
-        $themeCount = $themeModel->where('skin', $theme)->count();
+        $themeCount = $themeModel->where('theme', $theme)->count();
 
         if ($themeCount > 0) {
             $this->error('模板已经安装!');
@@ -140,7 +140,7 @@ class ThemeController extends AdminBaseController
         if ($result === false) {
             $this->error('模板不存在!');
         }
-        $this->success("安装成功", url("skin/index"));
+        $this->success("安装成功", url("theme/index"));
     }
 
     /**
@@ -158,9 +158,9 @@ class ThemeController extends AdminBaseController
      */
     public function update()
     {
-        $theme      = $this->request->param('skin');
+        $theme      = $this->request->param('theme');
         $themeModel = new ThemeModel();
-        $themeCount = $themeModel->where('skin', $theme)->count();
+        $themeCount = $themeModel->where('theme', $theme)->count();
 
         if ($themeCount === 0) {
             $this->error('模板未安装!');
@@ -169,7 +169,7 @@ class ThemeController extends AdminBaseController
         if ($result === false) {
             $this->error('模板不存在!');
         }
-        $this->success("更新成功", url("skin/index"));
+        $this->success("更新成功", url("theme/index"));
     }
 
     /**
@@ -187,14 +187,14 @@ class ThemeController extends AdminBaseController
      */
     public function active()
     {
-        $theme      = $this->request->param('skin');
+        $theme      = $this->request->param('theme');
 
         if ($theme == config('cmf_default_theme')){
-            $this->error('模板已启用',url("skin/index"));
+            $this->error('模板已启用',url("theme/index"));
         }
 
         $themeModel = new ThemeModel();
-        $themeCount = $themeModel->where('skin', $theme)->count();
+        $themeCount = $themeModel->where('theme', $theme)->count();
 
         if ($themeCount === 0) {
             $this->error('模板未安装!');
@@ -207,7 +207,7 @@ class ThemeController extends AdminBaseController
         }
         session('cmf_default_theme',$theme);
 
-        $this->success("模板启用成功",url("skin/index"));
+        $this->success("模板启用成功",url("theme/index"));
 
     }
 
@@ -226,8 +226,8 @@ class ThemeController extends AdminBaseController
      */
     public function files()
     {
-        $theme = $this->request->param('skin');
-        $files = Db::name('theme_file')->where(['skin' => $theme])->order('list_order ASC')->select()->toArray();
+        $theme = $this->request->param('theme');
+        $files = Db::name('theme_file')->where(['theme' => $theme])->order('list_order ASC')->select()->toArray();
         $this->assign('files', $files);
         return $this->fetch();
     }
@@ -505,7 +505,7 @@ class ThemeController extends AdminBaseController
             $more = json_encode($more);
             Db::name('theme_file')->where(['id' => $fileId])->update(['more' => $more]);
 
-            $this->success("保存成功！", url('skin/fileArrayData', ['tab' => $tab, 'var' => $varName, 'file_id' => $fileId, 'widget' => $widgetName]));
+            $this->success("保存成功！", url('theme/fileArrayData', ['tab' => $tab, 'var' => $varName, 'file_id' => $fileId, 'widget' => $widgetName]));
 
         }
 
@@ -576,7 +576,7 @@ class ThemeController extends AdminBaseController
         $more = json_encode($more);
         Db::name('theme_file')->where(['id' => $fileId])->update(['more' => $more]);
 
-        $this->success("删除成功！", url('skin/fileArrayData', ['tab' => $tab, 'var' => $varName, 'file_id' => $fileId, 'widget' => $widgetName]));
+        $this->success("删除成功！", url('theme/fileArrayData', ['tab' => $tab, 'var' => $varName, 'file_id' => $fileId, 'widget' => $widgetName]));
     }
 
     /**
@@ -597,7 +597,7 @@ class ThemeController extends AdminBaseController
         if ($this->request->isPost()) {
             $id   = $this->request->param('id', 0, 'intval');
             $post = $this->request->param();
-            $file = Db::name('theme_file')->field('skin,more')->where(['id' => $id])->find();
+            $file = Db::name('theme_file')->field('theme,more')->where(['id' => $id])->find();
             $more = json_decode($file['more'], true);
             if (isset($post['vars'])) {
                 $messages = [];

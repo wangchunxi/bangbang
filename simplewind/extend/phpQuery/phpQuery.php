@@ -2055,13 +2055,13 @@ class phpQueryObject
 						"input[type=$class]", new CallbackParam()
 					),
 					$this->map(array($this, 'is'),
-						"Button[type=$class]", new CallbackParam()
+						"button[type=$class]", new CallbackParam()
 					)
 				);
 			break;
 //				$stack = array();
 //				foreach($this->elements as $node)
-//					if ($node->is('input[type=submit]') || $node->is('Button[type=submit]'))
+//					if ($node->is('input[type=submit]') || $node->is('button[type=submit]'))
 //						$stack[] = $el;
 //				$this->elements = $stack;
 			case 'input':

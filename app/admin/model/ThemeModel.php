@@ -30,7 +30,7 @@ class ThemeModel extends Model
         if (file_exists_case($manifest)) {
             $manifest           = file_get_contents($manifest);
             $themeData          = json_decode($manifest, true);
-            $themeData['skin'] = $theme;
+            $themeData['theme'] = $theme;
 
             $this->updateThemeFiles($theme);
 
@@ -50,7 +50,7 @@ class ThemeModel extends Model
 
             $this->updateThemeFiles($theme);
 
-            $this->save($themeData, ['skin' => $theme]);
+            $this->save($themeData, ['theme' => $theme]);
             return true;
         } else {
             return false;
@@ -65,7 +65,7 @@ class ThemeModel extends Model
     public function getActionThemeFiles($action)
     {
         $theme = config('cmf_default_theme');
-        return Db::name('theme_file')->where(['skin' => $theme, 'action' => $action])->select();
+        return Db::name('theme_file')->where(['theme' => $theme, 'action' => $action])->select();
     }
 
     private function updateThemeFiles($theme, $suffix = 'html')
@@ -101,7 +101,7 @@ class ThemeModel extends Model
             $file       = preg_replace('/^themes\/' . $theme . '\//', '', $tplFile);
             $file       = strtolower($file);
             $config     = json_decode(file_get_contents($configFile), true);
-            $findFile   = Db::name('theme_file')->where(['skin' => $theme, 'file' => $file])->find();
+            $findFile   = Db::name('theme_file')->where(['theme' => $theme, 'file' => $file])->find();
             $isPublic   = empty($config['is_public']) ? 0 : 1;
             $listOrder  = empty($config['order']) ? 0 : floatval($config['order']);
             $configMore = empty($config['more']) ? [] : $config['more'];
@@ -109,7 +109,7 @@ class ThemeModel extends Model
 
             if (empty($findFile)) {
                 Db::name('theme_file')->insert([
-                    'skin'       => $theme,
+                    'theme'       => $theme,
                     'action'      => $config['action'],
                     'file'        => $file,
                     'name'        => $config['name'],
@@ -122,8 +122,8 @@ class ThemeModel extends Model
             } else { // 更新文件
                 $moreInDb = json_decode($findFile['more'], true);
                 $more     = $this->updateThemeConfigMore($configMore, $moreInDb);
-                Db::name('theme_file')->where(['skin' => $theme, 'file' => $file])->update([
-                    'skin'       => $theme,
+                Db::name('theme_file')->where(['theme' => $theme, 'file' => $file])->update([
+                    'theme'       => $theme,
                     'action'      => $config['action'],
                     'file'        => $file,
                     'name'        => $config['name'],
@@ -137,13 +137,13 @@ class ThemeModel extends Model
         }
 
         // 检查安装过的模板文件是否已经删除
-        $files = Db::name('theme_file')->where(['skin' => $theme])->select();
+        $files = Db::name('theme_file')->where(['theme' => $theme])->select();
 
         foreach ($files as $themeFile) {
             $tplFile           = $themeDir . '/' . $themeFile['file'] . '.' . $suffix;
             $tplFileConfigFile = $themeDir . '/' . $themeFile['file'] . '.json';
             if (!is_file($tplFile) || !file_exists_case($tplFileConfigFile)) {
-                Db::name('theme_file')->where(['skin' => $theme, 'file' => $themeFile['file']])->delete();
+                Db::name('theme_file')->where(['theme' => $theme, 'file' => $themeFile['file']])->delete();
             }
         }
     }
