@@ -15,8 +15,9 @@ class Table extends Controller
     protected $page;
     protected $operating = [];
     protected $submitUrl = '';
-    protected $search = [];
-    protected $headBtn =[];
+    protected $search  = [];
+    protected $headBtn = [];
+    protected $headNan = [];
     /**
      * 设置表格
      * @param $tableHead
@@ -96,15 +97,28 @@ class Table extends Controller
         return $this;
     }
 
+    /**
+     * 设置头部切换导航
+     * @param $headNan
+     * @return $this
+     */
+    public function setHeadNan($headNan){
+        $this->headNan = $headNan;
+        return $this;
+    }
 
     public function save($tpl =''){
         $extendsTpl = '/web/index';
         $tpl =  empty($tpl)?'/web/index':$tpl;
+        /*头部导航输出*/
+        $headNan = $this->outputHeadNan();
+        /*头部搜索按钮输出*/
         $headHandle = $this->outputHeadHandle();
         /*表格主体输出*/
         $table = $this->outputTable();
         $this->assign('extendsTpl',$extendsTpl);
         $this->assign('headHandle',$headHandle);
+        $this->assign('headNan',$headNan);
         $this->assign('table',$table);
         return $this->fetch($tpl);
     }
@@ -118,6 +132,7 @@ class Table extends Controller
         if(!empty($this->operating)){
             $operatingStatus = true;
         }
+
         /*是否存在操作栏目*/
         $this->assign('operatingStatus',$operatingStatus);
         /*table结构输出*/
@@ -133,11 +148,33 @@ class Table extends Controller
     protected function outputHeadHandle(){
         $result = '';
         if(!empty($this->headBtn) || !empty($this->search)){
-            $keyword = $this->search;
             $this->assign('headBtn',$this->headBtn);
-            $this->assign('keyword',$keyword);
+            $this->assign('search',$this->search);
             $this->assign('submitUrl',$this->submitUrl);
             $result = $this->fetch('web/headHandle');
+        }
+        return $result;
+    }
+
+    /**
+     * 头部导航输出
+     */
+    protected function outputHeadNan(){
+        $result = '';
+        if(!empty($this->headNan) && is_array($this->headNan)){
+            $controller = request()->controller();
+            $action = request()->action();
+            $url = $controller.'/'.$action;
+            $data = [];
+            foreach ($this->headNan as $k=>$v){
+                $data[$k]['class'] = '';
+                $data[$k]['url'] = $v;
+                if(strtolower($url) == strtolower($v)){
+                    $data[$k]['class'] = 'active';
+                }
+            }
+            $this->assign('headNan',$data);
+            $result = $this->fetch('web/headNan');
         }
         return $result;
     }

@@ -1,10 +1,107 @@
-<form class="well form-inline margin-top-20" method="post" action="{:url($submitUrl)}">
+<form class="well form-inline margin-top-20 layui-form" method="post" action="{:url($submitUrl)}">
+    <!--按钮输出 start-->
     <if condition="!empty($headBtn)" >
-        <div class="layui-btn-group">
+        <div class="layui-input-inline" id="from_head">
            <foreach name="$headBtn" item="vo" key="key">
                {$vo}
            </foreach>
         </div>
+    </if>
+    <!--按钮输出 end-->
+
+    <!--搜索框输出 start-->
+    <if condition="!empty($search)" >
+        <foreach name="search" item="searchItem" key="key" >
+            <switch name="searchItem.2">
+
+                <case value="text">
+                    <div class="layui-input-inline">
+                        <label class="layui-form-label">{$searchItem[1]}</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="{$searchItem[0]}" autocomplete=""  value="{$searchItem[3]}" placeholder="{$searchItem[4]?=$searchItem[4]}" class="layui-input">
+                        </div>
+                    </div>
+                </case>
+
+                <case value="checkbox">
+                    <div class="layui-input-inline">
+                        <label class="layui-form-label">{$searchItem[1]}</label>
+                        <div class="layui-input-block">
+                            <foreach name ="searchItem.3" item="val" key="k">
+                                <input type="checkbox" name="{$searchItem[0]}[]"
+                                <if condition="$val eq $searchItem[4]"> checked="" </if>
+                                <in name="$val" value="$searchItem[4]"> checked="" </in>
+                                value="{$val}" title="{$k}">
+                            </foreach>
+                        </div>
+                    </div>
+                </case>
+
+                <case value="select" >
+                    <div class="layui-input-inline">
+                        <label class="layui-form-label">{$searchItem[1]}</label>
+                        <div class="layui-input-inline">
+                            <select name="{$searchItem[0]}">
+                                <foreach name ="searchItem.3" item="val" key="k">
+                                    <option value="{$val}"  <if condition="$val eq $searchItem[4]"> selected="" </if>
+                                    >
+                                    {$k}
+                                    </option>
+                                </foreach>
+                            </select>
+                        </div>
+                    </div>
+                </case>
+
+                <case value="radio">
+                    <div class="layui-input-inline">
+                        <label class="layui-form-label">{$searchItem[1]}</label>
+                        <div class="layui-input-block">
+                            <foreach name ="searchItem.3" item="val" key="k">
+                                <input type="radio" name="{$searchItem[0]}" value="{$val}"
+                                       <if condition="$val eq $searchItem[4]"> checked="" </if>
+                                title="{$k}"
+                                >
+                            </foreach>
+                        </div>
+                    </div>
+                </case>
+
+                <case value="date_day">
+                    <div class="layui-input-inline">
+                        <label class="layui-form-label">{$searchItem[1]}</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" name="{$searchItem[0]}" id="{$searchItem[0]}"
+                                   lay-verify="date" autocomplete="off"
+                                   value="{$searchItem[3]}"
+                                   class="layui-input" onclick="layui.laydate({elem: this, format: 'YYYY-MM-DD',istime: false})">
+                        </div>
+                    </div>
+                </case>
+
+                <case value="select_group" >
+                    <div class="layui-input-inline select_group{$searchItem[0]}">
+                        <label class="layui-form-label">{$searchItem[1]}</label>
+                        {php} $i=0;{/php}
+                        {foreach $searchItem[3]["list"] as $defval=>$selectsanItem }
+                        {php} $i++;{/php}
+
+                        {if condition="$i elt $searchItem[3]['max_level'] "}{// 最大等级}
+                        <div class="layui-input-inline">
+                            <select name="{$searchItem[0]}" lay-filter="{$searchItem[0]}">
+                                {foreach $selectsanItem as $key=>$val }
+                                <option value="{$val}" {if condition="$val eq $defval"} selected="" {/if}
+                                >{$key}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                        {/if}
+                        {/foreach}
+                    </div>
+                </case>
+
+            </switch>
+        </foreach>
     </if>
     <input type="submit" class="layui-btn layui-btn-primary layui-btn-small" value="搜索" />
 </form>

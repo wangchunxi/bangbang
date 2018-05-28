@@ -1,28 +1,28 @@
 
-    <table class="table table-hover table-bordered margin-top-20" >
-        <if condition="!empty($tableHead)">
-            <thead>
+<table class="table table-hover table-bordered margin-top-20" >
+    <if condition="!empty($tableHead)">
+        <thead>
+            <tr>
+                <foreach name="tableHead" item="vo" key="key">
+                    <th>{$key}</th>
+                </foreach>
+                <if condition="!empty($operatingStatus)">
+                    <th>操作</th>
+                </if>
+            </tr>
+        </thead>
+    </if>
+    <if condition="!empty($tableHead) AND !empty($tableData) ">
+        <tbody>
+            <foreach name="tableData" item="v" key="k">
                 <tr>
                     <foreach name="tableHead" item="vo" key="key">
-                        <th>{$key}</th>
+                        <td>{$v[$vo]} </td>
+                        <if condition="!empty($operatingStatus)">
+                        </if>
                     </foreach>
-                    <if condition="!empty($operatingStatus)">
-                        <th>操作</th>
-                    </if>
                 </tr>
-            </thead>
-        </if>
-        <if condition="!empty($tableHead) AND !empty($tableData) ">
-            <tbody>
-                <foreach name="tableData" item="v" key="k">
-                    <tr>
-                        <foreach name="tableHead" item="vo" key="key">
-                            <td>{$v[$vo]} </td>
-                            <if condition="!empty($operatingStatus)">
-                            </if>
-                        </foreach>
-                    </tr>
-                </foreach>
-            </tbody>
-        </if>
-    </table>
+            </foreach>
+        </tbody>
+    </if>
+</table>

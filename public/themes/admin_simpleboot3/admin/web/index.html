@@ -2,16 +2,151 @@
 </head>
 <body>
 <div class="wrap">
-    <ul class="nav nav-tabs">
-        <li class="active"><a>用户操作管理</a></li>
-        <li><a href="{:url('AdminUserAction/sync')}">同步用户操作</a></li>
-    </ul>
-    <!--头部按与搜索-->
-    {$headHandle}
-    <!--列表页table展示内容-->
-    {$table}
+
+    <block name="headNanContent">
+        {$headNan}
+    </block>
+
+    <block name="headHandleContent">
+        <!--头部按与搜索-->
+        {$headHandle}
+    </block>
+
+    <block name="tableContent">
+        <!--列表页展示内容-->
+        {$table}
+    </block>
 </div>
 <script src="__STATIC__/js/admin.js"></script>
 <block name="endJs"></block>
+
+<script>
+    layui.use(['form','laydate'], function() {
+        var $ = layui.jquery,
+        layer = layui.layer, //获取当前窗口的layer对象
+        form = layui.form();
+        form.render();
+
+        $("#from_head .pj_btn").on('click', function () {
+            pj_btn_click($(this));
+        });
+        $("#batch_btn .pj_btn").on('click', function () {
+            pj_btn_click($(this));
+        });
+
+        var addBoxIndex = -1;
+        function pj_btn_click($obj){
+            var confirm_text=$obj.attr("data-confirm-text");
+            var confirm_ico=$obj.attr("data-confirm-ico");
+            var BtnName=$obj.attr("data-BtnName");
+            var BtnUrl=$obj.attr("data-url");
+            var OpenType=$obj.attr("data-OpenType");
+            if(addBoxIndex !== -1){
+                return;
+            }
+            var callback=function(index){
+                if(confirm_text){
+                    layer.close(index);
+                }
+                var Data={};
+                if($obj.parents("#batch_btn").length>0){
+
+                    var check=new Array();
+                    $('#content').children('tr').each(function() {
+                        var $that = $(this);
+                        var $cbx = $that.children('td').eq(0).children('input[type=checkbox]')[0];
+                        if($cbx == undefined) {
+                            return true;
+                        }
+                        $cbx = $cbx.checked;
+                        if($cbx) {
+                            var n = $that.children('td').eq(0).children('input[type=checkbox]').val();
+                            check.push($.trim(n));
+                        }
+                    });
+                    Data.id=check;
+                    if(check.length<=0){
+                        layerTips.msg("请选择要操作的选项");
+                        return;
+                    }
+                }
+
+                if($obj.parents("#batch_btn").length>0 && OpenType == ''){ //批量按钮
+                    layerTips.msg("批量处理按钮已禁用");
+                    return ;
+                }
+
+                if($obj.parents("#batch_btn").length>0 && OpenType != 'Ajax'){ //批量按钮
+                    layerTips.msg("批量处理按钮暂时只支持使用Ajax方式");
+                    return ;
+                }
+                switch (OpenType) {
+                    case 'Pop': //弹窗打开
+                        //本表单通过ajax加载 --以模板的形式，当然你也可以直接写在页面上读取
+                        layer.open({
+                            type: 2,
+                            title:BtnName,
+                            area: ['700px', '450px'],
+                            fixed: false, //不固定
+                            maxmin: true,
+                            shade: 0.3,
+                            content: BtnUrl
+                        });
+
+                        layer.close(index);
+                        break;
+                    case 'NewTab': //设置新选项卡打开方式
+                        if(parent.tab){
+                            parent.tab.tabAdd({
+                                href: BtnUrl, //地址
+                                icon: "",
+                                title: BtnName
+                            });
+                        }else{
+                            window.open(BtnUrl);
+                        }
+
+
+                        break;
+                    case 'NewPage': //设置新页面打开方式
+                        window.location.href=BtnUrl;
+                        break;
+                    case 'Ajax': //设置异步请求打开方式
+                        $.ajax({
+                            url:BtnUrl,
+                            dataType:"json",
+                            data:Data,
+                            type:"post",
+                            success:function(data){
+                                if(data.rel && data.msg){
+                                    parent.layer.alert(data.msg,{icon: 6},function(index){
+                                        parent.layer.close(index);
+                                        //paging.get();
+                                    });
+                                }
+                                if(!data.rel && data.msg){
+                                    parent.layer.alert(data.msg,{icon: 5},function(index){
+                                        parent.layer.close(index);
+                                    });
+                                }
+                                if(data.rel){
+
+                                }
+                            }
+                        });
+                        break;
+                }
+
+            }
+            if(confirm_text){
+                layer.confirm(confirm_text, {icon: confirm_ico, title:'提示'},callback);
+            }
+            else{
+                callback();
+            }
+
+        }
+    });
+</script>
 </body>
 </html>
