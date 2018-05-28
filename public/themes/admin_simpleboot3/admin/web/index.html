@@ -1,25 +1,28 @@
 <include file="public@header"/>
 </head>
 <body>
+<title>{$title}</title>
 <div class="wrap">
 
     <block name="headNanContent">
         {$headNan}
     </block>
+    <form class=" form-inline margin-top-20 layui-form" method="post" action="{:url($submitUrl)}">
+        <block name="headHandleContent">
+            <!--头部按与搜索-->
+            {$headHandle}
+        </block>
 
-    <block name="headHandleContent">
-        <!--头部按与搜索-->
-        {$headHandle}
-    </block>
-
-    <block name="tableContent">
-        <!--列表页展示内容-->
-        {$table}
-    </block>
+        <block name="tableContent">
+            <!--列表页展示内容-->
+            {$table}
+        </block>
+        <if condition="!empty($page)">
+            <div class="pagination">{$page}</div>
+        </if>
+    </form>
 </div>
 <script src="__STATIC__/js/admin.js"></script>
-<block name="endJs"></block>
-
 <script>
     layui.use(['form','laydate'], function() {
         var $ = layui.jquery,
@@ -148,5 +151,6 @@
         }
     });
 </script>
+<block name="endJs"></block>
 </body>
 </html>

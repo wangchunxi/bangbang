@@ -12,15 +12,15 @@ namespace app\admin\controller;
 class PatternController extends TagController
 {
     public function patternIndex(){
-
+        return $this->index('pattern');
     }
 
     public function addPattern(){
-
+        return $this->add('pattern');
     }
 
     public function editPattern(){
-
+        return $this->edit('pattern');
     }
 
     public function delPattern(){

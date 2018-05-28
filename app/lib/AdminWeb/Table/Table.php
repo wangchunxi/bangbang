@@ -12,12 +12,13 @@ class Table extends Controller
 {
     protected $table = [];
     protected $tableData =[];
-    protected $page;
+    protected $page='';
     protected $operating = [];
     protected $submitUrl = '';
     protected $search  = [];
     protected $headBtn = [];
     protected $headNan = [];
+    protected $title ='';
     /**
      * 设置表格
      * @param $tableHead
@@ -97,6 +98,11 @@ class Table extends Controller
         return $this;
     }
 
+    public function setTitle($title){
+        $this->title = $title;
+        return $this;
+    }
+
     /**
      * 设置头部切换导航
      * @param $headNan
@@ -116,6 +122,10 @@ class Table extends Controller
         $headHandle = $this->outputHeadHandle();
         /*表格主体输出*/
         $table = $this->outputTable();
+        /*页码输出*/
+        $this->assign('page',$this->page);
+        $this->assign('submitUrl',$this->submitUrl);
+        $this->assign('title',$this->title);
         $this->assign('extendsTpl',$extendsTpl);
         $this->assign('headHandle',$headHandle);
         $this->assign('headNan',$headNan);
@@ -150,7 +160,6 @@ class Table extends Controller
         if(!empty($this->headBtn) || !empty($this->search)){
             $this->assign('headBtn',$this->headBtn);
             $this->assign('search',$this->search);
-            $this->assign('submitUrl',$this->submitUrl);
             $result = $this->fetch('web/headHandle');
         }
         return $result;

@@ -49,6 +49,8 @@ class DemoController extends AdminBaseController
         ]);
         /*设置头部切换导航*/
         $model->setHeadNan($nav);
+        /*设置页数*/
+        //$model->setPage(8);
         /*生成页面*/
         $result = $model->save();
         return $result;

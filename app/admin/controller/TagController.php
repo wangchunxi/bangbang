@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 
 
+use app\lib\AdminWeb\Table\Table;
 use app\lib\Tag\AddTag;
 use app\lib\Tag\ChangeStatusTag;
 use app\lib\Tag\DelTag;
@@ -25,12 +26,29 @@ class TagController extends AdminBaseController
         if(empty($type)){
             exception('缺少标签参数');
         }
+        $post = input('post.');
+        $map = $post;
         $map['tagType'] = $type;
         $map['tagStatus'] = 1;
         $list = (new GetTagList($type))->setKeyword($map)->setStatus($this->publicStatus)->getList();
-        $this->assign('list',$list['list']);
-        $this->assign('page',$list['page']);
-        return $this->fetch('tag/index');
+        $model = (new Table());
+        $model->setTable(
+            ['标签名称'=>'tagName','创建人'=>'createName','创建时间'=>'createTime']
+        );
+        $model->setTableData($list['list']);
+        $model->setPage($list['page']);
+        $model->setKeyWord([
+            ['keyword', '搜索',"text","",'标签搜索'],
+        ]);
+        $model->setHeadNan(
+            [
+                '装修类型标签'=>'style/styleIndex'
+                ,'装修户型标签'=>'pattern/patternIndex'
+                ,'装修段位标签'=>'decorationType/decorationIndex'
+            ]
+        );
+        $model->setTitle('标签管理');
+        return $model->save();
     }
 
     protected function add($type){

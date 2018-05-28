@@ -40,10 +40,15 @@ class GetTagList
         $keyword = $this->keyword;
         if(!empty($keyword)){
             if(isset($keyword['tagStatus'])){
-                $map['tagStatus'] = $keyword['tagStatus'];
+                $map['a.tagStatus'] = $keyword['tagStatus'];
+                unset($this->keyword['tagStatus']);
             }
             if(isset($keyword['tagType'])){
-                $map['tagType'] = $keyword['tagType'];
+                $map['a.tagType'] = $keyword['tagType'];
+                unset($this->keyword['tagType']);
+            }
+            if(isset($keyword['keyword'])){
+                $map['a.tagName'] = ['like','%'.$keyword['keyword'].'%'];
             }
         }
         return $map;
@@ -52,11 +57,24 @@ class GetTagList
     public function getList(){
         $map = $this->getParam();
         $model =  (new TagModel());
-        $list = $model->where($map)->paginate($this->limit);
+        $join = [
+            ['User u','u.id = a.createId','left']
+        ];
+        $list = $model->alias('a')->where($map)->join($join)
+            ->field(
+                'a.id,a.tagName,a.createId,a.createTime
+                ,a.updateId,a.updateTime,a.tagId,a.tagType
+                ,a.tagStatus,u.user_login as createName'
+            )->paginate(1);
         $list->appends($this->keyword);
         $page = $list->render();
+        $newList = [];
+        foreach ($list as $k=>$v){
+            $newList[$k] = $v->toArray();
+            $newList[$k]['createTime'] = date('Y-m-d H:i:s',$v['createTime']);
+        }
         $data['page'] = $page;
-        $data['list'] = $list;
+        $data['list'] = $newList;
         return $data;
     }
 }

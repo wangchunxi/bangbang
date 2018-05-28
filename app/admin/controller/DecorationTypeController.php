@@ -12,15 +12,15 @@ namespace app\admin\controller;
 class DecorationTypeController extends TagController
 {
     public function  decorationIndex(){
-
+        return $this->index('decorationType');
     }
 
     public function addDecorationType(){
-
+        return $this->index('decorationType');
     }
 
     public function editDecorationType(){
-
+        return $this->index('decorationType');
     }
 
     public function delDecorationType(){
