@@ -9,12 +9,22 @@
 namespace app\lib\AdminWeb\Table;
 
 
-class Form
+use think\Controller;
+
+class Form extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->type="form";
+    protected $title = '默认页面';
+    protected $url = '';
+    protected $data = [];
+
+    public function setTitle($title =''){
+        $this->title = $title;
+        return $this;
+    }
+
+    public function setUrl($url = ''){
+        $this->url = $url;
+        return $this;
     }
 
     public function setData($data)
@@ -31,8 +41,6 @@ class Form
                     }
                 }
                 $data[$key][0]=$fieldConfig[0];
-
-
             }
 
             if(!isset($datum[3])){
@@ -52,20 +60,11 @@ class Form
                 }
             }
         }
-        // dump($data);
-        $this->view->assign("formData",$data);
+        $this->data = $data;
         return $this;
     }
 
-    public function setSubmitUrl($Url="")
-    {
-        $this->view->assign("submitUrl",$Url);
-        return $this;
-    }
+    public function save(){
 
-    public function setValidate(Validate $validate)
-    {
-        $this->validate=$validate;
-        return $this;
     }
 }
