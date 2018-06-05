@@ -10,6 +10,7 @@ namespace app\admin\controller;
 
 
 use app\lib\AdminWeb\Table\Button\HeadBtn;
+use app\lib\AdminWeb\Table\Form;
 use app\lib\AdminWeb\Table\Table;
 use cmf\controller\AdminBaseController;
 
@@ -69,6 +70,23 @@ class DemoController extends AdminBaseController
             ['test'=>'小王2','test2'=>'小张2','test3'=>'小李2'],
         ];
         return  (new Table())->setTable($array)->setTableData($data)->save('/demo/index');
+    }
+
+    public function form(){
+        $form =  new Form();
+        $data = [
+            ['roleTagName', '文本框',"text",'value值',"这是备注"],
+            ['multiMap', '多图上传',"multiMap",'',"这是备注"],
+            ['image', '单图上传',"image",'',"这是备注"],
+            ['textarea', '文本域',"textarea",'',"这是备注"],
+            ['baidu', '百度编辑器',"baidu",'',"这是备注"],
+            //['multiMap2', '多图上传',"multiMap",'',"这是备注"],
+        ];
+        $form->setData($data);
+        $form->setTitle();
+        $form->setUrl();
+        return $form->save();
+
     }
 
 }

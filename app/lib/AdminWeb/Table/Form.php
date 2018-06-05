@@ -59,12 +59,19 @@ class Form extends Controller
                     $data[$key][4]= $data[$key][4]['default'];
                 }
             }
+            if($data[$key][2] == 'image' && empty($data[$key][3])){
+                $data[$key][3] = "/public/assets/images/default-thumbnail.png";
+            }
         }
         $this->data = $data;
         return $this;
     }
 
     public function save(){
-
+        $this->assign('title',$this->title);
+        $this->assign('submitUrl',$this->url);
+        $this->assign('formData',$this->data);
+        $result = $this->fetch('web/form');
+        return $result;
     }
 }
