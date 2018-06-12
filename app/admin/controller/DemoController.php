@@ -74,12 +74,16 @@ class DemoController extends AdminBaseController
 
     public function form(){
         $form =  new Form();
+        $radio = ['帅哥'=>1,'美女'=>2];
         $data = [
             ['roleTagName', '文本框',"text",'value值',"这是备注"],
             ['multiMap', '多图上传',"multiMap",'',"这是备注"],
             ['image', '单图上传',"image",'',"这是备注"],
             ['textarea', '文本域',"textarea",'',"这是备注"],
             ['baidu', '百度编辑器',"baidu",'',"这是备注"],
+            ['radio','单选','radio',$radio,'','备注'],
+            ['select','下拉选择','select',$radio,'','备注'],
+            ['checkbox','复选','checkbox',$radio,'','备注']
             //['multiMap2', '多图上传',"multiMap",'',"这是备注"],
         ];
         $form->setData($data);

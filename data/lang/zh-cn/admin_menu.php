@@ -1,5 +1,7 @@
 <?php
 return array (
+  'ADMIN_EDIT_DEFAULT' => '其他',
+  'ADMIN_EDIT_INDEX' => '吃点啥',
   'ADMIN_HANDLELOG_HANDLELOGLIST' => '用户操作日志列表',
   'ADMIN_HANDLE_LOG_INDEX' => '用户操作日志配置',
   'ADMIN_HOOK_INDEX' => '钩子管理',

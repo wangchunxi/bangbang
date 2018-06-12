@@ -54,14 +54,14 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">{$dataItem[1]}</label>
                         <div class="layui-input-block">
-                            {foreach $dataItem[3] as $key=>$val }
-                            <input type="checkbox"
-                                   {if condition=" !isset($dataItem['readonly'])  "}  name="{$dataItem[0]}[]"  {/if}
-                            {if condition=" isset($dataItem['readonly'])  "}  readonly disabled="disabled"  {/if}
-                            {if condition="$val eq $dataItem[4]"} checked="" {/if}
-                            {in name="$val" value="$dataItem[4]"} checked="" {/in}
-                            value="{$val}" title="{$key}">
-                            {/foreach}
+                            <foreach name ="dataItem.3" item ="val" key="key" >
+                                <input type="checkbox"
+                                <if condition=" !isset($dataItem['readonly'])  ">  name="{$dataItem[0]}[]"  </if>
+                                <if condition=" isset($dataItem['readonly'])  ">  readonly disabled="disabled"  </if>
+                                <if condition="$val eq $dataItem[4]"> checked="" </if>
+                                <in name="$val" value="$dataItem[4]"> checked="" </in>
+                                value="{$val}" title="{$key}">
+                            </foreach>
                         </div>
                         <div class="layui-form-mid layui-word-aux remark_{$dataItem[0]}">{$dataItem[5]}</div>
                     </div>
@@ -87,18 +87,17 @@
                         <label class="layui-form-label">{$dataItem[1]}</label>
                         <div class="layui-input-inline">
                             <select  lay-filter="{$dataItem[0]}"
-                                     {if condition=" !isset($dataItem['readonly'])  "}  name="{$dataItem[0]}"  {/if}
+                                     <if condition=" !isset($dataItem['readonly'])  "> name="{$dataItem[0]}"  </if>
                             >
-                            {foreach $dataItem[3] as $key=>$val }
-                            <option value="{$val}"
-                                    {if condition=" isset($dataItem['readonly'])  "}  readonly disabled="disabled"  {/if}
-                            {if condition="$val eq $dataItem[4]"} selected="" {/if}
-                            {if condition=" isset($dataItem['noReadonly'])
-                            and !in_array($val,$dataItem['noReadonly'])"}
-                            readonly disabled="disabled"
-                            {/if}
-                            >{$key}</option>
-                            {/foreach}
+                            <foreach name="dataItem.3" item="val" key="key">
+                                <option value="{$val}"
+                                    <if condition=" isset($dataItem['readonly'])  "> readonly disabled="disabled" </if>
+                                    <if condition="$val eq $dataItem[4]"> selected="" </if>
+                                    <if condition=" isset($dataItem['noReadonly']) and !in_array($val,$dataItem['noReadonly'])">
+                                        readonly disabled="disabled"
+                                    </if>
+                                >{$key}</option>
+                            </foreach>
                             </select>
                         </div>
                         <div class="layui-form-mid layui-word-aux remark_{$dataItem[0]}">{$dataItem[5]}</div>
@@ -133,13 +132,12 @@
                     >
                     <label class="layui-form-label">{$dataItem[1]}</label>
                     <div class="layui-input-block" {if condition=" isset($dataItem['readonly'])  "}   readonly disabled="disabled" {/if} >
-                    {foreach $dataItem[3] as $key=>$val }
-                    <input type="radio"   value="{$val}" name="{$dataItem[0]}"
-
-                           {if condition=" isset($dataItem['readonly'])  "}   readonly disabled="disabled" {/if}
-                    {if condition="$val eq $dataItem[4]"} checked="" {/if}
-                    title="{$key}" >
-                    {/foreach}
+                        <foreach  name = 'dataItem.3' item="val" key="key">
+                            <input type="radio"   value="{$val}" name="{$dataItem[0]}"
+                                <if condition=" isset($dataItem['readonly'])  ">   readonly disabled="disabled" </if>
+                                <if condition="$val eq $dataItem[4]"> checked="" </if>
+                                title="{$key}" >
+                        </foreach>
                     </div>
                     <div class="layui-form-mid layui-word-aux remark_{$dataItem[0]}">{$dataItem[5]}</div>
                     </div>
