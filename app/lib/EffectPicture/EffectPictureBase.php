@@ -6,6 +6,8 @@
  * Time: 19:40
  */
 namespace app\lib\EffectPicture;
+use app\model\EffectPictureModel;
+
 class EffectPictureBase
 {
     protected $effectPictureTitle ;/*标题*/
@@ -18,7 +20,9 @@ class EffectPictureBase
     protected $viewingCount = 0 ;/*浏览数*/
     protected $opUid ;
     protected $opTime;
-
+    protected $rule;
+    protected $msg;
+    protected $table;
     public function setEffectPictureTitle($effectPictureTitle){
         $this->effectPictureTitle = $effectPictureTitle ;
         return $this;
@@ -28,7 +32,10 @@ class EffectPictureBase
         return $this;
     }
     public function setTagIds($tagIds){
-        $this->tagIds= $tagIds;
+        if(empty($tagIds) || !is_array($tagIds)){
+            exception('标签格式错误');
+        }
+        $this->tagIds= implode(',',$tagIds);
         return $this;
     }
     public function setStatus($status){
@@ -60,5 +67,48 @@ class EffectPictureBase
     protected function getOpTime(){
         $this->opTime= time();
         return $this;
+    }
+    protected function getCheckRule(){
+        $this->rule = [
+            'effectPictureTitle'=>'require|chsDash',
+            'Introduction'=>'chsDash',
+            'tagIds'=>'require',
+            'status'=>'number',
+            'sort'=>'number',
+            'isRecommend'=>'number',
+            'coverPicture'=>'number',
+            'viewingCount'=>'number',
+        ];
+        $this->msg = [
+            'effectPictureTitle.require'=>'标题必须填写',
+            'effectPictureTitle.chsDash'=>'标题只能为字母、汉字、数字、下划线',
+            'Introduction.chsDash'=>'简介只能为字母、汉字、数字、下划线',
+            'tagIds.require'=>'标签必须选择',
+            'status.number'=>'未获取到状态码',
+            'sort.number'=>'排序只能为数字',
+            'isRecommend.number'=> '推荐状态错误',
+            'coverPicture.number'=>'未获取到封面图',
+            'viewingCount.number'=>'未获取到浏览数据',
+        ];
+    }
+
+    protected function getTable(){
+        if(empty($this->table)){
+            $this->table = new EffectPictureModel();
+        }
+        return  $this->table;
+    }
+
+    protected function handleArray(){
+        $this->getOpTime();
+        $data['effectPictureTitle'] = $this->effectPictureTitle;
+        $data['Introduction'] = $this->Introduction;
+        $data['tagIds'] = $this->tagIds;
+        $data['status'] = $this->status;
+        $data['sort'] = $this->sort;
+        $data['isRecommend'] = $this->isRecommend;
+        $data['coverPicture'] = $this->coverPicture;
+        $data['viewingCount'] = $this->viewingCount;
+        return $data;
     }
 }
