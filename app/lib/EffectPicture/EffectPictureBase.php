@@ -72,7 +72,6 @@ class EffectPictureBase
         $this->rule = [
             'effectPictureTitle'=>'require|chsDash',
             'Introduction'=>'chsDash',
-            'tagIds'=>'require',
             'status'=>'number',
             'sort'=>'number',
             'isRecommend'=>'number',
@@ -83,7 +82,6 @@ class EffectPictureBase
             'effectPictureTitle.require'=>'标题必须填写',
             'effectPictureTitle.chsDash'=>'标题只能为字母、汉字、数字、下划线',
             'Introduction.chsDash'=>'简介只能为字母、汉字、数字、下划线',
-            'tagIds.require'=>'标签必须选择',
             'status.number'=>'未获取到状态码',
             'sort.number'=>'排序只能为数字',
             'isRecommend.number'=> '推荐状态错误',

@@ -12,7 +12,9 @@ namespace app\admin\controller;
 use app\lib\AdminWeb\Table\Button\HeadBtn;
 use app\lib\AdminWeb\Table\Form;
 use app\lib\AdminWeb\Table\Table;
+use app\lib\CreateModel\CreateModel;
 use cmf\controller\AdminBaseController;
+use think\Url;
 
 class DemoController extends AdminBaseController
 {
@@ -91,6 +93,25 @@ class DemoController extends AdminBaseController
         $form->setUrl();
         return $form->save();
 
+    }
+
+
+    public function formModel(){
+        $form =  new Form();
+        $data = [
+            ['tableName', '文本框',"text",'',"这是备注"],
+        ];
+        $form->setData($data);
+        $form->setTitle();
+        $form->setUrl(Url::build('createModel'));
+        return $form->save();
+    }
+
+    public function createModel(){
+        $tableName = input('tableName');
+        $model = new CreateModel();
+        $model->setTableName($tableName)->save();
+        return true;
     }
 
 }
