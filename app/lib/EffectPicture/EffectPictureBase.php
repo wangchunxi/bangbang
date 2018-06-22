@@ -6,7 +6,8 @@
  * Time: 19:40
  */
 namespace app\lib\EffectPicture;
-use app\model\EffectPictureModel;
+
+use app\Lib\Model\Db\EffectPictureModel;
 
 class EffectPictureBase
 {
