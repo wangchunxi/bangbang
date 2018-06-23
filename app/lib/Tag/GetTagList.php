@@ -60,12 +60,12 @@ class GetTagList
         $join = [
             ['User u','u.id = a.createId','left']
         ];
-        $list = $model->alias('a')->where($map)->join($join)
+        $list = $model->alias('a')->where($map)->join($join)->cache(3)
             ->field(
                 'a.id,a.tagName,a.createId,a.createTime
                 ,a.updateId,a.updateTime,a.tagId,a.tagType
                 ,a.tagStatus,u.user_login as createName'
-            )->paginate(1);
+            )->paginate($this->limit);
         $list->appends($this->keyword);
         $page = $list->render();
         $newList = [];

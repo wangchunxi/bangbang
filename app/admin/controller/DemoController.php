@@ -89,7 +89,7 @@ class DemoController extends AdminBaseController
             //['multiMap2', '多图上传',"multiMap",'',"这是备注"],
         ];
         $form->setData($data);
-        $form->setTitle();
+        $form->setTitle('我就是个测试表单');
         $form->setUrl();
         return $form->save();
 

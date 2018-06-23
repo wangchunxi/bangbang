@@ -9,6 +9,8 @@
 namespace app\admin\controller;
 
 
+use app\lib\AdminWeb\Table\Button\HeadBtn;
+use app\lib\AdminWeb\Table\Form;
 use app\lib\AdminWeb\Table\Table;
 use app\lib\Tag\AddTag;
 use app\lib\Tag\ChangeStatusTag;
@@ -28,10 +30,15 @@ class TagController extends AdminBaseController
         }
         $post = input('post.');
         $map = $post;
+        /*获取列表信息*/
         $map['tagType'] = $type;
         $map['tagStatus'] = 1;
         $list = (new GetTagList($type))->setKeyword($map)->setStatus($this->publicStatus)->getList();
+        /*生成页面*/
         $model = (new Table());
+        $controller = $this->request->controller();
+        $url = 'add'.$controller;
+        $btn = (new HeadBtn())->setBtnName('添加标签')->setUrl(Url($url))->save();
         $model->setTable(
             ['标签名称'=>'tagName','创建人'=>'createName','创建时间'=>'createTime']
         );
@@ -40,6 +47,7 @@ class TagController extends AdminBaseController
         $model->setKeyWord([
             ['keyword', '搜索',"text","",'标签搜索'],
         ]);
+        $model->setHeadBtn($btn);
         $model->setHeadNan(
             [
                 '装修类型标签'=>'style/styleIndex'
@@ -56,7 +64,15 @@ class TagController extends AdminBaseController
             $this->submitPost($type);
             $this->success('操作成功');
         }else{
-            return $this->fetch('tag/add');
+            $form =  new Form();
+            $data = [
+                ['tagName', '文本框',"text",'',"这是备注"],
+                ['image', '单图上传',"image",'',"这是备注"],
+            ];
+            $form->setData($data);
+            $form->setTitle('新增标签');
+            $form->setUrl();
+            return $form->save();
         }
     }
 
@@ -64,7 +80,7 @@ class TagController extends AdminBaseController
     public function changeStatus(){
         if($this->request->isPost()){
             try{
-                $data = I('post.');
+                $data = input('post.');
                 $data['status'] = $this->publicStatus[$data['statusStr']];
                 Db::startTrans(function ($data){
                     $type = 'changeStatus';
@@ -121,13 +137,13 @@ class TagController extends AdminBaseController
                 if(!isset($data['id'])){
                     $result = (new AddTag($this->loginId))->setTagName($data['tagName'])
                         ->setTagStatus($data['status'])
-                        ->setTagType($data['type'])->setTagUrl($data['more']['thumbnail'])->save();
+                        ->setTagType($data['type'])->setTagUrl($data['image'])->save();
                 }else{
                     $oldData = json_encode((new FindTagInfo($data['id']))->getInfo());
                     $type = 'edit';
                     $result = (new EditTag($this->loginId))->setTagName($data['tagName'])
                         ->setTagStatus($data['status'])->setTagUrl($data['id'])
-                        ->setTagType($data['type'])->setTagUrl($data['more']['thumbnail'])->save();
+                        ->setTagType($data['type'])->setTagUrl($data['image'])->save();
                 }
                 /*操作日志*/
                 $this->updateUserHandleLog($data, $oldData, $type, $result);

@@ -16,7 +16,7 @@ class DecorationTypeController extends TagController
     }
 
     public function addDecorationType(){
-        return $this->index('decorationType');
+        return $this->add('decorationType');
     }
 
     public function editDecorationType(){

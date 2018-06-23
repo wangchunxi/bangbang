@@ -1,5 +1,8 @@
 <?php
 return array (
+  'ADMIN_DEMO_DEFAULT' => 'demo管理',
+  'ADMIN_DEMO_FORM' => 'demo表单',
+  'ADMIN_DEMO_LISTDEMO' => 'demo列表',
   'ADMIN_EDIT_DEFAULT' => '其他',
   'ADMIN_EDIT_INDEX' => '吃点啥',
   'ADMIN_HANDLELOG_HANDLELOGLIST' => '用户操作日志列表',
@@ -100,6 +103,8 @@ return array (
   'ADMIN_SLIDEITEM_LISTORDER' => '幻灯片页面排序',
   'ADMIN_STORAGE_INDEX' => '文件存储',
   'ADMIN_STORAGE_SETTINGPOST' => '文件存储设置提交',
+  'ADMIN_STYLE_DEFAULT' => '标签管理',
+  'ADMIN_STYLE_STYLEINDEX' => '标签列表',
   'ADMIN_THEME_ACTIVE' => '启用模板',
   'ADMIN_THEME_DATASOURCE' => '模板文件设置数据源',
   'ADMIN_THEME_FILEARRAYDATA' => '模板文件数组数据列表',
