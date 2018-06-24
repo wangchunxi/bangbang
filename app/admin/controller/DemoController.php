@@ -13,6 +13,7 @@ use app\lib\AdminWeb\Table\Button\HeadBtn;
 use app\lib\AdminWeb\Table\Form;
 use app\lib\AdminWeb\Table\Table;
 use app\lib\CreateModel\CreateModel;
+use app\validate\OrderPanoramicLogValidate;
 use cmf\controller\AdminBaseController;
 use think\Url;
 
@@ -114,4 +115,11 @@ class DemoController extends AdminBaseController
         return true;
     }
 
+    public function test(){
+        $data['orderId'] = '';
+        $model =  new OrderPanoramicLogValidate();
+        if(!$model->check($data)){
+            dump($model->getError());
+        }
+    }
 }
