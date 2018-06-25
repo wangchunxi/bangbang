@@ -161,6 +161,7 @@ class OperatingTask
      * 1、开始任务
      * 2、记录日志
      * @param $taskId
+     * @return bool
      * @throws \Exception
      */
     protected function orderTaskStart($taskId = ''){

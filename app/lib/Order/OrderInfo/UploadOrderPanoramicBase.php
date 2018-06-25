@@ -10,6 +10,7 @@ namespace app\lib\Order\OrderInfo;
 
 
 use app\Lib\Model\Db\OrderPanoramicLogModel;
+use app\lib\Order\IsOrder\IsOrder;
 use app\validate\OrderPanoramicLogValidate;
 
 class UploadOrderPanoramicBase
@@ -48,6 +49,8 @@ class UploadOrderPanoramicBase
     }
 
     protected function arrangeArray(){
+        /*工单是否存在*/
+        (new IsOrder($this->orderId))->isExist();
         $model =  $this->getTable();
         $data[$model->_orderId] = $this->orderId;
         $data[$model->_coverPictureId] = $this->coverPictureId;
