@@ -3,7 +3,7 @@
 * Created by Think cli.
 * Date: 2018-06-22 13:33:44
 */
-namespace app\Lib\Model\Db;
+namespace app\model;
 use think\Model;
 class BindingTagModel extends Model
 {

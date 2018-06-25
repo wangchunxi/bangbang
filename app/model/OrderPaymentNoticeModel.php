@@ -1,11 +1,11 @@
 <?php
 /**
 * Created by Think cli.
-* Date: 2018-06-25 16:52:54
+* Date: 2018-06-25 20:45:21
 */
 namespace app\model;
 use think\Model;
-class OrderMoneyModel extends Model
+class OrderPaymentNoticeModel extends Model
 {
 
 
@@ -18,7 +18,7 @@ class OrderMoneyModel extends Model
 
 
    /*
-    * [备注信息:对应的工单id]
+    * [备注信息:工单id]
     * [数据类型:int]
     * [默认值:]
     */
@@ -26,23 +26,15 @@ class OrderMoneyModel extends Model
 
 
    /*
-    * [备注信息:简要说明]
-    * [数据类型:varchar]
+    * [备注信息:交款期数id]
+    * [数据类型:int]
     * [默认值:]
     */
-   public $_name = "name";
+   public $_moneyId = "moneyId";
 
 
    /*
-    * [备注信息:]
-    * [数据类型:decimal]
-    * [默认值:]
-    */
-   public $_money = "money";
-
-
-   /*
-    * [备注信息:0=>未交付,1=>已交付]
+    * [备注信息:0:待审核，1:审核成功已执行,-1拒绝执行]
     * [数据类型:tinyint]
     * [默认值:0]
     */
@@ -50,35 +42,35 @@ class OrderMoneyModel extends Model
 
 
    /*
-    * [备注信息:添加人]
+    * [备注信息:申请人：为0就为系统自动申请]
     * [数据类型:int]
     * [默认值:]
     */
-   public $_createId = "createId";
+   public $_applyId = "applyId";
 
 
    /*
-    * [备注信息:添加时间]
+    * [备注信息:申请时间]
     * [数据类型:int]
     * [默认值:]
     */
-   public $_createTime = "createTime";
+   public $_applyTime = "applyTime";
 
 
    /*
-    * [备注信息:修改人]
+    * [备注信息:审核人：为0就为自动审核]
     * [数据类型:int]
     * [默认值:]
     */
-   public $_updateId = "updateId";
+   public $_verifyId = "verifyId";
 
 
    /*
-    * [备注信息:修改时间]
+    * [备注信息:审核时间]
     * [数据类型:int]
     * [默认值:]
     */
-   public $_updateTime = "updateTime";
+   public $_verifyTime = "verifyTime";
 
 
 }

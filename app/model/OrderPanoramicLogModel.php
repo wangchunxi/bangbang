@@ -3,7 +3,7 @@
 * Created by Think cli.
 * Date: 2018-06-23 22:29:27
 */
-namespace app\Lib\Model\Db;
+namespace app\model;
 use think\Model;
 class OrderPanoramicLogModel extends Model
 {

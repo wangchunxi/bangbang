@@ -3,7 +3,7 @@
 * Created by Think cli.
 * Date: 2018-06-25 15:55:01
 */
-namespace app\Lib\Model\Db;
+namespace app\model;
 use think\Model;
 class OrderInfoModel extends Model
 {

@@ -9,9 +9,9 @@
 namespace app\lib\Order\IsOrder;
 
 
-use app\Lib\Model\Db\OrderInfoModel;
-use app\Lib\Model\Db\OrderMoneyModel;
 use app\lib\Order\OrderInfo\UpdateOrderStatus;
+use app\model\OrderInfoModel;
+use app\model\OrderMoneyModel;
 
 class IsOrder
 {
@@ -80,6 +80,17 @@ class IsOrder
      */
     public function isReturnWordLog(){
 
+        return empty($result)?false:true;
+    }
+
+    /**
+     * 是否要存在交款期数
+     * @param  $id
+     * @return bool
+     */
+    public function isExistOrderMoney($id){
+        $model = $this->getOrderMoneyTable();
+        $result = $model->where($model->_id,$id)->value($model->_id);
         return empty($result)?false:true;
     }
 

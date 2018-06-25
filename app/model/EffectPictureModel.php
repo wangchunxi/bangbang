@@ -3,7 +3,7 @@
 * Created by Think cli.
 * Date: 2018-06-21 19:19:27
 */
-namespace app\Lib\Model\Db;
+namespace app\model;
 use think\Model;
 class EffectPictureModel extends Model
 {

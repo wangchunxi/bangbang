@@ -108,7 +108,7 @@ class CreateModel
 * Created by Think cli.
 * Date: ' .date("Y-m-d H:i:s").'
 */
-namespace app\Lib\Model\Db;
+namespace app\model;
 use think\Model;
 class '.$tableName.' extends Model
 {

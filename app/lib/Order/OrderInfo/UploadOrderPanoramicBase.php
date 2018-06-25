@@ -50,7 +50,10 @@ class UploadOrderPanoramicBase
 
     protected function arrangeArray(){
         /*工单是否存在*/
-        (new IsOrder($this->orderId))->isExist();
+        $result = (new IsOrder($this->orderId))->isExist();
+        if(!$result){
+            exception('工单不存在');
+        }
         $model =  $this->getTable();
         $data[$model->_orderId] = $this->orderId;
         $data[$model->_coverPictureId] = $this->coverPictureId;
