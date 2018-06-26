@@ -72,5 +72,12 @@ class OrderPaymentNoticeModel extends Model
     */
    public $_verifyTime = "verifyTime";
 
+    /*
+     * [备注信息:消息类型]
+     * [数据类型:int]
+     * [默认值:]
+     */
+   public $_type = "type";
+
 
 }

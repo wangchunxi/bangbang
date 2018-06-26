@@ -12,6 +12,7 @@ namespace app\lib\Order\IsOrder;
 use app\lib\Order\OrderInfo\UpdateOrderStatus;
 use app\model\OrderInfoModel;
 use app\model\OrderMoneyModel;
+use app\model\OrderPaymentNoticeModel;
 
 class IsOrder
 {
@@ -20,6 +21,7 @@ class IsOrder
     protected $orderTable;
     protected $orderStatusLib;
     protected $orderMoneyTable;
+    protected $orderPaymentNoticeTable;
     public function __construct($id)
     {
         $this->id = $id;
@@ -46,8 +48,15 @@ class IsOrder
         return $this->orderMoneyTable;
     }
 
+    protected function getOrderPaymentNoticeTable(){
+        if(empty($this->orderPaymentNoticeTable)){
+            $this->orderPaymentNoticeTable = new OrderPaymentNoticeModel();
+        }
+        return  $this->orderPaymentNoticeTable;
+    }
     /**
      * 工单是否存在
+     * 存在为 true
      * @return bool
      */
     public function isExist(){
@@ -62,6 +71,7 @@ class IsOrder
 
     /**
      * 是否能废除工单
+     * 可以废除为 true
      * @return bool
      */
     public function isDelOrder(){
@@ -76,15 +86,20 @@ class IsOrder
 
     /**
      * 是否要回复工作日志
+     * 要回复为 true
      * @return bool
      */
     public function isReturnWordLog(){
-
+        $result = true;
+        if($this->isExistCurrentNoPay() || $this->isExistCurrentNoSign()){
+            $result = false;
+        }
         return empty($result)?false:true;
     }
 
     /**
-     * 是否要存在交款期数
+     * 是否要存在这一期交款期数
+     * 存在为true
      * @param  $id
      * @return bool
      */
@@ -94,4 +109,37 @@ class IsOrder
         return empty($result)?false:true;
     }
 
+    public function isOrderMoneyNoPay(){
+
+    }
+
+    /**
+     * 是否存在当前有要交款的期数
+     * 有就为true
+     * @return bool
+     */
+    public function isExistCurrentNoPay(){
+        $result = false;
+        $model = $this->getOrderPaymentNoticeTable();
+        $map[$model->_orderId]=$this->id;
+        $map[$model->_status] = 1;
+        $map[$model->_type] = 'pay';
+        $moneyId = $model->where($map)->max($model->_moneyId);
+        if($moneyId){
+            $moneyModel = $this->getOrderMoneyTable();
+            $map = [$moneyModel->_id=>$moneyId,$moneyModel->_status=>1];
+            $result = $moneyModel->where($map)->value($moneyModel->_id);
+        }
+        return empty($result)?false:true;
+    }
+
+    /**
+     * 是否存在要签收的信息
+     * 有就位true
+     * @return bool
+     */
+    public function isExistCurrentNoSign(){
+        $result = false;
+        return empty($result)?false:true;
+    }
 }

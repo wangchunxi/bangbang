@@ -9,17 +9,21 @@ namespace app\lib\Order\OrderPaymentNotice;
 use app\lib\Order\IsOrder\IsOrder;
 use app\model\OrderPaymentNoticeModel;
 
-class OrderPaymentNoticeBase
+class OrderNoticeBase
 {
     protected $orderId;
     protected $moneyId;
     protected $status;
     protected $opUid;
     protected $table;
-    public function __construct($orderId,$moneyId)
-    {
-        $this->orderId = $orderId;
+    public function setOrderId($orderId){
+        $this->orderId  = $orderId;
+        return $this;
+    }
+
+    public function setMoneyId($moneyId){
         $this->moneyId = $moneyId;
+        return $this;
     }
 
     public function setStatus($status){
@@ -38,18 +42,21 @@ class OrderPaymentNoticeBase
         return $this->table;
     }
     protected function arrangeArray(){
+        $data = [];
         $model = $this->getTable();
         $isOrder = new IsOrder($this->orderId);
         $result = $isOrder->isExist();
         if(!$result){
             exception('工单不存在');
         }
-        $result =$isOrder->isExistOrderMoney($this->moneyId);
-        if(!$result){
-            exception('工单交款期数不存在');
-        }
         $data[$model->_orderId] = $this->orderId;
-        $data[$model->_moneyId] = $this->moneyId;
+        if($this->moneyId>0){
+            $result =$isOrder->isExistOrderMoney($this->moneyId);
+            if(!$result){
+                exception('工单交款期数不存在');
+            }
+            $data[$model->_moneyId] = $this->moneyId;
+        }
         return $data;
     }
 
