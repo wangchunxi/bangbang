@@ -24,21 +24,37 @@ class UpdateOrderNotice extends  OrderNoticeBase
     public function agree(){
         $model = $this->getTable();
         $data[$model->_status] = 1;
-        $data[$model->_id] = $this->id;
-        $data[$model->_verifyId] = $this->opUid;
-        $data[$model->_verifyTime] = time();
+        $data[$model->_type] = 'pay';
         return $this->save($data);
     }
 
     /**
      *拒绝发布支付通知
      */
-    public function Refuse(){
+    public function refuse(){
         $model = $this->getTable();
         $data[$model->_status] = -1;
-        $data[$model->_id] = $this->id;
-        $data[$model->_verifyId] = $this->opUid;
-        $data[$model->_verifyTime] = time();
+        $data[$model->_type] = 'pay';
+        return $this->save($data);
+    }
+
+    /**
+     * 同意发布签收消息
+     */
+    public function agreeSign(){
+        $model = $this->getTable();
+        $data[$model->_status] = 1;
+        $data[$model->_type] = 'sign';
+        return $this->save($data);
+    }
+
+    /**
+     * 同意发布签收消息
+     */
+    public function refuseSign(){
+        $model = $this->getTable();
+        $data[$model->_status] = -1;
+        $data[$model->_type] = 'sign';
         return $this->save($data);
     }
 
@@ -49,6 +65,9 @@ class UpdateOrderNotice extends  OrderNoticeBase
         if(empty($result)){
             exception('状态不能被审核或者已审核过了');
         }
+        $data[$model->_id] = $this->id;
+        $data[$model->_verifyId] = $this->opUid;
+        $data[$model->_verifyTime] = time();
         $result =  $model->update($data);
         if(!$result){
             exception('审核失败');

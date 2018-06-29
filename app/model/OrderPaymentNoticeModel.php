@@ -1,7 +1,7 @@
 <?php
 /**
 * Created by Think cli.
-* Date: 2018-06-25 20:45:21
+* Date: 2018-06-29 10:56:17
 */
 namespace app\model;
 use think\Model;
@@ -18,19 +18,11 @@ class OrderPaymentNoticeModel extends Model
 
 
    /*
-    * [备注信息:工单id]
+    * [备注信息:]
     * [数据类型:int]
     * [默认值:]
     */
    public $_orderId = "orderId";
-
-
-   /*
-    * [备注信息:交款期数id]
-    * [数据类型:int]
-    * [默认值:]
-    */
-   public $_moneyId = "moneyId";
 
 
    /*
@@ -66,18 +58,27 @@ class OrderPaymentNoticeModel extends Model
 
 
    /*
-    * [备注信息:审核时间]
+    * [备注信息:]
     * [数据类型:int]
     * [默认值:]
     */
    public $_verifyTime = "verifyTime";
 
-    /*
-     * [备注信息:消息类型]
-     * [数据类型:int]
-     * [默认值:]
-     */
+
+   /*
+    * [备注信息:消息类型]
+    * [数据类型:varchar]
+    * [默认值:pay]
+    */
    public $_type = "type";
+
+
+   /*
+    * [备注信息:通知消息内容]
+    * [数据类型:varchar]
+    * [默认值:]
+    */
+   public $_content = "content";
 
 
 }

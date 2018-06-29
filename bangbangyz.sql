@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-06-25 17:41:42
+Date: 2018-06-29 18:50:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -871,6 +871,103 @@ INSERT INTO `bangbang_option` VALUES ('1', '1', 'site_info', '{\"site_name\":\"T
 INSERT INTO `bangbang_option` VALUES ('2', '1', 'admin_dashboard_widgets', '[{\"name\":\"Contributors\",\"is_system\":1},{\"name\":\"MainContributors\",\"is_system\":1},{\"name\":\"CmfHub\",\"is_system\":1},{\"name\":\"Custom1\",\"is_system\":1},{\"name\":\"Custom2\",\"is_system\":1},{\"name\":\"Custom3\",\"is_system\":1},{\"name\":\"Custom4\",\"is_system\":1},{\"name\":\"Custom5\",\"is_system\":1},{\"name\":\"SystemInfo\",\"is_system\":0}]');
 
 -- ----------------------------
+-- Table structure for bangbang_order_binding_extension
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_binding_extension`;
+CREATE TABLE `bangbang_order_binding_extension` (
+  `id` int(11) NOT NULL,
+  `orderId` int(11) NOT NULL COMMENT '工单id',
+  `configId` int(11) NOT NULL COMMENT 'bangbang_order_extension_config id',
+  `createId` int(11) NOT NULL COMMENT '创建人',
+  `createTime` int(11) NOT NULL COMMENT '创建时间',
+  `endTime` int(11) NOT NULL COMMENT '结束时间',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>''正在使用'',0=>''结束''',
+  PRIMARY KEY (`id`),
+  KEY `id` (`orderId`,`configId`,`status`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工单绑定延期原因表';
+
+-- ----------------------------
+-- Records of bangbang_order_binding_extension
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bangbang_order_construction_img
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_construction_img`;
+CREATE TABLE `bangbang_order_construction_img` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `constructionLogId` int(11) NOT NULL COMMENT 'bangbang_order_construction_log 的 id',
+  `imgId` int(11) NOT NULL COMMENT '上传的图片id',
+  `createId` int(11) NOT NULL COMMENT '上传人',
+  `createTime` int(11) NOT NULL COMMENT '上传时间',
+  PRIMARY KEY (`id`),
+  KEY `id` (`constructionLogId`,`createId`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工地日志图集';
+
+-- ----------------------------
+-- Records of bangbang_order_construction_img
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bangbang_order_construction_log
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_construction_log`;
+CREATE TABLE `bangbang_order_construction_log` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `orderId` int(11) NOT NULL COMMENT '对应工单id',
+  `createId` int(11) NOT NULL COMMENT '创建人',
+  `createTime` int(11) NOT NULL COMMENT '创建时间',
+  `updateId` int(11) DEFAULT NULL COMMENT '修改人',
+  `updateTime` int(11) DEFAULT NULL COMMENT '修改时间',
+  `content` text NOT NULL COMMENT '提交内容',
+  `IsCustomerSee` tinyint(4) NOT NULL DEFAULT '0' COMMENT '顾客是否查看',
+  PRIMARY KEY (`id`),
+  KEY `id` (`orderId`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工单工地日志';
+
+-- ----------------------------
+-- Records of bangbang_order_construction_log
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bangbang_order_construction_read
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_construction_read`;
+CREATE TABLE `bangbang_order_construction_read` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `constructionLogId` int(11) NOT NULL COMMENT '工单日志id',
+  `seeUserId` int(11) NOT NULL COMMENT '查看人id',
+  `seeTime` int(11) NOT NULL COMMENT '查看时间',
+  PRIMARY KEY (`id`),
+  KEY `id` (`constructionLogId`,`seeUserId`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工单工地日志浏览记录';
+
+-- ----------------------------
+-- Records of bangbang_order_construction_read
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bangbang_order_extension_config
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_extension_config`;
+CREATE TABLE `bangbang_order_extension_config` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL COMMENT '标题',
+  `createId` int(11) NOT NULL COMMENT '创建人',
+  `createTime` int(11) NOT NULL COMMENT '创建时间',
+  `updateId` int(11) DEFAULT NULL COMMENT '修改人',
+  `updateTime` int(11) DEFAULT NULL COMMENT '修改时间',
+  `configTime` int(11) NOT NULL DEFAULT '0' COMMENT '配置时间',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>''启用''，0=>''禁用'',-1=>''删除''',
+  PRIMARY KEY (`id`),
+  KEY `id` (`status`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工单延期原因配置';
+
+-- ----------------------------
+-- Records of bangbang_order_extension_config
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for bangbang_order_info
 -- ----------------------------
 DROP TABLE IF EXISTS `bangbang_order_info`;
@@ -913,6 +1010,25 @@ INSERT INTO `bangbang_order_info` VALUES ('21', '1', '1522508091', '0', '0', '20
 INSERT INTO `bangbang_order_info` VALUES ('22', '1', '1522588994', '0', '0', '20180488229', '王生', '2', '15826962999', '湖北黄石', '', '10000.00', '1', '90', 's:4:\"test\";', '<p>test</p>', '1', '1', '1', '1', '1522425600', '0', '');
 
 -- ----------------------------
+-- Table structure for bangbang_order_info_image
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_info_image`;
+CREATE TABLE `bangbang_order_info_image` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `orderId` int(11) NOT NULL COMMENT '工单id',
+  `imgId` int(11) NOT NULL COMMENT '图片id',
+  `createId` int(11) NOT NULL COMMENT '添加人',
+  `createTime` int(11) NOT NULL COMMENT '添加时间',
+  `type` varchar(50) NOT NULL DEFAULT 'effect' COMMENT '类型',
+  PRIMARY KEY (`id`),
+  KEY `id` (`orderId`,`imgId`,`createId`,`type`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工单详情图片集合';
+
+-- ----------------------------
+-- Records of bangbang_order_info_image
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for bangbang_order_money
 -- ----------------------------
 DROP TABLE IF EXISTS `bangbang_order_money`;
@@ -944,6 +1060,27 @@ INSERT INTO `bangbang_order_money` VALUES ('39', '21', '第3期交款', '4000.00
 INSERT INTO `bangbang_order_money` VALUES ('40', '22', '第1期交款', '3000.00', '0', '1', '1522588994', '0', '0');
 INSERT INTO `bangbang_order_money` VALUES ('41', '22', '第2期交款', '3000.00', '0', '1', '1522588994', '0', '0');
 INSERT INTO `bangbang_order_money` VALUES ('42', '22', '第3期交款', '4000.00', '0', '1', '1522588994', '0', '0');
+
+-- ----------------------------
+-- Table structure for bangbang_order_money_record
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_money_record`;
+CREATE TABLE `bangbang_order_money_record` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `orderMoneyId` int(11) NOT NULL COMMENT '交款对应期数 bangbang_order_money',
+  `paymentId` int(11) DEFAULT NULL COMMENT '支付人（如是系统支付也要有支付人）',
+  `paymentTime` int(11) DEFAULT NULL COMMENT '支付时间',
+  `status` tinyint(11) NOT NULL DEFAULT '0' COMMENT '0=>未交款,1=>已交款',
+  `payType` varchar(50) NOT NULL DEFAULT 'sys' COMMENT 'sys=>系统自动,user=>用户自己',
+  `noticeId` int(11) NOT NULL COMMENT 'bangbang_order_payment_notice的 id',
+  PRIMARY KEY (`id`),
+  KEY `id` (`orderMoneyId`,`paymentId`,`status`,`payType`,`noticeId`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='工单分期交款记录';
+
+-- ----------------------------
+-- Records of bangbang_order_money_record
+-- ----------------------------
+INSERT INTO `bangbang_order_money_record` VALUES ('1', '0', null, null, '0', 'sys', '0');
 
 -- ----------------------------
 -- Table structure for bangbang_order_option_log
@@ -991,10 +1128,70 @@ CREATE TABLE `bangbang_order_panoramic_log` (
   `coverPictureId` int(11) NOT NULL COMMENT '封面图',
   `panoramicId` int(11) NOT NULL COMMENT '全景图',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='工单全景图表';
 
 -- ----------------------------
 -- Records of bangbang_order_panoramic_log
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bangbang_order_payment_notice
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_payment_notice`;
+CREATE TABLE `bangbang_order_payment_notice` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `orderId` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:待审核，1:审核成功已执行,-1拒绝执行',
+  `applyId` int(11) NOT NULL COMMENT '申请人：为0就为系统自动申请',
+  `applyTime` int(11) NOT NULL COMMENT '申请时间',
+  `verifyId` int(11) DEFAULT NULL COMMENT '审核人：为0就为自动审核',
+  `verifyTime` int(11) DEFAULT NULL,
+  `type` varchar(50) NOT NULL DEFAULT 'pay' COMMENT '消息类型',
+  `content` varchar(50) NOT NULL COMMENT '通知消息内容',
+  PRIMARY KEY (`id`),
+  KEY `id` (`orderId`,`applyId`,`applyTime`,`verifyId`,`verifyTime`,`type`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工单消息通知记录';
+
+-- ----------------------------
+-- Records of bangbang_order_payment_notice
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bangbang_order_sign_img
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_sign_img`;
+CREATE TABLE `bangbang_order_sign_img` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `signId` int(11) NOT NULL COMMENT '对应bangbang_order_sign_record的id',
+  `imgId` int(11) NOT NULL COMMENT '图片的id',
+  `createId` int(11) NOT NULL COMMENT '添加人',
+  `createTime` int(11) NOT NULL COMMENT '添加时间',
+  PRIMARY KEY (`id`),
+  KEY `id` (`signId`,`createId`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='签收记录上传图片';
+
+-- ----------------------------
+-- Records of bangbang_order_sign_img
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for bangbang_order_sign_record
+-- ----------------------------
+DROP TABLE IF EXISTS `bangbang_order_sign_record`;
+CREATE TABLE `bangbang_order_sign_record` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `orderId` int(11) NOT NULL COMMENT '工单id',
+  `noticeId` int(11) NOT NULL COMMENT '通知id',
+  `signId` int(11) DEFAULT '0' COMMENT '签收人',
+  `signTime` int(11) DEFAULT NULL COMMENT '签收时间',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=>''未签收'',1=>''签收''',
+  `signType` varchar(50) NOT NULL COMMENT 'sys=>''后台代签收'',user=>''用户签收''',
+  PRIMARY KEY (`id`),
+  KEY `id` (`orderId`,`noticeId`,`signId`,`status`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工单签收日志表';
+
+-- ----------------------------
+-- Records of bangbang_order_sign_record
 -- ----------------------------
 
 -- ----------------------------
@@ -1599,7 +1796,7 @@ CREATE TABLE `bangbang_user` (
 -- ----------------------------
 -- Records of bangbang_user
 -- ----------------------------
-INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1529763435', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', '');
+INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1530240957', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', '');
 INSERT INTO `bangbang_user` VALUES ('2', '1', '0', '0', '1522812169', '0', '0', '0.00', '0', '1', 'admin01', '###41db486ab474d7329263420baaf164e8', '', '591554595@qq.com', '', '', '', '127.0.0.1', '', '15826962999', '');
 
 -- ----------------------------
@@ -1703,7 +1900,7 @@ CREATE TABLE `bangbang_user_handle_log` (
   `resultId` int(11) NOT NULL DEFAULT '0' COMMENT '操作的结果id',
   `type` varchar(255) NOT NULL COMMENT '操作类型:访问=>access，上下架=>changeStatus 添加=>add 删除=>del 修改=>edit',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=798 DEFAULT CHARSET=utf8 COMMENT='后台操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=810 DEFAULT CHARSET=utf8 COMMENT='后台操作日志';
 
 -- ----------------------------
 -- Records of bangbang_user_handle_log
@@ -2502,6 +2699,18 @@ INSERT INTO `bangbang_user_handle_log` VALUES ('794', '1', 'Demo', 'formmodel', 
 INSERT INTO `bangbang_user_handle_log` VALUES ('795', '1', 'Demo', 'createmodel', '未设置日志配置', '1529913301', '127.0.0.1', null, null, '0', 'access');
 INSERT INTO `bangbang_user_handle_log` VALUES ('796', '1', 'Demo', 'formmodel', '未设置日志配置', '1529916771', '127.0.0.1', null, null, '0', 'access');
 INSERT INTO `bangbang_user_handle_log` VALUES ('797', '1', 'Demo', 'createmodel', '未设置日志配置', '1529916774', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('798', '1', 'Index', 'index', '未设置日志配置', '1529999596', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('799', '1', 'Main', 'index', '未设置日志配置', '1529999596', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('800', '1', 'Demo', 'formmodel', '未设置日志配置', '1529999600', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('801', '1', 'Demo', 'createmodel', '未设置日志配置', '1529999603', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('802', '1', 'Index', 'index', '未设置日志配置', '1530240959', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('803', '1', 'Main', 'index', '未设置日志配置', '1530240959', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('804', '1', 'Demo', 'formmodel', '未设置日志配置', '1530240974', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('805', '1', 'Demo', 'createmodel', '未设置日志配置', '1530240976', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('806', '1', 'Demo', 'formmodel', '未设置日志配置', '1530242218', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('807', '1', 'Demo', 'createmodel', '未设置日志配置', '1530242224', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('808', '1', 'Demo', 'formmodel', '未设置日志配置', '1530242756', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('809', '1', 'Demo', 'createmodel', '未设置日志配置', '1530242759', '127.0.0.1', null, null, '0', 'access');
 
 -- ----------------------------
 -- Table structure for bangbang_user_login_attempt

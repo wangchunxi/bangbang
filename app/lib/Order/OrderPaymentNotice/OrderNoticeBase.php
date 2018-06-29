@@ -12,7 +12,7 @@ use app\model\OrderPaymentNoticeModel;
 class OrderNoticeBase
 {
     protected $orderId;
-    protected $moneyId;
+    protected $content;
     protected $status;
     protected $opUid;
     protected $table;
@@ -21,13 +21,14 @@ class OrderNoticeBase
         return $this;
     }
 
-    public function setMoneyId($moneyId){
-        $this->moneyId = $moneyId;
-        return $this;
-    }
 
     public function setStatus($status){
         $this->status = $status;
+        return $this;
+    }
+
+    public function setContent($content){
+        $this->content = $content;
         return $this;
     }
 
@@ -50,13 +51,7 @@ class OrderNoticeBase
             exception('工单不存在');
         }
         $data[$model->_orderId] = $this->orderId;
-        if($this->moneyId>0){
-            $result =$isOrder->isExistOrderMoney($this->moneyId);
-            if(!$result){
-                exception('工单交款期数不存在');
-            }
-            $data[$model->_moneyId] = $this->moneyId;
-        }
+        $data[$model->_content] = $this->content;
         return $data;
     }
 

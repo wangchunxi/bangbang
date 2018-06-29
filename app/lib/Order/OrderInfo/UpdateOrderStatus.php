@@ -9,7 +9,8 @@
 namespace app\lib\Order\OrderInfo;
 
 
-use app\Lib\Model\Db\OrderInfoModel;
+
+use app\model\OrderInfoModel;
 
 class UpdateOrderStatus
 {

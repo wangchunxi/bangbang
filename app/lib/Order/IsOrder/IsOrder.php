@@ -12,6 +12,7 @@ namespace app\lib\Order\IsOrder;
 use app\lib\Order\OrderInfo\UpdateOrderStatus;
 use app\model\OrderInfoModel;
 use app\model\OrderMoneyModel;
+use app\model\OrderMoneyRecordModel;
 use app\model\OrderPaymentNoticeModel;
 
 class IsOrder
@@ -22,11 +23,16 @@ class IsOrder
     protected $orderStatusLib;
     protected $orderMoneyTable;
     protected $orderPaymentNoticeTable;
+    protected $orderMoneyRecordTable;
     public function __construct($id)
     {
         $this->id = $id;
     }
 
+    /**
+     * 工单详情
+     * @return OrderInfoModel
+     */
     protected function getTable(){
         if(empty($this->orderTable)){
             $this->orderTable = new OrderInfoModel();
@@ -34,6 +40,10 @@ class IsOrder
         return  $this->orderTable;
     }
 
+    /**
+     * 工单状态
+     * @return UpdateOrderStatus
+     */
     protected function getOrderStatusLib(){
         if(empty($this->orderStatusLib)){
             $this->orderStatusLib = new UpdateOrderStatus();
@@ -41,6 +51,10 @@ class IsOrder
         return $this->orderStatusLib;
     }
 
+    /**
+     * 工单交款金额
+     * @return OrderMoneyModel
+     */
     protected function getOrderMoneyTable(){
         if(empty($this->orderMoneyTable)){
             $this->orderMoneyTable = new OrderMoneyModel();
@@ -48,12 +62,28 @@ class IsOrder
         return $this->orderMoneyTable;
     }
 
+    /**
+     * 工单通知信息列表
+     * @return OrderPaymentNoticeModel
+     */
     protected function getOrderPaymentNoticeTable(){
         if(empty($this->orderPaymentNoticeTable)){
             $this->orderPaymentNoticeTable = new OrderPaymentNoticeModel();
         }
         return  $this->orderPaymentNoticeTable;
     }
+
+    /**
+     * 工单交款记录列表
+     * @return OrderMoneyRecordModel
+     */
+    protected function getOrderMoneyRecordTable(){
+        if(empty($this->orderMoneyRecordTable)){
+            $this->orderMoneyRecordTable = new OrderMoneyRecordModel();
+        }
+        return  $this->orderMoneyRecordTable;
+    }
+
     /**
      * 工单是否存在
      * 存在为 true
@@ -124,10 +154,10 @@ class IsOrder
         $map[$model->_orderId]=$this->id;
         $map[$model->_status] = 1;
         $map[$model->_type] = 'pay';
-        $moneyId = $model->where($map)->max($model->_moneyId);
+        $moneyId = $model->where($map)->max($model->_id);
         if($moneyId){
-            $moneyModel = $this->getOrderMoneyTable();
-            $map = [$moneyModel->_id=>$moneyId,$moneyModel->_status=>1];
+            $moneyModel = $this->getOrderMoneyRecordTable();
+            $map = [$moneyModel->_noticeId=>$moneyId,$moneyModel->_status=>0];
             $result = $moneyModel->where($map)->value($moneyModel->_id);
         }
         return empty($result)?false:true;
@@ -140,6 +170,10 @@ class IsOrder
      */
     public function isExistCurrentNoSign(){
         $result = false;
+        $model = $this->getOrderPaymentNoticeTable();
+        $map[$model->_orderId]=$this->id;
+        $map[$model->_status] = 1;
+        $map[$model->_type] = 'pay';
         return empty($result)?false:true;
     }
 }
