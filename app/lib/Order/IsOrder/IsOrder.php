@@ -10,6 +10,7 @@ namespace app\lib\Order\IsOrder;
 
 
 use app\lib\Order\OrderInfo\UpdateOrderStatus;
+use app\model\OrderBindingExtensionModel;
 use app\model\OrderInfoModel;
 use app\model\OrderMoneyModel;
 use app\model\OrderMoneyRecordModel;
@@ -24,6 +25,7 @@ class IsOrder
     protected $orderMoneyTable;
     protected $orderPaymentNoticeTable;
     protected $orderMoneyRecordTable;
+    protected $orderOrderBindingTable;
     public function __construct($id)
     {
         $this->id = $id;
@@ -82,6 +84,17 @@ class IsOrder
             $this->orderMoneyRecordTable = new OrderMoneyRecordModel();
         }
         return  $this->orderMoneyRecordTable;
+    }
+
+    /**
+     * 工单绑定标签表
+     * @return OrderBindingExtensionModel
+     */
+    protected function getOrderBindingTable(){
+        if(empty($this->orderOrderBindingTable)){
+            $this->orderOrderBindingTable = new OrderBindingExtensionModel();
+        }
+        return $this->orderOrderBindingTable;
     }
 
     /**
@@ -150,16 +163,9 @@ class IsOrder
      */
     public function isExistCurrentNoPay(){
         $result = false;
-        $model = $this->getOrderPaymentNoticeTable();
-        $map[$model->_orderId]=$this->id;
-        $map[$model->_status] = 1;
-        $map[$model->_type] = 'pay';
-        $moneyId = $model->where($map)->max($model->_id);
-        if($moneyId){
-            $moneyModel = $this->getOrderMoneyRecordTable();
-            $map = [$moneyModel->_noticeId=>$moneyId,$moneyModel->_status=>0];
-            $result = $moneyModel->where($map)->value($moneyModel->_id);
-        }
+        $model =  $this->getOrderBindingTable();
+        $map = [$model->_orderId=>$this->id,$model->_configId=>['in',[2]],$model->_status = 1];
+        $result  = $model->where($map)->value($model->_id);
         return empty($result)?false:true;
     }
 
@@ -170,10 +176,10 @@ class IsOrder
      */
     public function isExistCurrentNoSign(){
         $result = false;
-        $model = $this->getOrderPaymentNoticeTable();
-        $map[$model->_orderId]=$this->id;
-        $map[$model->_status] = 1;
-        $map[$model->_type] = 'pay';
+        $model =  $this->getOrderBindingTable();
+        $map = [$model->_orderId=>$this->id,$model->_configId=>['in',[1]],$model->_status = 1];
+        $result  = $model->where($map)->value($model->_id);
         return empty($result)?false:true;
     }
+
 }
