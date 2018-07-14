@@ -6,7 +6,7 @@
  * Time: 20:11
  */
 namespace app\lib\Send;
-use app\lib\DingDing\DingDingNotice;
+use app\lib\SendNotice\DingDing\DingDingNotice;
 use app\lib\Sms\RecordingSms;
 
 class InternalPushOrder

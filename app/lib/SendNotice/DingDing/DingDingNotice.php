@@ -5,7 +5,7 @@
  * Date: 2018/3/24/024
  * Time: 21:06
  */
-namespace app\lib\DingDing;
+namespace app\lib\SendNotice\DingDing;
 class DingDingNotice
 {
     protected $content;

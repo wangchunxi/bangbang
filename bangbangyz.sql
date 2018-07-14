@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-06-29 18:50:34
+Date: 2018-07-14 17:46:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -966,6 +966,8 @@ CREATE TABLE `bangbang_order_extension_config` (
 -- ----------------------------
 -- Records of bangbang_order_extension_config
 -- ----------------------------
+INSERT INTO `bangbang_order_extension_config` VALUES ('1', '待签收', '1', '0', '0', '0', '0', '1');
+INSERT INTO `bangbang_order_extension_config` VALUES ('2', '代付款', '1', '0', '0', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for bangbang_order_info
@@ -1037,7 +1039,6 @@ CREATE TABLE `bangbang_order_money` (
   `orderId` int(11) NOT NULL COMMENT '对应的工单id',
   `name` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '简要说明',
   `money` decimal(11,2) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=>未交付,1=>已交付',
   `createId` int(11) NOT NULL COMMENT '添加人',
   `createTime` int(11) NOT NULL COMMENT '添加时间',
   `updateId` int(11) DEFAULT NULL COMMENT '修改人',
@@ -1048,18 +1049,18 @@ CREATE TABLE `bangbang_order_money` (
 -- ----------------------------
 -- Records of bangbang_order_money
 -- ----------------------------
-INSERT INTO `bangbang_order_money` VALUES ('25', '17', '第1期交款', '3000.00', '0', '1', '1522484970', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('26', '17', '第2期交款', '3000.00', '0', '1', '1522484970', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('27', '17', '第3期交款', '4000.00', '0', '1', '1522484970', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('34', '20', '第1期交款', '3000.00', '0', '1', '1522507936', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('35', '20', '第2期交款', '3000.00', '0', '1', '1522507936', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('36', '20', '第3期交款', '4000.00', '0', '1', '1522507936', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('37', '21', '第1期交款', '3000.00', '0', '1', '1522508091', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('38', '21', '第2期交款', '3000.00', '0', '1', '1522508091', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('39', '21', '第3期交款', '4000.00', '0', '1', '1522508091', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('40', '22', '第1期交款', '3000.00', '0', '1', '1522588994', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('41', '22', '第2期交款', '3000.00', '0', '1', '1522588994', '0', '0');
-INSERT INTO `bangbang_order_money` VALUES ('42', '22', '第3期交款', '4000.00', '0', '1', '1522588994', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('25', '17', '第1期交款', '3000.00', '1', '1522484970', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('26', '17', '第2期交款', '3000.00', '1', '1522484970', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('27', '17', '第3期交款', '4000.00', '1', '1522484970', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('34', '20', '第1期交款', '3000.00', '1', '1522507936', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('35', '20', '第2期交款', '3000.00', '1', '1522507936', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('36', '20', '第3期交款', '4000.00', '1', '1522507936', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('37', '21', '第1期交款', '3000.00', '1', '1522508091', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('38', '21', '第2期交款', '3000.00', '1', '1522508091', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('39', '21', '第3期交款', '4000.00', '1', '1522508091', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('40', '22', '第1期交款', '3000.00', '1', '1522588994', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('41', '22', '第2期交款', '3000.00', '1', '1522588994', '0', '0');
+INSERT INTO `bangbang_order_money` VALUES ('42', '22', '第3期交款', '4000.00', '1', '1522588994', '0', '0');
 
 -- ----------------------------
 -- Table structure for bangbang_order_money_record
@@ -1073,6 +1074,7 @@ CREATE TABLE `bangbang_order_money_record` (
   `status` tinyint(11) NOT NULL DEFAULT '0' COMMENT '0=>未交款,1=>已交款',
   `payType` varchar(50) NOT NULL DEFAULT 'sys' COMMENT 'sys=>系统自动,user=>用户自己',
   `noticeId` int(11) NOT NULL COMMENT 'bangbang_order_payment_notice的 id',
+  `createTime` int(11) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   KEY `id` (`orderMoneyId`,`paymentId`,`status`,`payType`,`noticeId`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='工单分期交款记录';
@@ -1080,7 +1082,6 @@ CREATE TABLE `bangbang_order_money_record` (
 -- ----------------------------
 -- Records of bangbang_order_money_record
 -- ----------------------------
-INSERT INTO `bangbang_order_money_record` VALUES ('1', '0', null, null, '0', 'sys', '0');
 
 -- ----------------------------
 -- Table structure for bangbang_order_option_log
@@ -1796,7 +1797,7 @@ CREATE TABLE `bangbang_user` (
 -- ----------------------------
 -- Records of bangbang_user
 -- ----------------------------
-INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1530240957', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', '');
+INSERT INTO `bangbang_user` VALUES ('1', '1', '0', '0', '1531300873', '0', '0', '0.00', '1519299231', '1', 'admin', '###41db486ab474d7329263420baaf164e8', 'admin', '591554596@qq.com', '', '', '', '127.0.0.1', '', '', '');
 INSERT INTO `bangbang_user` VALUES ('2', '1', '0', '0', '1522812169', '0', '0', '0.00', '0', '1', 'admin01', '###41db486ab474d7329263420baaf164e8', '', '591554595@qq.com', '', '', '', '127.0.0.1', '', '15826962999', '');
 
 -- ----------------------------
@@ -1900,7 +1901,7 @@ CREATE TABLE `bangbang_user_handle_log` (
   `resultId` int(11) NOT NULL DEFAULT '0' COMMENT '操作的结果id',
   `type` varchar(255) NOT NULL COMMENT '操作类型:访问=>access，上下架=>changeStatus 添加=>add 删除=>del 修改=>edit',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=810 DEFAULT CHARSET=utf8 COMMENT='后台操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=844 DEFAULT CHARSET=utf8 COMMENT='后台操作日志';
 
 -- ----------------------------
 -- Records of bangbang_user_handle_log
@@ -2711,6 +2712,40 @@ INSERT INTO `bangbang_user_handle_log` VALUES ('806', '1', 'Demo', 'formmodel', 
 INSERT INTO `bangbang_user_handle_log` VALUES ('807', '1', 'Demo', 'createmodel', '未设置日志配置', '1530242224', '127.0.0.1', null, null, '0', 'access');
 INSERT INTO `bangbang_user_handle_log` VALUES ('808', '1', 'Demo', 'formmodel', '未设置日志配置', '1530242756', '127.0.0.1', null, null, '0', 'access');
 INSERT INTO `bangbang_user_handle_log` VALUES ('809', '1', 'Demo', 'createmodel', '未设置日志配置', '1530242759', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('810', '1', 'Index', 'index', '未设置日志配置', '1530613843', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('811', '1', 'Main', 'index', '未设置日志配置', '1530613843', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('812', '1', 'Demo', 'formmodel', '未设置日志配置', '1530613848', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('813', '1', 'Demo', 'createmodel', '未设置日志配置', '1530613862', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('814', '1', 'Demo', 'formmodel', '未设置日志配置', '1530614992', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('815', '1', 'Demo', 'createmodel', '未设置日志配置', '1530614998', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('816', '1', 'Demo', 'formmodel', '未设置日志配置', '1530615037', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('817', '1', 'Demo', 'createmodel', '未设置日志配置', '1530615041', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('818', '1', 'Index', 'index', '未设置日志配置', '1531300875', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('819', '1', 'Main', 'index', '未设置日志配置', '1531300876', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('820', '1', 'Setting', 'site', '未设置日志配置', '1531300883', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('821', '1', 'Index', 'index', '未设置日志配置', '1531300897', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('822', '1', 'Main', 'index', '未设置日志配置', '1531300897', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('823', '1', 'Menu', 'index', '未设置日志配置', '1531300904', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('824', '1', 'Index', 'index', '未设置日志配置', '1531300925', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('825', '1', 'Main', 'index', '未设置日志配置', '1531300926', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('826', '1', 'Setting', 'clearcache', '未设置日志配置', '1531300935', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('827', '1', 'AdminAsset', 'index', '未设置日志配置', '1531300940', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('828', '1', 'Menu', 'index', '未设置日志配置', '1531300944', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('829', '1', 'Menu', 'edit', '未设置日志配置', '1531300947', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('830', '1', 'Menu', 'editpost', '未设置日志配置', '1531300958', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('831', '1', 'Menu', 'edit', '未设置日志配置', '1531300960', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('832', '1', 'Menu', 'index', '未设置日志配置', '1531300965', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('833', '1', 'Menu', 'edit', '未设置日志配置', '1531300988', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('834', '1', 'Menu', 'editpost', '未设置日志配置', '1531300996', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('835', '1', 'Menu', 'edit', '未设置日志配置', '1531300998', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('836', '1', 'Menu', 'edit', '未设置日志配置', '1531301002', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('837', '1', 'Menu', 'edit', '未设置日志配置', '1531301004', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('838', '1', 'Index', 'index', '未设置日志配置', '1531301005', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('839', '1', 'Main', 'index', '未设置日志配置', '1531301006', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('840', '1', 'Demo', 'form', '未设置日志配置', '1531301012', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('841', '1', 'Demo', 'form', '未设置日志配置', '1531301020', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('842', '1', 'Demo', 'form', '未设置日志配置', '1531301027', '127.0.0.1', null, null, '0', 'access');
+INSERT INTO `bangbang_user_handle_log` VALUES ('843', '1', 'Demo', 'listdemo', '未设置日志配置', '1531301075', '127.0.0.1', null, null, '0', 'access');
 
 -- ----------------------------
 -- Table structure for bangbang_user_login_attempt

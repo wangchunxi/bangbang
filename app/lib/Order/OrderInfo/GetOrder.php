@@ -10,23 +10,20 @@ namespace app\lib\Order\OrderInfo;
 
 
 use app\model\OrderInfoModel;
-use app\model\OrderMoneyModel;
 
 class GetOrder
 {
     /**
-     * 待分解工单
-     * @return array
+     * 待发布
+     * @return id
+     * @throws \Exception
      */
     public function getOrder(){
-        $orderInfo = (new OrderInfoModel())->where('orderStatus',0)->find();
+        $orderId = (new OrderInfoModel())->where('orderStatus',0)->value('id');
         if(empty($orderInfo)){
-            exception('没有可以分解的工单');
+            exception('没有待发布的工单');
         }
-        $orderMoney = (new OrderMoneyModel())->where('orderId',$orderInfo['id'])->select();
-        $data['orderInfo'] = $orderInfo;
-        $data['orderMoney'] = $orderMoney;
-        return $data;
+        return $orderId;
     }
 
 

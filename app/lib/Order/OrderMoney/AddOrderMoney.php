@@ -8,7 +8,6 @@
 
 namespace app\lib\Order\OrderMoney;
 
-
 use app\model\OrderMoneyModel;
 
 class AddOrderMoney
@@ -16,7 +15,6 @@ class AddOrderMoney
     private $opUid ;
     private $createTime;
     private $orderId;
-    private $status;
     private $name;
     private $money;
     private $key;
@@ -25,7 +23,6 @@ class AddOrderMoney
     {
         $this->opUid = $opUid;
         $this->createTime = time();
-        $this->status = 0;
         $this->orderId = $orderId;
         $this->key =  $key;
         $this->tips =  '第'.$this->key.'期交款';
@@ -64,15 +61,14 @@ class AddOrderMoney
         $data['money']      =$this->money;
         $data['orderId']    =$this->orderId;
         $data['name']       =$this->getName();
-        $data['status']     =$this->status;
         $data['createId']   =$this->opUid;
         $data['createTime'] =$this->createTime;
         $this->checkData();
         $model = new OrderMoneyModel();
-        $result = $model ->insert($data);
+        $result = $model ->insert($data,false,true);
         if(!$result){
             exception('生成每期交款数据失败');
         }
-        return true;
+        return $result;
     }
 }

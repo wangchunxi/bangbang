@@ -182,4 +182,12 @@ class IsOrder
         return empty($result)?false:true;
     }
 
+    /**
+     * 工单第一期是否交款
+     * 没有交款 true
+     */
+    public function isFirstNoPay(){
+
+    }
+
 }

@@ -9,6 +9,8 @@
 namespace app\lib\Order;
 
 
+use app\lib\Order\OrderInfo\UpdateOrderStatus;
+use app\lib\Order\OrderNotice\OrderNotice;
 use app\model\OrderInfoModel;
 
 class OrderOption
@@ -47,34 +49,85 @@ class OrderOption
         }
         return   $this->orderLog;
     }
-    /**
-     * 分解任务改变状态
-     */
-    public function addOrderTask(){
-        $data['orderStatus'] = 1;
-        $result = $this->getOrderInfoModel()->where('id',$this->orderId)->update($data);
-        if(!$result){
-            exception('状态修改失败');
-        }
-        $this->writingOrderLog('RESOLVE','任务分解');
-        return true;
-    }
+//    /**
+//     * 分解任务改变状态
+//     */
+//    public function addOrderTask(){
+//        $data['orderStatus'] = 1;
+//        $result = $this->getOrderInfoModel()->where('id',$this->orderId)->update($data);
+//        if(!$result){
+//            exception('状态修改失败');
+//        }
+//        $this->writingOrderLog('RESOLVE','任务分解');
+//        return true;
+//    }
 
     /**
      * 发布工单改变状态
      * 1、修改工单状态
-     * 2、修改任务状态
-     *
      */
     public function releaseTask(){
         /*修改工单状态*/
-        $this->getOrderInfoModel()->setOrderId($this->orderId)->editOrderStatus(2);
-        /*修改工单任务状态*/
-        //(new OperatingTask($this->orderId))->releaseTask();
+        (new UpdateOrderStatus($this->orderId,$this->opUid))->getCarryOrderStatus()->save();
+        /*通知*/
+        (new OrderNotice($this->orderId))->releaseTask();
         /*记入工单日志*/
         $this->writingOrderLog('RELEASE','工单id为'.$this->orderId.'发布了任务');
         return true;
     }
+
+    /**
+     * 设计师申请催款
+     * 生成申请记录
+     */
+    public function orderApplyUrgeMoney(){
+
+    }
+    /**
+     * 设计师催款操作
+     * 生成交款记录
+     * 工单挂上待付款标签
+     * 通知用户
+     * 通知监理
+     * @param  $notice bool 是否开启通知
+     */
+    public function orderUrgeMoney($notice = true){
+
+    }
+
+    /**
+     * 工单交款回调
+     * 改变工单交款期状态
+     * 缴款后取消待付款标签
+     * 通知设计师
+     * 通知监理
+     */
+    public function orderPayMoney(){
+
+    }
+
+    /**
+     * 工单催签署
+     * 生成交款记录
+     * 工单挂上待签收标签
+     * 通知用户
+     * 通知设计师
+     */
+    public function OrderUrgeSign(){
+
+    }
+
+    /**
+     * 工单签收
+     * 改变签收记录状态
+     * 工单取消待签收标签
+     * 通知设计师
+     * 通知监理
+     */
+    public function OrderSign(){
+
+    }
+
 
     protected function writingOrderLog($type,$content){
         $log =  $this->getOrderLogModel();
