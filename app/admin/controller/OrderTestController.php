@@ -9,7 +9,9 @@ namespace app\admin\controller;
 use app\lib\Order\OrderInfo\AddOrder;
 use app\lib\Order\OrderInfo\GetOrder;
 use app\lib\Order\OrderMoney\AddOrderMoney;
-use app\lib\Order\OrderOption;
+use app\lib\Order\OrderMoney\AddOrderMoneyRecord;
+use app\lib\Order\OrderOption\OrderOption;
+use app\lib\Order\OrderPaymentNotice\AddOrderNotice;
 use app\lib\Test\OrderTest;
 use app\model\OrderTaskModel;
 use cmf\controller\AdminBaseController;
@@ -51,7 +53,11 @@ class OrderTestController  extends AdminBaseController
                 $money =  $post['post']['money'];
                 $photoUrls = isset($post['photo_urls'])?$post['photo_urls']:'test';
                 $post = $post['post'];
-                if( $post['orderTotal'] != array_sum($money)){
+                $count = 0;
+                foreach ($money as $v){
+                    $count+=$v['money'];
+                }
+                if( $post['orderTotal'] != $count){
                     exception('每期交款数不等于工单总价值');
                 }
                 /*下单*/
@@ -74,8 +80,17 @@ class OrderTestController  extends AdminBaseController
                     $model = (new AddOrderMoney(cmf_get_current_admin_id(),$orderId,$k));
                     $model->setMoney($v['money']);
                     $orderMoney = $model->save();
+                    /*交了款进行处理*/
                     if(isset($v['pay']) && $v['pay'] == true){
-
+                        /*下发通知记录*/
+                        $result = (new AddOrderNotice())->setOrderId($orderId)
+                            ->setOpUid(cmf_get_current_admin_id())
+                            ->setContent('下单已设置支付')
+                            ->AddOrderPayNotice();
+                        /*记录支付记录*/
+                        (new AddOrderMoneyRecord())
+                            ->setNoticeId($result)->setOrderMoneyId($orderMoney)
+                            ->setPayType('sys')->setPayUserId(cmf_get_current_admin_id())->pay();
                     }
                 }
                 /*下单检验*/

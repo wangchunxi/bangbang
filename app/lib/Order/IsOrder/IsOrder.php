@@ -48,7 +48,7 @@ class IsOrder
      */
     protected function getOrderStatusLib(){
         if(empty($this->orderStatusLib)){
-            $this->orderStatusLib = new UpdateOrderStatus();
+            $this->orderStatusLib = new UpdateOrderStatus($this->id,1);
         }
         return $this->orderStatusLib;
     }

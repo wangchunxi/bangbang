@@ -64,5 +64,7 @@ class OrderMoneyRecordModel extends Model
     */
    public $_noticeId = "noticeId";
 
+   public $_createTime = "createTime";
+
 
 }

@@ -6,7 +6,7 @@
  * Time: 17:05
  */
 
-namespace app\lib\Order;
+namespace app\lib\Order\OrderOption;
 
 use app\model\OrderOptionLogModel;
 
@@ -79,7 +79,7 @@ class OrderOptionLog
         $data['optionUserId'] =  $this->optionUserId;
         $data['optionType'] =  $this->optionType;
         $data['optionTime'] =  $this->optionTime;
-        $data['submitParameter'] =  $this->submitParameter;
+        $data['submitParameter'] =  empty($this->submitParameter)?'未提供数据':$this->submitParameter;
         $data['resultBefore'] =  $this->resultBefore;
         $data['resultRear'] =  $this->resultRear;
         $data['optionContent'] =  $this->optionContent;

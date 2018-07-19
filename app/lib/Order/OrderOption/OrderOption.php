@@ -6,7 +6,7 @@
  * Time: 22:28
  */
 
-namespace app\lib\Order;
+namespace app\lib\Order\OrderOption;
 
 
 use app\lib\Order\OrderInfo\UpdateOrderStatus;

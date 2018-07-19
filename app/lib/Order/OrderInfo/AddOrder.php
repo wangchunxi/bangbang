@@ -6,6 +6,7 @@
  * Time: 20:50
  */
 namespace app\lib\Order\OrderInfo;
+use app\lib\Order\OrderOption\OrderOptionLog;
 use app\model\OrderInfoModel;
 use app\model\UserModel;
 

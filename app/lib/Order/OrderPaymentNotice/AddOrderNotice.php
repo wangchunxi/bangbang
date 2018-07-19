@@ -74,7 +74,7 @@ class AddOrderNotice extends OrderNoticeBase
      */
     protected function save($data){
         $model = $this->getTable();
-        $result =  $model->insert($data);
+        $result =  $model->insert($data,false,true);
         if(!$result){
             exception('发起支付申请失败');
         }
