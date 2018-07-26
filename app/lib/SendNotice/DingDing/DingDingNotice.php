@@ -62,7 +62,6 @@ class DingDingNotice
         return $data_string;
     }
     public function save(){
-        dump($this->getData());
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->webHook);
         curl_setopt($ch, CURLOPT_POST, 1);

@@ -69,7 +69,16 @@ class OrderMoneyRecordBase
         return $data;
     }
 
-    /*记录流水*/
+    /**
+     * 记录流水
+     * @param $content
+     * @param $details
+     * @param $isAdmin
+     * @return bool
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     protected function recordFlow($content,$details,$isAdmin){
         $moneyModel =  (new OrderMoneyModel());
         $field = [
@@ -89,6 +98,7 @@ class OrderMoneyRecordBase
      * 记录工单日志
      * @param $type
      * @param $content
+     * @param $orderId
      * @return bool
      */
     protected function writingOrderLog($type,$content,$orderId){
