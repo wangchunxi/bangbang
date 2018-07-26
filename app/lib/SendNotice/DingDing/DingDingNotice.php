@@ -74,7 +74,6 @@ class DingDingNotice
          curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0);
         $data = curl_exec($ch);
         curl_close($ch);
-
         return $data;
     }
 }

@@ -10,6 +10,7 @@ namespace app\lib\Order\OrderMoney;
 
 
 use app\lib\Flow\FlowLog;
+use app\lib\Order\OrderNotice\PaymentNotice;
 use app\lib\Order\OrderOption\OrderOptionLog;
 use app\model\OrderMoneyModel;
 use app\model\OrderMoneyRecordModel;
@@ -91,6 +92,7 @@ class OrderMoneyRecordBase
             ->setMoney($info[$moneyModel->_money])->setFlowDetails($details.'【'.$info[$moneyModel->_name].'】')
             ->setFlowContent($content)->setFlowType(1)->setIsAdmin($isAdmin)->save();
         $this->writingOrderLog('PAYMONEY',$details.'【'.$info[$moneyModel->_name].'】',$info['orderId']);
+        (new PaymentNotice($info['orderId'],$this->orderMoneyId))->save();
         return true;
     }
 

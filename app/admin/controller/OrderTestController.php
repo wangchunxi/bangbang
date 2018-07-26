@@ -12,6 +12,7 @@ use app\lib\Order\OrderMoney\AddOrderMoney;
 use app\lib\Order\OrderMoney\AddOrderMoneyRecord;
 use app\lib\Order\OrderOption\OrderOption;
 use app\lib\Order\OrderPaymentNotice\AddOrderNotice;
+use app\lib\Send\InternalPushOrder;
 use app\lib\Test\OrderTest;
 use app\model\OrderTaskModel;
 use cmf\controller\AdminBaseController;
@@ -186,5 +187,9 @@ class OrderTestController  extends AdminBaseController
         foreach ($order as $v){
             echo date('Y-m-d',$v['taskStartTime']).'-----'.date('Y-m-d',$v['taskEndTime']);echo "<br/>";
         }
+    }
+
+    public function sendTest(){
+
     }
 }

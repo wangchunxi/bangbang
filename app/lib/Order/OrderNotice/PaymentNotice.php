@@ -6,9 +6,10 @@
  * Time: 15:24
  */
 
-namespace app\lib\SendNotice\DingDing;
+namespace app\lib\Order\OrderNotice;
 
 
+use app\lib\SendNotice\DingDing\DingDingNotice;
 use app\lib\Sms\RecordingSms;
 use app\model\OrderInfoModel;
 use app\model\OrderMoneyModel;
@@ -63,9 +64,9 @@ class PaymentNotice
         
         $content = '工单号为:【'.$info['orderNum']. '】,顾客姓名:【'.$info['orderName'].'】,地址为:【'.
             $info['userAddressNum'].'】,交付【'.$moneyInfo['name'].'】成功,共计金额:【'.$moneyInfo['money'].'】';
-        $webHook = "https://oapi.dingtalk.com/robot/Send?access_token=2bc87d1b37a25b790e02534ad6bca312cbba2dd0e1a6aa0299ab32b37ec5250b";
+        $webHook = "https://oapi.dingtalk.com/robot/send?access_token=2bc87d1b37a25b790e02534ad6bca312cbba2dd0e1a6aa0299ab32b37ec5250b";
         (new DingDingNotice())->setContent($content)->setWebHook($webHook)->save();
         (new RecordingSms())->setOrderId($this->orderId)->setAcceptUid(0)->setIsSuccess(1)
-            ->setSendType('DingDing')->setSmsContent($content)->setSmsId(0)->save();
+            ->setSendType('DingDing')->setSmsContent($content)->setSmsId(1)->save();
     }
 }

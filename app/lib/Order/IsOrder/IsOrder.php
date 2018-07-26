@@ -171,7 +171,7 @@ class IsOrder
 
     /**
      * 是否存在要签收的信息
-     * 有就位true
+     * 有就为true
      * @return bool
      */
     public function isExistCurrentNoSign(){
@@ -187,7 +187,12 @@ class IsOrder
      * 没有交款 true
      */
     public function isFirstNoPay(){
-
+        $model =  $this->getOrderMoneyTable();
+        $id = $model->where($model->_orderId,$this->id)->order($model->_id.' asc ')->value($model->_id);
+        $moneyModel = $this->getOrderMoneyRecordTable();
+        $map = [$moneyModel->_orderMoneyId=>$id,$moneyModel->_status=>1];
+        $moneyModelId =  $moneyModel->where($map)->value($moneyModel->_id);
+        return empty($moneyModelId)?true:false;
     }
 
 }

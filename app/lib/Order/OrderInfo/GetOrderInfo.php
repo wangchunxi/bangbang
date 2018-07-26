@@ -44,10 +44,11 @@ class GetOrderInfo
      */
     private function getFiledValue(){
         if($this->cache){
-            $this->getCacheValue();
+            $value = $this->getCacheValue();
         }else{
-            $this->getDbValue();
+            $value = $this->getDbValue();
         }
+        return $value;
     }
 
     /**
@@ -61,6 +62,7 @@ class GetOrderInfo
 
     /**
      * 获取数据库字段详情
+     * @return string
      */
     private function getDbValue(){
         $model = $this->getOrderInfoTable();
@@ -83,6 +85,7 @@ class GetOrderInfo
         $orderInfo = [];
         cache($this->cacheName,json_encode($orderInfo),7*86400);
         $this->orderInfo = $orderInfo;
+        return true;
     }
 
     /**
@@ -91,6 +94,7 @@ class GetOrderInfo
     public function delCache(){
         cache($this->cacheName,null);
         $this->orderInfo = [];
+        return true;
     }
 
     /**
@@ -111,6 +115,15 @@ class GetOrderInfo
 
         }
         return $result;
+    }
+
+    /**
+     * 获取用户地址
+     */
+    public function getUserAddress(){
+        $table =  $this->getOrderInfoTable();
+        $this->valueName = $table->_userAddress;
+        return  $this->getFiledValue();
     }
 
 

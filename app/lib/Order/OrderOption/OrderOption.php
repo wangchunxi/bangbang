@@ -70,7 +70,8 @@ class OrderOption
         /*修改工单状态*/
         (new UpdateOrderStatus($this->orderId,$this->opUid))->getCarryOrderStatus()->save();
         /*通知*/
-        (new OrderNotice($this->orderId))->releaseTask();
+        (new OrderNotice($this->orderId,$this->opUid))->releaseTask();
+
         /*记入工单日志*/
         $this->writingOrderLog('RELEASE','工单id为'.$this->orderId.'发布了任务');
         return true;

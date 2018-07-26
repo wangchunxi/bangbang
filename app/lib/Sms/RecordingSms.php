@@ -21,53 +21,50 @@ class RecordingSms
     protected $orderTaskId;
 
     public function  setSmsContent($smsContent){
-    $this->smsContent = $smsContent;
-    return $this;
+        $this->smsContent = $smsContent;
+        return $this;
     }
     public function  setAcceptUid($AcceptUid){
-    $this->AcceptUid = $AcceptUid;
-    return $this;
-    }
-    public function  setCreateTime($createTime){
-    $this->createTime = $createTime;
-    return $this;
+        $this->AcceptUid = $AcceptUid;
+        return $this;
     }
     public function  setSendType($sendType){
-    $this->sendType = $sendType;
-    return $this;
+        $this->sendType = $sendType;
+        return $this;
     }
     public function  setIsSuccess($isSuccess){
-    $this->isSuccess = $isSuccess;
-    return $this;
+        $this->isSuccess = $isSuccess;
+        return $this;
     }
     public function  setSmsId($smsId){
-    $this->smsId = $smsId;
-    return $this;
+        $this->smsId = $smsId;
+        return $this;
     }
     public function  setOrderId($orderId){
-    $this->orderId = $orderId;
-    return $this;
+        $this->orderId = $orderId;
+        return $this;
     }
     public function  setOrderMoneyId($orderMoneyId){
-    $this->orderMoneyId = $orderMoneyId;
-    return $this;
+        $this->orderMoneyId = $orderMoneyId;
+        return $this;
     }
     public function  setOrderTaskId($orderTaskId){
-    $this->orderTaskId = $orderTaskId;
-    return $this;
+        $this->orderTaskId = $orderTaskId;
+        return $this;
     }
 
     public function save(){
-        $data['smsContent'] =  $this->smsContent;
-        $data['AcceptUid'] =  $this->AcceptUid;
-        $data['createTime'] =  $this->createTime;
-        $data['sendType'] =  $this->sendType;
-        $data['isSuccess'] =  $this->isSuccess;
-        $data['smsId '] =  $this->smsId ;
-        $data['orderId'] =  $this->orderId;
-        $data['orderMoneyId'] =  $this->orderMoneyId;
-        $data['orderTaskId'] =  $this->orderTaskId;
-        $result =  (new SendSmsLogModel())->insert($data);
+        $model = new SendSmsLogModel();
+        $data[$model->_smsContent] =  $this->smsContent;
+        $data[$model->_AcceptUid] =  $this->AcceptUid;
+        $data[$model->_createTime] =  time();
+        $data[$model->_sendType] =  $this->sendType;
+        $data[$model->_isSuccess] =  $this->isSuccess;
+        $data[$model->_smsId] =  $this->smsId ;
+        $data[$model->_orderId] =  $this->orderId;
+        $data[$model->_orderMoneyId] =  $this->orderMoneyId;
+        $data[$model->_orderTaskId] =  $this->orderTaskId;
+        $result =  $model->insert($data);
         if(!$result){
             exception('短信发送失败');
         }
